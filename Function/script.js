@@ -38,6 +38,7 @@
 // console.log((function(a, b){ return a + b })(5, 6) )        =                   11
 
 
+
 // ৪। Arrow function - 
 
 // Arrow function মূলত Es-6 ভার্সন থেকে আসছে । 
@@ -57,6 +58,8 @@
 
 //  ## Arrow function এর কোড এবং রানটাইম দুইটাই কম লাগে । 
 
+
+
 // ৫। function constructor - 
 
 //  এটা জাভাস্ক্রিপ্ট এর built in একটা ফাংশন । new Function কি ওয়ার্ডের মাধ্যমে এই ফাংশনটা লিখতে হয় এই জন্য এটা কে  function constructor বলে । 
@@ -69,88 +72,19 @@
 //  এটা কখনো ব্যবহার করা উচিত নয়, এটা এভয়েড করাই ভালো । 
 
 
-// ৬। callback function - 
 
-//  একটা ফাংশন কে যখন আমরা  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করি এবং রিটার্ন হিসেবে একটা ফাংশন দেয় ।  তখন সেই আর্গুমেন্টে যাওয়া ফাংশন  টা কেই  callback function বলে । 
+// ৬। first class function - 
 
-//  callback function বুঝতে হলে সিনক্রোনাস এবং অ্যাসিনক্রোনাস বিহেবিয়ার ভালো করে বুঝতে হবে । 
+// first class function হল - 
 
-//  সিনক্রোনাস = জাভাস্ক্রিপ্ট বাই ডিফলট সিনক্রোনাস সিংগেল থ্রেড  প্রোগ্রামিং ল্যাঙ্গুয়েজ । এটা উপর থেকে নিচের দিকে লাইন বাই লাইন কোড রিড করে । 
+// ## একটা ফাংশনকে যদি ভারিঅ্যাঁবলের মধ্যে স্টোর করা যায় । 
+// ## একটা ফাংশনকে যদি অ্যাঁরের  মধ্যে স্টোর করা যায় । 
+// ## একটা ফাংশনকে যদি অবজেক্ট  এর  মধ্যে স্টোর করা যায় । 
+// ## প্রয়োজন মত ফাংশন তৈরি করা যায় । 
+// ##  একটা ফাংশন কে যখন   অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে নেয় । 
+// ##  একটা ফাংশন কে যখন   অন্য আরেকটা  ফাংশনের বডিতে রিটার্ন করা যায়  । 
 
-//  const one = () => {
-//     console.log(' This is one ')
-//  }
-
-//  const two = () => {
-//     console.log(' This is two ')
-//  }
-
-//  const three = () => {
-//     console.log(' This is three ')
-//  }                                       output //////
-
-//  one()                                   This is one
-//  two()                                   This is two
-//  three()                                 This is three 
-
-//  এখানে কল করার সময় যেই অর্ডারে করব আউটপুঁটে সেই ভাবে আসবে । 
-
-
-// অ্যাসিনক্রোনাস = জাভাস্ক্রিপ্ট যখন আজাক্স কল করা হয় অর্থাৎ অন্য কোন সারভার থেকে ডাটা লোড করে এনে ওয়েবসাইটে দেখানো হয় । তখন ডাটা লোড হতে টাইম লাগে এই সময় জাভাস্ক্রিপ্ট পরের কোড গুলা রিড করে এবং আউটপুঁটে  পরের কোড গুলা কে আগে দেখায়, এরপর লোড করা ডাটা রিড করে । এই গুলা হ্যান্ডল করার জন্য  callback function ব্যবহার করা হয়। 
-
-// const one = () => {
-//    console.log(' This is one ')
-// }
-
-// const two = () => {
-//    console.log(' This is two  ')
-// }
-
-// const three = () => {
-//    console.log(' This is three ')
-// }                                                 output //////
-
-// setTimeout(one, 3000)                               This is two
-//  two()                                              This is three 
-//  three()                                            This is one
-
-
-
-
-
-//       **   callback function   **
-
-//       const one = (callback) => {
-//          console.log(' This is one ')
-//          callback() ;
-//       }
-     
-//       const two = () => {
-//          console.log(' This is two ')
-//       }
-     
-//       const three = () => {
-//          console.log(' This is three ')
-//       }
-       
-//       setTimeout(one(two),3000)
-//       three()
-
-
-//       এখানে  callback function হল  two() 
-
-      
-//       এখানে  Higher Order   function হল  one()
-
-//       output //////
-
-//       This is one
-//       This is two
-//       This is three 
-
-
-
-     
+// এই বৈশিষ্ট্য গুলা থাকলে আমরা তাকে first class function বলতে পারব। 
 
 
 // ৭। Higher Order function - 
@@ -262,12 +196,87 @@
 // console.log(playerAvg)
 
 
+// ৮। callback function - 
+
+//  একটা ফাংশন কে যখন আমরা  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করি এবং রিটার্ন হিসেবে একটা ফাংশন দেয় ।  তখন সেই আর্গুমেন্টে যাওয়া ফাংশন  টা কেই  callback function বলে । 
+
+//  callback function বুঝতে হলে সিনক্রোনাস এবং অ্যাসিনক্রোনাস বিহেবিয়ার ভালো করে বুঝতে হবে । 
+
+//  সিনক্রোনাস = জাভাস্ক্রিপ্ট বাই ডিফলট সিনক্রোনাস সিংগেল থ্রেড  প্রোগ্রামিং ল্যাঙ্গুয়েজ । এটা উপর থেকে নিচের দিকে লাইন বাই লাইন কোড রিড করে । 
+
+//  const one = () => {
+//     console.log(' This is one ')
+//  }
+
+//  const two = () => {
+//     console.log(' This is two ')
+//  }
+
+//  const three = () => {
+//     console.log(' This is three ')
+//  }                                       output //////
+
+//  one()                                   This is one
+//  two()                                   This is two
+//  three()                                 This is three 
+
+//  এখানে কল করার সময় যেই অর্ডারে করব আউটপুঁটে সেই ভাবে আসবে । 
+
+
+// অ্যাসিনক্রোনাস = জাভাস্ক্রিপ্ট যখন আজাক্স কল করা হয় অর্থাৎ অন্য কোন সারভার থেকে ডাটা লোড করে এনে ওয়েবসাইটে দেখানো হয় । তখন ডাটা লোড হতে টাইম লাগে এই সময় জাভাস্ক্রিপ্ট পরের কোড গুলা রিড করে এবং আউটপুঁটে  পরের কোড গুলা কে আগে দেখায়, এরপর লোড করা ডাটা রিড করে । এই গুলা হ্যান্ডল করার জন্য  callback function ব্যবহার করা হয়। 
+
+// const one = () => {
+//    console.log(' This is one ')
+// }
+
+// const two = () => {
+//    console.log(' This is two  ')
+// }
+
+// const three = () => {
+//    console.log(' This is three ')
+// }                                                 output //////
+
+// setTimeout(one, 3000)                               This is two
+//  two()                                              This is three 
+//  three()                                            This is one
 
 
 
 
 
-৮। function closure 
+//       **   callback function   **
+
+//       const one = (callback) => {
+//          console.log(' This is one ')
+//          callback() ;
+//       }
+     
+//       const two = () => {
+//          console.log(' This is two ')
+//       }
+     
+//       const three = () => {
+//          console.log(' This is three ')
+//       }
+       
+//       setTimeout(one(two),3000)
+//       three()
+
+
+//       এখানে  callback function হল  two() 
+
+      
+//       এখানে  Higher Order   function হল  one()
+
+//       output //////
+
+//       This is one
+//       This is two
+//       This is three 
+
+
+  ***  callback hell   *** 
 
 
 
@@ -275,5 +284,54 @@
 
 
 
-৯। first class function 
+
+
+  ৯।  ***  promise  *** 
+
+
+
+
+
+
+  
+১০। function closure - 
+
+
+
+*** closure ***
+
+
+closure ভালো করে বুঝতে চাইলে গ্লোবাল স্কোপ এবং লোকাল স্কোপ সম্পর্কে জানতে হবে। 
+
+
+জাভাস্ক্রিপ্ট এ প্যারেন্ট এর সবকিছু তার চাইল্ড এক্সেস করতে পারে । সুতরাং গ্লোবাল স্কোপের সবকিছু লোকাল স্কোপে এক্সেস করা যাবে  কিন্তু চাইল্ডের কোন কিছুতে আবার প্যারেন্ট এর এক্সেস নাই ।
+
+var num1 = 3;
+var num2 = 4;
+
+var sum = function(){
+    return num1 + num2 ;
+};
+
+console.log(sum());                           output //     7 
+
+এখন মনে হতে পারে var num1 = 3 , var num2 = 4 এক্সেস কিভাবে লোকাল স্কোপ বাঁ ফাংশন স্কোপ পেল । আমরা তো এখানে প্যারামিটারই পাস করি নাই ।  এটাই হচ্ছে প্যারেন্ট স্কোপ থেকে লোকাল স্কোপে এক্সেস পেয়েছে । 
+
+closure হচ্ছে এমন একটা ফাংশন যার লোকাল স্কোপের বাইরে অর্থাৎ গ্লোবাল স্কোপে কোন ভারিঅ্যাঁবল থাকে তার রেফারেন্স নিজের কাছে নিয়ে যেতে হয় । 
+
+
+
+
+
+
+
+
+ 
+
+
+
+১১। funtion curring - 
+
+
+
 
