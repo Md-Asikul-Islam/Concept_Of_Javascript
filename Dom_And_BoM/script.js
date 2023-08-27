@@ -751,35 +751,41 @@
 
 
 
-৫। Debounce - 
+// ৫। Debounce - 
   
-মনে করেন একটা ই- কমার্স সাইটে একটা ব্যাগ অর্ডার করবেন সেক্ষেত্রে বাটনে ক্লিক করে কার্টে অ্যাড করতে হবে, এখন যদি ইউজার ভুলে  একসাথে অনেক গুলা ক্লিক করে ফেলে তখন একি আইটেম যত গুলা ক্লিক করবে, ততগুলা সিলেক্ট হবে। 
-কিন্তু আমরা চাচ্চি ইউজার ভুলে করলেও সার্ভার রিকুয়েস্ত যাতে একবারই যায় । এই সমসা সমাধান করতে Debounce ব্যবহার করা হয়। 
+// মনে করেন একটা ই- কমার্স সাইটে একটা ব্যাগ অর্ডার করবেন সেক্ষেত্রে বাটনে ক্লিক করে কার্টে অ্যাড করতে হবে, এখন যদি ইউজার ভুলে  একসাথে অনেক গুলা ক্লিক করে ফেলে তখন একি আইটেম যত গুলা ক্লিক করবে, ততগুলা সিলেক্ট হবে। 
+// কিন্তু আমরা চাচ্চি ইউজার ভুলে করলেও সার্ভার রিকুয়েস্ত যাতে একবারই যায় । এই সমসা সমাধান করতে Debounce ব্যবহার করা হয়। 
+
+                         
+//                          অথবা - 
+
+//  ইউজার যদি কোন কিছু সার্চ করতে চায়, প্রত্যেক কি আপে রেজাল্ট শো করাবে এখন কেউ যদি খুব দ্রুত টাইপ করে সেক্ষেত্রে একটু  ইন এফিসিয়েন্ত হতে পারে । সেই জন্য ইউজার চাচ্চে তিনটা বাঁ চারটা লেটার লেখার পর আপনি রিকুয়েস্তটা পাঠাবেন । 
+ 
+ 
 
 
+// const button = document.getElementById("button");
 
-const button = document.getElementById("button");
+// // debounce handler
+// function debounce(fn, delay) {
+//   let timeoutId;
 
-// debounce handler
-function debounce(fn, delay) {
-  let timeoutId;
+//   return function () {
+//     if (timeoutId) {
+//       clearTimeout(timeoutId); 
+//     }
+//     timeoutId = setTimeout(() => {
+//       fn();
+//     }, delay);
+//   };
+// }
 
-  return function () {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      fn();
-    }, delay);
-  };
-}
-
-button.addEventListener(
-  "click",
-  debounce(function () {
-    console.log("clicked");
-  }, 500)
-);
+// button.addEventListener(
+//   "click",
+//   debounce(function () {
+//     console.log("clicked");
+//   }, 500)
+// );
 
 
 // ৬। ফরম ইভেন্ট -
