@@ -751,11 +751,38 @@
 
 
 
+৫। Debounce - 
+  
+মনে করেন একটা ই- কমার্স সাইটে একটা ব্যাগ অর্ডার করবেন সেক্ষেত্রে বাটনে ক্লিক করে কার্টে অ্যাড করতে হবে, এখন যদি ইউজার ভুলে  একসাথে অনেক গুলা ক্লিক করে ফেলে তখন একি আইটেম যত গুলা ক্লিক করবে, ততগুলা সিলেক্ট হবে। 
+কিন্তু আমরা চাচ্চি ইউজার ভুলে করলেও সার্ভার রিকুয়েস্ত যাতে একবারই যায় । এই সমসা সমাধান করতে Debounce ব্যবহার করা হয়। 
 
 
 
+const button = document.getElementById("button");
 
-// ৫। ফরম ইভেন্ট -
+// debounce handler
+function debounce(fn, delay) {
+  let timeoutId;
+
+  return function () {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+}
+
+button.addEventListener(
+  "click",
+  debounce(function () {
+    console.log("clicked");
+  }, 500)
+);
+
+
+// ৬। ফরম ইভেন্ট -
 
 // প্রথমে ইনপুট ফিল্ড সিলেক্ট করে রাখব 
 

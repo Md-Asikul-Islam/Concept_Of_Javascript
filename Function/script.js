@@ -21,7 +21,7 @@
 
 // x(5, 6)
 
-// এই ফাংশনের নাম না থাকায় একে Anonymous function বলে । function expresion কে call বাঁ invoke করতে হলে ,   ভ্যারিএবলের নাম দিয়ে call বাঁ invoke করতে হয় । 
+// এই ফাংশনের নাম না থাকায় একে Anonymous function বলে । function expresion কে call বাঁ invoke করতে হলে , ভ্যারিএবলের নাম দিয়ে call বাঁ invoke করতে হয় । 
 
 
 // function expresion সাধারনত Hoisted হয় না । 
@@ -50,7 +50,7 @@
 //   console.log(x(5, 6))
 
 
-//  ## এখানে প্যারামিটার পাস করা যায় । এই ফাংশনের জাভাস্ক্রিপ্ট এ সবচেয়ে বেশি । 
+//  ## এখানে প্যারামিটার পাস করা যায় , এই ফাংশনের জাভাস্ক্রিপ্ট এ সবচেয়ে বেশি । 
 
 //  ## Arrow function  এ  this এর কোন ব্যবহার নাই । 
 
@@ -243,6 +243,7 @@
 
 
 
+কিন্তু আমরা চাচ্চি প্রথমে one() ফাংশন  এরপর  two() ফাংশন তারপর     three() ফাংশন প্রিন্ট হবে । এই সমস্যা সমাধান করতে callback function ব্যবহার করতে হবে। 
 
 
 //       **   callback function   **
@@ -319,18 +320,256 @@ console.log(sum());                           output //     7
 
 closure হচ্ছে এমন একটা ফাংশন যার লোকাল স্কোপের বাইরে অর্থাৎ গ্লোবাল স্কোপে কোন ভারিঅ্যাঁবল থাকে তার রেফারেন্স নিজের কাছে নিয়ে যেতে হয় । 
 
+## Ex-1 ##
+
+var num1 = 3;
+  
+
+var sum = function(){
+    var num2 = 4;
+ return function(){
+ return num1 + num2
+}
+};
+
+var myFunc = sum();
+
+console.dir(myFunc)
+
+## Ex-2 ##
+
+function bankAccount (intialBalance){
+  var balance = intialBalance ;
+  return function(){
+    return balance;
+  }
+}
+
+var account = bankAccount(100000);
+
+console.log(account())
+
+এখানে অ্যানোনিমাস ফাংশন টা হচ্ছে ক্লোজার । 
+
+
+## Ex-3 ##
+
+var num1 = 3;
+  
+
+var sum = function(){
+    var num2 = 4;
+ return function(){
+ return num1 
+}
+};
+
+var myFunc = sum();
+
+console.dir(myFunc)
+
+## Ex-4 ##
+
+var num1 = 3;
+var num2 = 4;
+
+var sum = function(){
+    return num1 + num2 ;
+};
+
+console.log(sum()); 
+console.dir(sum)
+
+num1 = 6;
+num2 = 7;
+
+console.log(sum()); 
+console.dir(sum)
+
+## Ex-5 ##
+
+(function(){
+let num1 = 3;
+
+let num2 = 4;
+
+let sum = function(){
+  return num1 + num2 ;
+};
+
+console.dir(sum)
+})();
 
 
 
+ ## Ex-6 ##
 
 
 
+function stopWatch(){
+  var startTime = Date().now();
+
+  function getDelay(){
+    console.log(Date.now() - startTime);
+  }
+
+  return getDelay;
+}
+
+var timer = stopWatch();
+
+for(var i = 0; i < 10000000; i++){
+  var a = Math.random() * 1000000
+}
+
+timer()
+
+## Ex-7 ##
+
+for(var i = 0; i < 3; i++){
+  setTimeout(() => {
+
+   console.log(i);
+
+  }, 3000);
+  }
+
+  console.log("After for loop ");
+
+
+  ## Ex-8 ##
+
+
+  let sum = () => {
+    let counter = 0 ;
+    return () => {
+      counter += 1;
+      console.log(counter)
+    };
+  };
+  let result = sum();
+  
+  result()
+  result()
+  result()
+  console.dir(result)
 
  
 
 
 
 ১১। funtion curring - 
+  
+
+Haskel Curry এর মতে মাল্টিপল প্যারামিটারের কোন ফাংশনকে ভেঙ্গে ভেঙ্গে একটা একটা প্যারামিটারের ফাংশনে কনভার্ট করা যায় সেটাকেই  curring বলে । 
+
+
+function multiply(a, b, c){
+  return a * b * c ;
+}
+
+console.log(multiply(5, 6, 7));
+
+
+multiply এই ফাংশনের curring ভার্সন দেখব । 
+
+function curriedMultiply(a){
+  return function(b){
+    return function(c){
+      return a * b *c ;
+    }
+  }
+}
+
+console.log(curriedMultiply(5)(6)(7))
+
+এই ভাবে কল না করে প্রতিটা স্টেপ কে আলাদা আলাদা করে লিখতে পারি । 
+
+let step1 = curriedMultiply(5);
+
+console.dir(step1)
+
+let step2 = step1(6);
+
+console.dir(step2)
+
+let step3 = step2(7);
+
+console.log(step3)
+
+এটা ব্যবহার করার কারন হচ্ছে , ধরেন একটা ই কমার্স সাইটে ডিসকাউন্ত কেম্পেইন চলতেছে । 
+
+function discount(price, disc){
+  return price - price * disc
+}
+
+let customer1Dis = discount(600, .1);
+let customer2Dis = discount(700, .1);
+let customer3Dis = discount(800, .1);
+
+
+এই ফাংশনের curring ভার্সন দেখব  
+
+function discount(disc){
+  return (price) => {
+    return price - price * disc 
+  }
+}
+
+let tenPercentDis = discount(0.1);   // partial functoin 
+
+ curring ফাংশনের যে অংশটা পুনঃরায় ব্যবহার করা হয় সেটাকেই partial functoin বলে । 
+
+
+
+let tweentyPercentDis = discount(0.2);
+
+let customer1Disc = tenPercentDis(600);
+
+
+let customer2Disc = tenPercentDis(700);
+
+let customer3Disc = tenPercentDis(800);
+
+
+let customer4Disc = tweentyPercentDis(1400);
+
+
+
+** curry converter function create - ** 
+
+function curry(func){
+  return function curried(...args){
+  
+  }
+}
+
+function sum(a, b, c){
+  return a + b + c ;
+}
+
+let curriedSum = curry(sum)
+
+
+
+
+১২। memoization function -
+
+
+
+
+
+১৩।  Genrators -
+
+
+
+
+
+১৪।  Event Loop -
+
+
+
+১৫। Execution Context -
 
 
 
