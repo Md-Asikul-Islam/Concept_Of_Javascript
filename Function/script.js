@@ -243,7 +243,7 @@
 
 
 
-কিন্তু আমরা চাচ্চি প্রথমে one() ফাংশন  এরপর  two() ফাংশন তারপর     three() ফাংশন প্রিন্ট হবে । এই সমস্যা সমাধান করতে callback function ব্যবহার করতে হবে। 
+// কিন্তু আমরা চাচ্চি প্রথমে one() ফাংশন  এরপর  two() ফাংশন তারপর     three() ফাংশন প্রিন্ট হবে । এই সমস্যা সমাধান করতে callback function ব্যবহার করতে হবে। 
 
 
 //       **   callback function   **
@@ -295,164 +295,164 @@
 
 
   
-১০। function closure - 
+// ১০। function closure - 
 
 
 
-*** closure ***
+// *** closure ***
 
 
-closure ভালো করে বুঝতে চাইলে গ্লোবাল স্কোপ এবং লোকাল স্কোপ সম্পর্কে জানতে হবে। 
+// closure ভালো করে বুঝতে চাইলে গ্লোবাল স্কোপ এবং লোকাল স্কোপ সম্পর্কে জানতে হবে। 
 
 
-জাভাস্ক্রিপ্ট এ প্যারেন্ট এর সবকিছু তার চাইল্ড এক্সেস করতে পারে । সুতরাং গ্লোবাল স্কোপের সবকিছু ফাংশন স্কোপ বাঁ ব্লক স্কোপে এক্সেস করা যাবে  কিন্তু চাইল্ডের কোন কিছুতে আবার প্যারেন্ট এর এক্সেস নাই ।
+// জাভাস্ক্রিপ্ট এ প্যারেন্ট এর সবকিছু তার চাইল্ড এক্সেস করতে পারে । সুতরাং গ্লোবাল স্কোপের সবকিছু ফাংশন স্কোপ বাঁ ব্লক স্কোপে এক্সেস করা যাবে  কিন্তু চাইল্ডের কোন কিছুতে আবার প্যারেন্ট এর এক্সেস নাই ।
 
-var num1 = 3;
-var num2 = 4;
+// var num1 = 3;
+// var num2 = 4;
 
-var sum = function(){
-    return num1 + num2 ;
-};
+// var sum = function(){
+//     return num1 + num2 ;
+// };
 
-console.log(sum());                           output //     7 
+// console.log(sum());                           output //     7 
 
-এখন মনে হতে পারে var num1 = 3 , var num2 = 4 এক্সেস কিভাবে লোকাল স্কোপ বাঁ ফাংশন স্কোপ পেল । আমরা তো এখানে প্যারামিটারই পাস করি নাই ।  এটাই হচ্ছে প্যারেন্ট স্কোপ থেকে লোকাল স্কোপে এক্সেস পেয়েছে । 
+// এখন মনে হতে পারে var num1 = 3 , var num2 = 4 এক্সেস কিভাবে লোকাল স্কোপ বাঁ ফাংশন স্কোপ পেল । আমরা তো এখানে প্যারামিটারই পাস করি নাই ।  এটাই হচ্ছে প্যারেন্ট স্কোপ থেকে লোকাল স্কোপে এক্সেস পেয়েছে । 
 
-closure হচ্ছে এমন একটা ফাংশন যার লোকাল স্কোপের বাইরে অর্থাৎ গ্লোবাল স্কোপে কোন ভারিঅ্যাঁবল থাকে তার রেফারেন্স নিজের কাছে নিয়ে যেতে হয় । 
+// closure হচ্ছে এমন একটা ফাংশন যার লোকাল স্কোপের বাইরে অর্থাৎ গ্লোবাল স্কোপে কোন ভারিঅ্যাঁবল থাকে তার রেফারেন্স নিজের কাছে নিয়ে যেতে হয় । 
 
-## Ex-1 ##
+// ## Ex-1 ##
 
-var num1 = 3;
+// var num1 = 3;
   
 
-var sum = function(){
-    var num2 = 4;
- return function(){
- return num1 + num2
-}
-};
+// var sum = function(){
+//     var num2 = 4;
+//  return function(){
+//  return num1 + num2
+// }
+// };
 
-var myFunc = sum();
+// var myFunc = sum();
 
-console.dir(myFunc)
+// console.dir(myFunc)
 
-## Ex-2 ##
+// ## Ex-2 ##
 
-function bankAccount (intialBalance){
-  var balance = intialBalance ;
-  return function(){
-    return balance;
-  }
-}
+// function bankAccount (intialBalance){
+//   var balance = intialBalance ;
+//   return function(){
+//     return balance;
+//   }
+// }
 
-var account = bankAccount(100000);
+// var account = bankAccount(100000);
 
-console.log(account())
+// console.log(account())
 
-এখানে অ্যানোনিমাস ফাংশন টা হচ্ছে ক্লোজার । 
+// এখানে অ্যানোনিমাস ফাংশন টা হচ্ছে ক্লোজার । 
 
 
-## Ex-3 ##
+// ## Ex-3 ##
 
-var num1 = 3;
+// var num1 = 3;
   
 
-var sum = function(){
-    var num2 = 4;
- return function(){
- return num1 
-}
-};
+// var sum = function(){
+//     var num2 = 4;
+//  return function(){
+//  return num1 
+// }
+// };
 
-var myFunc = sum();
+// var myFunc = sum();
 
-console.dir(myFunc)
+// console.dir(myFunc)
 
-## Ex-4 ##
+// ## Ex-4 ##
 
-var num1 = 3;
-var num2 = 4;
+// var num1 = 3;
+// var num2 = 4;
 
-var sum = function(){
-    return num1 + num2 ;
-};
+// var sum = function(){
+//     return num1 + num2 ;
+// };
 
-console.log(sum()); 
-console.dir(sum)
+// console.log(sum()); 
+// console.dir(sum)
 
-num1 = 6;
-num2 = 7;
+// num1 = 6;
+// num2 = 7;
 
-console.log(sum()); 
-console.dir(sum)
+// console.log(sum()); 
+// console.dir(sum)
 
-## Ex-5 ##
+// ## Ex-5 ##
 
-(function(){
-let num1 = 3;
+// (function(){
+// let num1 = 3;
 
-let num2 = 4;
+// let num2 = 4;
 
-let sum = function(){
-  return num1 + num2 ;
-};
+// let sum = function(){
+//   return num1 + num2 ;
+// };
 
-console.dir(sum)
-})();
-
-
-
- ## Ex-6 ##
+// console.dir(sum)
+// })();
 
 
 
-function stopWatch(){
-  var startTime = Date().now();
-
-  function getDelay(){
-    console.log(Date.now() - startTime);
-  }
-
-  return getDelay;
-}
-
-var timer = stopWatch();
-
-for(var i = 0; i < 10000000; i++){
-  var a = Math.random() * 1000000
-}
-
-timer()
-
-## Ex-7 ##
-
-for(var i = 0; i < 3; i++){
-  setTimeout(() => {
-
-   console.log(i);
-
-  }, 3000);
-  }
-
-  console.log("After for loop ");
+//  ## Ex-6 ##
 
 
-  ## Ex-8 ##
+
+// function stopWatch(){
+//   var startTime = Date().now();
+
+//   function getDelay(){
+//     console.log(Date.now() - startTime);
+//   }
+
+//   return getDelay;
+// }
+
+// var timer = stopWatch();
+
+// for(var i = 0; i < 10000000; i++){
+//   var a = Math.random() * 1000000
+// }
+
+// timer()
+
+// ## Ex-7 ##
+
+// for(var i = 0; i < 3; i++){
+//   setTimeout(() => {
+
+//    console.log(i);
+
+//   }, 3000);
+//   }
+
+//   console.log("After for loop ");
 
 
-  let sum = () => {
-    let counter = 0 ;
-    return () => {
-      counter += 1;
-      console.log(counter)
-    };
-  };
-  let result = sum();
+//   ## Ex-8 ##
+
+
+//   let sum = () => {
+//     let counter = 0 ;
+//     return () => {
+//       counter += 1;
+//       console.log(counter)
+//     };
+//   };
+//   let result = sum();
   
-  result()
-  result()
-  result()
-  console.dir(result)
+//   result()
+//   result()
+//   result()
+//   console.dir(result)
 
  
 
@@ -572,5 +572,41 @@ let curriedSum = curry(sum)
 ১৫। Execution Context -
 
 
+১৬। Recursion - 
+
+যখন একটা কোন ফাংশন নিজের বডি ভিতরে নিজেকে কল করে দেয় তখন এই ঘটনাকে  Recursion  বলে । 
+যেমন - 
+
+let myFunc = () => {
+  myFunc(); 
+};
+
+Ex-1 
+
+ধরেন একটা সিরিজ নাম্বারের যোগফল বের করতে হবে । সেটা ফর লুপ দিয়ে  বের করব -
+
+1 + 2 + 3 + ......+ n
+
+let total = 0 
+let n = 100 
+
+for(let i = 1; i <= 100 ; i++){
+  total += i ;
+}
+
+ধরেন একটা সিরিজ নাম্বারের যোগফল বের করতে হবে । সেটা রিকারশন ফাংশন দিয়ে  বের করব -
 
 
+function sum(n){
+  if(n === 0){
+    return 0;
+  }
+  else{
+    return sum(n - 1) + n ;
+  }
+  
+}
+
+console.log(sum())
+
+এভয়েড করাই ভালো কেননা রিকারশন ফাংশন এক্সকিশন টাইম বেশি লাগে । 
