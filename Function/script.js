@@ -8,9 +8,9 @@
 //     return a + b ;
 // }
 
-// console.log(adder(5, 6))            =              11
+// console.log(adder(5, 6))             // output              11
 
-//  ফাংশন বডিতে  কোন কিছু রিটার্ন না করলে বাই ডিফলট এটা undefined থাকে । 
+//  ফাংশন বডিতে  কোন কিছু রিটার্ন না করলে বাই ডিফলট এটা undefined থাকে ।  এটা জানা খুব  গুরুত্বপূর্ণ কেননা ফাংশন বডি এক্সপেক্ত করে আপনি রিটার্ন হিসেবে কিছু একটা দিবেন । 
 
 
 // ২। function expresion - 
@@ -89,18 +89,30 @@
 
 // ৭। Higher Order function - 
 
-// Higher Order function হল এমন একটা ফাংশন যা - 
+// Higher Order function - 
 
-//   এক বাঁ একাদিক  ফাংশন কে যখন   অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে নেয় । 
-  
+ // একটা ফাংশন যখন এক বাঁ একাধিক ফাংশনকে আর্গুমেন্ট হিসেবে  নেয় ।   
 //                             অথবা  
-  
-//                রিটার্ন হিসেবে একটা ফাংশন দেয় । 
+//                রিটার্ন হিসেবে আরেকটা  ফাংশনকে  নেয়  । 
   
 //                             অথবা   
 
-// দুইটাই করে তখন সেই  ফাংশন  টা কেই  Higher Order function বলে । যেমন - 
+// দুইটাই করে তখন সেই  ফাংশনটা কেই  Higher Order function বলে । যেমন - 
 
+// আর আর্গুমেন্টে  পাস হওয়া সেই  ফাংশনকে  callback function বলে । 
+
+// // Callback function কে Higher Order function এর প্যারামিটার  হিসেবে পাস করা হয়েছে । 
+// function callbackFunction(){
+//   console.log('I am  a callback function');
+// }
+
+// higher order function
+// function higherOrderFunction(func){
+//   console.log('I am higher order function')
+//   func()
+// }
+
+// higherOrderFunction(callbackFunction);
 
 // এটা মূলত ক্লিন এবং রিডঅ্যাঁবল কোড লেখার জন্য বেশি ব্যবহার করা হয় । 
 
@@ -110,9 +122,12 @@
 
 // Ex - 1 
 
-//  without Higher Order function 
+// const numbers = [1, 2, 3, 4]; 
 
-// const numbers = [1, 2, 3, 4];
+// মনে করি  আমার কাছে একটা numbers  অ্যারে আছে ইলিমেন্তর ভ্যালু ডাবল হবে এরকম একটা নতুন অ্যাঁরে তৈরি করতে হবে । 
+
+
+//  without Higher Order function  --
 
 // const result = [];
 
@@ -131,7 +146,7 @@
 // console.log(result)
 
 // Ex-2
-// without Higher Order function 
+
 
 // const players = [
 //    {
@@ -153,6 +168,11 @@
 //       avg : 37.12 
 //    }
 // ];
+
+
+// আমার কাছে একটা অবজেক্ট আছে, এবং প্রতিটি খেলোয়ারের গড় বের করব ।
+
+// without Higher Order function -
 
 
 //  const playerAvg = [];
@@ -168,27 +188,6 @@
 
 // with Higher Order function
 
-// const players = [
-//    {
-//       name : 'Shakib',
-//       avg: 38.23
-//    },
-
-//    {
-//     name : 'Tamim',
-//     avg : 37.72
-//    },
-
-//    {
-//       name : 'Mushfiq',
-//       avg : 36.73
-//    },
-//    {
-//       name : 'Mahmudullah',
-//       avg : 37.12 
-//    }
-// ];
-
 // const playerAvg = players.filter((player) => {
 //    player.avg >= 37 
 // })
@@ -198,103 +197,277 @@
 
 // ৮। callback function - 
 
-//  একটা ফাংশন কে যখন আমরা  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করি এবং রিটার্ন হিসেবে একটা ফাংশন দেয় ।  তখন সেই আর্গুমেন্টে যাওয়া ফাংশন  টা কেই  callback function বলে । 
+//  একটা ফাংশন কে যখন আমরা  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করি  তখন সেই আর্গুমেন্টে যাওয়া ফাংশন  টা কেই  callback function বলে । 
 
-//  callback function বুঝতে হলে সিনক্রোনাস এবং অ্যাসিনক্রোনাস বিহেবিয়ার ভালো করে বুঝতে হবে । 
-
-//  সিনক্রোনাস = জাভাস্ক্রিপ্ট বাই ডিফলট সিনক্রোনাস সিংগেল থ্রেড  প্রোগ্রামিং ল্যাঙ্গুয়েজ । এটা উপর থেকে নিচের দিকে লাইন বাই লাইন কোড রিড করে । 
-
-//  const one = () => {
-//     console.log(' This is one ')
-//  }
-
-//  const two = () => {
-//     console.log(' This is two ')
-//  }
-
-//  const three = () => {
-//     console.log(' This is three ')
-//  }                                       output //////
-
-//  one()                                   This is one
-//  two()                                   This is two
-//  three()                                 This is three 
-
-//  এখানে কল করার সময় যেই অর্ডারে করব আউটপুঁটে সেই ভাবে আসবে । 
-
-
-// অ্যাসিনক্রোনাস = জাভাস্ক্রিপ্ট যখন আজাক্স কল করা হয় অর্থাৎ অন্য কোন সারভার থেকে ডাটা লোড করে এনে ওয়েবসাইটে দেখানো হয় । তখন ডাটা লোড হতে টাইম লাগে এই সময় জাভাস্ক্রিপ্ট পরের কোড গুলা রিড করে এবং আউটপুঁটে  পরের কোড গুলা কে আগে দেখায়, এরপর লোড করা ডাটা রিড করে । এই গুলা হ্যান্ডল করার জন্য  callback function ব্যবহার করা হয়। 
-
-// const one = () => {
-//    console.log(' This is one ')
+// function print(callback) {  
+//   callback();
 // }
 
-// const two = () => {
-//    console.log(' This is two  ')
-// }
+// print(() => { console.log(' This is callback function ') }); 
 
-// const three = () => {
-//    console.log(' This is three ')
-// }                                                 output //////
+// আমরা জানি ফাংশনের প্যারামিটারে  অন্য একটা ফাংশনকে পাস করা যায় এবং বাইরের ফাংশনে ভিতরের ফাংশনকে বাঁ  প্যারামিটারে পাস করা ফাংশনকে  কল করা যায় । 
 
-// setTimeout(one, 3000)                               This is two
-//  two()                                              This is three 
-//  three()                                            This is one
+// এখানে print( ) এ পাস করা অ্যারো ফাংশনকে প্রথম callback রিসিভ করবে এরপর বাইরের ফাংশনে কল করে দিবে । 
 
+//  callback function কেন ব্যবহার করব এটা বুঝতে হলে সিনক্রোনাস এবং অ্যাসিনক্রোনাস বিহেবিয়ার ভালো করে বুঝতে হবে । 
 
+//  সিনক্রোনাস = জাভাস্ক্রিপ্ট বাই ডিফলট সিনক্রোনাস সিংগেল থ্রেড  প্রোগ্রামিং ল্যাঙ্গুয়েজ । এটা উপর থেকে নিচের দিকে লাইন বাই লাইন কোড রিড কর । জাভাস্ক্রিপ্ট ও বাই ডিফল্ট এভাবে কাজ করে থাকে। সে একসাথে অনেক গুলা কাজ এক সাথে  করতে পারে না  তাই তার এই ব্যবহারকে সিঙ্ক্রোনাস ব্লকিং ব্যবহারও বলে । 
 
-// কিন্তু আমরা চাচ্চি প্রথমে one() ফাংশন  এরপর  two() ফাংশন তারপর     three() ফাংশন প্রিন্ট হবে । এই সমস্যা সমাধান করতে callback function ব্যবহার করতে হবে। 
-
-
-//       **   callback function   **
-
-//       const one = (callback) => {
-//          console.log(' This is one ')
-//          callback() ;
-//       }
-     
-//       const two = () => {
-//          console.log(' This is two ')
-//       }
-     
-//       const three = () => {
-//          console.log(' This is three ')
-//       }
-       
-//       setTimeout(one(two),3000)
-//       three()
+// const processOrder = (customer) => {
+//   console.log(`Process order for customer 1`);
+//   for (let i = 0; i < 1000000000; i++) {
+//     const arr = [];
+//     const random = Math.random() * i;
+//     arr.push(random);
+//   }
+//   console.log(`order processed for customer 1`);                            // output   
+// };
+// console.log(`take order for customer 1`); 
+// processOrder();
+// console.log(`completed order for customer 1`);
 
 
-//       এখানে  callback function হল  two() 
-
-      
-//       এখানে  Higher Order   function হল  one()
-
-//       output //////
-
-//       This is one
-//       This is two
-//       This is three 
-
-
-  ***  callback hell   *** 
+//  processOrder() এ একটি লুপ দেওয়া হয়েছে অনেক বড়। এই কাজ টা করতে একটু সময় নিবে এখন যখন কোড গুলো লাইন বাই লাইন যাবে প্রথমে ফাংশন তো যেভাবে আছে থাকবে কারন তাকে কল করা না হলে ত কিছু করার নাই তার পর দেখুন ১০ নাম্বার লাইনে প্রথম কন্সোল করবে তার পর ফাংশন টা কল করা হলো এখন সে ফাংশন বডিতে যাবে এখানে একটা বড় নাম্বারকে গুন করে অ্যারে পুশ করার কাজটা অনেক সময় সাপেক্ষ এখানে সে ব্লক হয়ে থাকবে যতক্ষন না এটা শেষ হবে ততক্ষন যে লাস্ট কন্সোল এ যাবে না, এমন কি এই সময়টাই ইউজার কোথায় ও কোনো ক্লিক কিছুই করতে পারবে না একপ্রকার ব্রাউজার হ্যাং করে যাবে। 
 
 
 
+// অ্যাসিনক্রোনাস = জাভাস্ক্রিপ্ট যেহেতু সিঙ্গেল থ্রেড প্রোগ্রামিং ল্যাঙ্গুয়েজ তাই সে যখন দেখবে কোন কোড এক্সকিশন করতে সময় লাগবে,  বড় লুপ, আজাক্স কল আছে, কোন সারভার থেকে ডাটা লোড করতে হবে কিনা ??   । এরকম হলে জাভাস্ক্রিপ্ট এ  কাজটি নিজে করে না ব্রাউজারে রান টাইমে ওয়েব অ্যাপিআই নামে একটা বস্তু থাকে তার কাছে দিয়ে দেয়। যখনই দেখে এখানে কিছু সময় লাগতেছে তখনই এটা ওয়েব অ্যাপিআই তে চলে যায় সেখানে কাজ শেষ করে প্রসেস করে তার পর এটা কে পাঠায় দে কলব্যাক কিউতে । এবার আসি কলব্যাক কিউতে যখন আমাদের সকল কোড রান করা শেষ কল স্টেক ফাঁকা হয়ে যায় তখন এ কলব্যাক কিউ থেকে ইভেন্ট লুপের চালু হবার মাধ্যমে সবার প্রথমে যেটা আছে সেটাকে কল স্টেক এ পাঠায় কল স্টেক সেখান থেকে তারপর অই কোডটি রান হয়।
 
 
+// const processOrder = (customer) => {
+//   console.log(`Process order for customer 1`);
+//   setTimeout(() => {
+//     console.log(`order processed for customer 1`);
+//   }, 2000);
+// };
+// console.log(`take order for customer 1`);                                                      // output
+// processOrder();                                                                                 take order for customer 1 ✔
+// console.log(`completed order for customer 1`);                                                  Process order for customer 1 ✔
+//                                                                                                 completed order for customer 1 ❌
+//                                                                                                 order processed for customer 1 ❌
 
 
+//  আরেকটি প্রব্লেম এই ফ্লো টা ঠিক নাই এই সমস্যার সমাধান কয়েকভাবে করা যায় ।
+
+// 1। কলব্যাক ফাংশন ( callback )
+// 2। প্রমিস ( promise .then block )
+// 3। অ্যাসিঙ্ক-অ্যাওয়েট ( async await )
 
 
-  ৯।  ***  promise  *** 
+// *** callback function **** 
+
+//  একটা ফাংশন কে যখন আমরা  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করি  তখন সেই আর্গুমেন্টে যাওয়া ফাংশন  টা কেই  callback function বলে । 
 
 
+// const takeOrder = (customer, callbakc) => {
+//   console.log(`Take order for ${customer}`);
+//   callbakc(customer);
+// };
+
+// const processOrder = (customer, callback) => {
+//   console.log(`processing order for ${customer }`);
+ 
+//   setTimeout(() => {
+//     console.log(`Cooking complete for ${customer}`);
+//     console.log(`Order processed for${customer}`);
+//     callback(customer);
+//   }, 3000)
+// };
+
+// const completeOrder = (customer) => {
+//   console.log(`complete order for ${customer}`)
+// };
+
+// takeOrder('customer-1', (customer) => {
+//   processOrder('customer-1', (customer) => {
+//      completeOrder(customer)
+//   })
+// });
+
+takeOrder() ফাংশনের কলে  প্রথম আর্গুমেন্টে   customer এবং দ্বিতীয়  আর্গুমেন্টে  ফাংশন নিবে , সেই ফাংশনটা দ্বিতীয় প্যারামিটারে callbakc ফাংশন হিসেবে  রিসিভ করবে । takeOrder() বডিতে callbakc ফাংশন কল করে দিতে হবে। 
+
+                                    // output 
+                                  //  Take order for customer-1
+                                  //  processing order for customer-1
+                                  //  Cooking complete for customer-1
+                                  //  Order processed forcustomer-1
+                                  //  complete order for customer-1      
 
 
+                               ***   callback hell ***
+                               Problem of callback
+এখন দেখুন উপরে তো যাস্ট ৩ টি স্টেপ এবং প্রতেকটি কলব্যাক এ তেমন কাজ নেই। কিছু রিয়েল লাইফে এর থেকে অনেক অনেক বড় অ্যাপ্লিকেশনে আরো অনেক callback চলে আসে এমনকি প্রত্যেক টি কলব্যাক এ অনেক কাজ থাকে তখন বোঝা যায় না কে কাকে কল কল করছে। যদি একটু দেখাইতে চাই,
+takeOrder('Jhon Dou', (customer) => {
+  processOrder(customer, (customer) => {
+    // do another stuff
+    completeOrder(customer, (customer) => {
+      completeOrder2(customer, (customer) => {
+        completeOrder3(customer, (customer) => {
+          // can anothe code
+          completeOrder4(customer, (customer) => {
+            completeOrder5(customer, (customer) => {
+              // can other function anything inside a arrow function
+              completeOrder6(customer, (customer) => {
+                completeOrder7(customer, (customer) => {
+                  completeOrder8(customer);
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+});
 
 
+যেটাকে বলা হতো কলব্যাক হেল তাই শুরুর দিকে জাভাস্ক্রিপ্ট কে অনেকে আগলি ল্যাঙ্গুয়েজ বলা হতো। এখন জাভাস্ক্রিপ্ট অনেক ডেভোলপ হয়েছে অনেককিছু একটি সিন্টেকটিক্স ওয়েতে এসেছে। আর এই হেল থেকে বাঁচার জন্য এসেছে প্রমিস (Promise) । চলুন দেখে আসি এ প্রমিস কিভাবে কাজ করে আর কিভাবে ডেভোলপার লাইফ ইজি করেছে।
+
+
+  // ৯।  ***  promise  *** 
+  promise- 
+  প্রমিস তার কাজ অনেকটা তার নামের মতোই। যদি কোনো কাজে সাকসেস হয় তাহলেPromise.resolve() রান হবে আর যদি ফেইল হয় তাহলে Promise.rejected() রান হবে।
+  চলুন একটা প্রমিস তৈরি করা যাক,
+
+  const promise = new Promise((resolve, reject) => {
+    // "Producing Code" (May take some time)
   
+    resolve(); // when successful
+    reject(); // when error
+  });
+
+  এখানে new Promise() দিয়ে একটি প্রমিস বানানো হলো, এখানে প্যারামিটারে আমরা যেকোনো ফাংশন নিতে পারি। আমরা অ্যারো ফাংশন নিলাম এবং এই ফাংশনের প্যারামিটারে resolve, reject মানে দুটি ফাংশন থাকবে আপনি অন্য নাম দিতে পারেন এটা হলো কনভেনশন। তার পর কন্ডিশন অনুযায়ী সত্য হলে reslove() কে আর মিথ্যা হলে reject() কে কল করবে। চলুন এই সিন্টেক্স কাজে লাগিয়ে একটা রিয়েল উদাহরন বানাই।
+
+  const hasMeeting = false;
+
+ const meeting = new Promise((reslove, reject) => {
+  if (hasMeeting) {
+    const meetingDetails = {
+      name: 'Technical meeting',
+      location: 'Google meet',
+      time: '10:00PM',
+    };
+    reslove(meetingDetails);
+  } else {
+    const error = new Error('No meeting found');
+    reject(error);
+  }
+});
+
+meeting
+.then((res) => {
+  console.log(JSON.stringify(res));
+})
+.catch((err) => {
+  console.log(err.message)
+})
+
+এবার আসি এই প্রমিসকে কিভাবে ব্যবহার করব? চলুন দেখা যাক
+promise
+  .then((res) => {
+    // if reslove
+    // get reslove data in res
+  })
+  .catch((err) => {
+    // if reject
+    // get reject error data in err
+  });
+
+  দেখুন কোনো মিটিং নাই false তাই reject কল হচ্ছে।
+দেখুন এখানে যদি অনেক গুলো স্টেপ থাকত তাহলে আমরা .then দিয়ে ব্যবহার করতে পারতাম।
+meeting
+  .then((res) => {
+    console.log(JSON.stringify(res));
+  })
+  .then(() => {
+    console.log(`do any stuff`);
+  })
+  .then(() => {
+    console.log(`do any stuff`);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+
+  এখন এই .then & .catch ও কিন্তু অতটাও ফ্রেন্ডলি না। বড় অ্যাপ্লিকেশনে একটি .then ব্লকে অনেক অনেক কোড থাকতে পারে এর ফলে আমার ব্লক গুলো অর্ডার ফ্লো কন্ট্রোল করা একটু কঠিন হতে পারে। তাই আমারদের জন্য ভাল হয় যদি আমার অ্যাসিঙ্ক্রোনাস কাজ গুলো সিঙ্ক্রোনাস ভাবে লিখে হ্যান্ডেল করতে পারি। লাকিলি জাভাস্ক্রিপ্ট এখন তা করা যাচ্ছে আর এখানে আসে অ্যাসিঙ্ক-অ্যাওয়েট ( async await ) । চলুন জেনে আসি এর সমপর্কে।
+অ্যাসিঙ্ক-অ্যাওয়েট ( async await )
+চলুন একটা সিম্পল ফাংশন নিই
+function friendlyFunc() {
+  return `Hello`;
+}
+console.log(friendlyFunc()); // output - Hello
+এখন ফাংশনটিকে যদি Promise করতে চাই তাহলে আমরা return Promise.resolve('Hello'); করতে পারি কিন্তু যদি আমরা ফাংশন এর পূর্বে async কিওয়ার্ড টা ব্যবহার করি তাহলে এটা একটি প্রমিস রিটার্ন করবে।
+async function friendlyFunc() {
+  return `Hello`;
+}
+console.log(friendlyFunc()); // output - Promise - { 'Hello' }
+কিন্তু আমরা যেকোনো ফাংশন কেউ async কিওয়ার্ড দিবো না । সেই ফাংশন অ্যাসিঙ্ক্রোনাস ভাবে কাজ করে অথবা কোনো ডাটা কে ফেচ করে ডাটা আনার কাজ করে তার ফাংশন এর পূর্বে আমরা এই async কিওয়ার্ড টা দিব। এখন আমরা ত পূর্বে Promise পেলে তাকে .then দিয়ে হ্যান্ডেল করতাম এখন এখানে, যেখানে অ্যাসিঙ্ক্রোনাস কাজ টা হবে তার পূর্বে await কিওয়ার্ডটি ব্যবহার করতে হবে। তাহলে ডাটা টি আশার আগ পর্যন্ত অপেক্ষা করবে ডাটা আসলে তারপর কোডে যাবে। চলুন উপরের আমাদের তৈরি করা meeting অ্যান্ড addTocalender প্রমিস গুলো কে এবার async await দিয়ে হ্যান্ডেল করতে পারি কি না।
+const hasMeeting = true;
+
+const meeting = new Promise((reslove, reject) => {
+  if (hasMeeting) {
+    const meetingDetails = {
+      name: 'Technical meeting',
+      location: 'Google meet',
+      time: '10:00PM',
+    };
+    reslove(meetingDetails);
+  } else {
+    const error = new Error('No meeting found');
+    reject(error);
+  }
+});
+
+const addToCalender = (meetingDetails) => {
+  const calender = `${meetingDetails.name} has been scheduled on ${meetingDetails.location} at ${meetingDetails.time}`;
+  return Promise.resolve(calender);
+};
+
+async function myMeeting() {
+  const meetingDetails = await meeting;
+  const calender = await addToCalender(meetingDetails);
+  console.log(calender);
+}
+myMeeting();
+// output - Technical meeting has been scheduled on Google meet at 10:00PM
+অর্থাৎ আমরা এবার একই কাজ সুন্দর ভাবে লাইন বাই লাইন করতে পারছি।
+এখানে দেখুন আমরা একটা ফাংশন নিলাম myMeeting() নামে এখানে আমাদের তৈরি করা প্রমিস গুলো কে লিখব কিন্তু আমাদের প্রমিস ফাংশন গুলো এখানে তেমন কিছু নাই যে একটু সময় নিবে। কিন্তু রিয়েল লাইফে অ্যাপিআই কল করলে তা একটু সময় নিবে তাই এটা অ্যাসিঙ্ক্রোনাস কাজ এখানে একটু ওয়েট করতে হবে তাই এখানে যে ফাংশন প্রমিস রিটার্ন করবে, যেটা অ্যাসিঙ্ক্রোনাস কাজ তার পূর্বে await লিখতে হবে এখন await লিখতে পুরা ফাংশন টা async হতে হবে তাই myMeeting() পূর্বে async দিতে হয়েছে।
+এখন awit meeting থেকে পাওয়া ডাটাকে আমরা meetingDetails এ রাখলাম। এখন addToCalender একটা ফাংশন যা প্রমিস রিটার্ন করে এবং প্যারামিটার আকারে meetingDetails নেয়। আমার addToCalender কে await রেখে কল করে পূর্বে পাওয়া meetingDetails কে পাস করে দিলাম। এখন আমাদের addToCalender ফাংশন তো লেখাই আছে সে meetingDetails নিয়ে একটা calender দিবে তারপর myMeeting() থেকে calender কে কন্সোল করে দিলাম। তারপর সবার শেষে myMeeting() টাকে কল করে দিলাম। আমাদের কোড ঠিক ঠাক ভাবে কাজ করছে।
+এখন এখানে আমরা এরর কন্ট্রোল করব। এর জন্য আমরা try catch ব্যবহার করতে পারি। যেখানে অ্যাসিঙ্ক্রোনাস কাজ গুলো থাকবে তাদের কে try {} ব্লকে রেখে দিবো। তার পর catch () {} ব্লকে আমরা এরর হলে কি হবে তা হ্যান্ডেল করতে পারি। চলুন কোডে দেখি নি।
+const hasMeeting = false;
+
+const meeting = new Promise((reslove, reject) => {
+  if (hasMeeting) {
+    const meetingDetails = {
+      name: 'Technical meeting',
+      location: 'Google meet',
+      time: '10:00PM',
+    };
+    reslove(meetingDetails);
+  } else {
+    const error = new Error('No meeting found');
+    reject(error);
+  }
+});
+
+const addToCalender = (meetingDetails) => {
+  const calender = `${meetingDetails.name} has been scheduled on ${meetingDetails.location} at ${meetingDetails.time}`;
+  return Promise.resolve(calender);
+};
+
+async function myMeeting() {
+  try {
+    const meetingDetails = await meeting;
+    const calender = await addToCalender(meetingDetails);
+    console.log(calender);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+myMeeting();
+// output - No meeting found
+
+
 // ১০। function closure - 
 
 
