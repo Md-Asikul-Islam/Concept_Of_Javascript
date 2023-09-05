@@ -10,7 +10,7 @@
 
 // console.log(adder(5, 6))             // output              11
 
-//  ফাংশন বডিতে  কোন কিছু রিটার্ন না করলে বাই ডিফলট এটা undefined থাকে ।  এটা জানা খুব  গুরুত্বপূর্ণ কেননা ফাংশন বডি এক্সপেক্ত করে আপনি রিটার্ন হিসেবে কিছু একটা দিবেন । 
+//  ফাংশন বডিতে  কোন কিছু রিটার্ন না করলে বাই ডিফলট এটা undefined থাকে ।  এটা জানা খুব  গুরুত্বপূর্ণ কেননা ফাংশন বডি  এক্সপেক্ট  করে আপনি রিটার্ন হিসেবে কিছু একটা দিবেন । 
 
 
 // ২। function expresion - 
@@ -106,7 +106,7 @@
 //   console.log('I am  a callback function');
 // }
 
-// higher order function
+// higher order function -
 // function higherOrderFunction(func){
 //   console.log('I am higher order function')
 //   func()
@@ -197,21 +197,10 @@
 
 // ৮। callback function - 
 
-//  একটা ফাংশন কে যখন আমরা  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করি  তখন সেই আর্গুমেন্টে যাওয়া ফাংশন  টা কেই  callback function বলে । 
-
-// function print(callback) {  
-//   callback();
-// }
-
-// print(() => { console.log(' This is callback function ') }); 
-
-// আমরা জানি ফাংশনের প্যারামিটারে  অন্য একটা ফাংশনকে পাস করা যায় এবং বাইরের ফাংশনে ভিতরের ফাংশনকে বাঁ  প্যারামিটারে পাস করা ফাংশনকে  কল করা যায় । 
-
-// এখানে print( ) এ পাস করা অ্যারো ফাংশনকে প্রথম callback রিসিভ করবে এরপর বাইরের ফাংশনে কল করে দিবে । 
 
 //  callback function কেন ব্যবহার করব এটা বুঝতে হলে সিনক্রোনাস এবং অ্যাসিনক্রোনাস বিহেবিয়ার ভালো করে বুঝতে হবে । 
 
-//  সিনক্রোনাস = জাভাস্ক্রিপ্ট বাই ডিফলট সিনক্রোনাস সিংগেল থ্রেড  প্রোগ্রামিং ল্যাঙ্গুয়েজ । এটা উপর থেকে নিচের দিকে লাইন বাই লাইন কোড রিড কর । জাভাস্ক্রিপ্ট ও বাই ডিফল্ট এভাবে কাজ করে থাকে। সে একসাথে অনেক গুলা কাজ এক সাথে  করতে পারে না  তাই তার এই ব্যবহারকে সিঙ্ক্রোনাস ব্লকিং ব্যবহারও বলে । 
+//  সিনক্রোনাস = জাভাস্ক্রিপ্ট বাই ডিফলট সিনক্রোনাস সিংগেল থ্রেড  প্রোগ্রামিং ল্যাঙ্গুয়েজ । এটা উপর থেকে নিচের দিকে লাইন বাই লাইন কোড রিড কর । জাভাস্ক্রিপ্ট ও বাই ডিফল্ট এভাবে কাজ করে থাকে। সে একসাথে অনেক গুলা কাজ  করতে পারে না  তাই তার এই ব্যবহারকে সিঙ্ক্রোনাস ব্লকিং ব্যবহারও বলে । যেমন - 
 
 // const processOrder = (customer) => {
 //   console.log(`Process order for customer 1`);
@@ -231,241 +220,664 @@
 
 
 
-// অ্যাসিনক্রোনাস = জাভাস্ক্রিপ্ট যেহেতু সিঙ্গেল থ্রেড প্রোগ্রামিং ল্যাঙ্গুয়েজ তাই সে যখন দেখবে কোন কোড এক্সকিশন করতে সময় লাগবে,  বড় লুপ, আজাক্স কল আছে, কোন সারভার থেকে ডাটা লোড করতে হবে কিনা ??   । এরকম হলে জাভাস্ক্রিপ্ট এ  কাজটি নিজে করে না ব্রাউজারে রান টাইমে ওয়েব অ্যাপিআই নামে একটা বস্তু থাকে তার কাছে দিয়ে দেয়। যখনই দেখে এখানে কিছু সময় লাগতেছে তখনই এটা ওয়েব অ্যাপিআই তে চলে যায় সেখানে কাজ শেষ করে প্রসেস করে তার পর এটা কে পাঠায় দে কলব্যাক কিউতে । এবার আসি কলব্যাক কিউতে যখন আমাদের সকল কোড রান করা শেষ কল স্টেক ফাঁকা হয়ে যায় তখন এ কলব্যাক কিউ থেকে ইভেন্ট লুপের চালু হবার মাধ্যমে সবার প্রথমে যেটা আছে সেটাকে কল স্টেক এ পাঠায় কল স্টেক সেখান থেকে তারপর অই কোডটি রান হয়।
+// অ্যাসিনক্রোনাস = জাভাস্ক্রিপ্ট যেহেতু সিঙ্গেল থ্রেড প্রোগ্রামিং ল্যাঙ্গুয়েজ তাই সে যখন দেখবে কোন কোড এক্সকিশন করতে সময় লাগবে,  বড় লুপ, আজাক্স কল আছে, কোন সারভার থেকে ডাটা লোড করতে হবে কিনা ??   । এরকম হলে জাভাস্ক্রিপ্ট এ  কাজটি নিজে করে না ব্রাউজারে রান টাইমে ওয়েব অ্যাপিআই নামে একটা বস্তু থাকে তার কাছে দিয়ে দেয়। যখনই দেখে এখানে কিছু সময় লাগতেছে তখনই এটা ওয়েব অ্যাপিআই তে চলে যায় সেখানে কাজ শেষ করে প্রসেস করে তার পর এটা কে পাঠায় দে কলব্যাক কিউতে । এবার আসি কলব্যাক কিউতে যখন আমাদের সকল কোড রান করা শেষ কল স্টেক ফাঁকা হয়ে যায় তখন এ কলব্যাক কিউ থেকে ইভেন্ট লুপের চালু হবার মাধ্যমে সবার প্রথমে যেটা আছে সেটাকে কল স্টেক এ পাঠায় কল স্টেক সেখান থেকে তারপর অই কোডটি রান হয়। আমাদেরকে অ্যাসিঙ্ক্রোনাস ভাবে কোড লেখতে চেষ্টা করতে হবে ঠিক তেমনি তাকে প্রপার ভাবে হ্যান্ডেল করতে হবে। এখন এই অ্যাসিঙ্ক্রোনাস কোড গুলোকে তিন ভাবে মূলত দুই ভাবে হ্যান্ডেল করা যায়,
 
+  //  ## কলব্যাক ফাংশন ( callback )
+  //  ## প্রমিস ( promise .then block )
+  
 
-// const processOrder = (customer) => {
-//   console.log(`Process order for customer 1`);
-//   setTimeout(() => {
-//     console.log(`order processed for customer 1`);
-//   }, 2000);
-// };
-// console.log(`take order for customer 1`);                                                      // output
-// processOrder();                                                                                 take order for customer 1 ✔
-// console.log(`completed order for customer 1`);                                                  Process order for customer 1 ✔
-//                                                                                                 completed order for customer 1 ❌
-//                                                                                                 order processed for customer 1 ❌
-
-
-//  আরেকটি প্রব্লেম এই ফ্লো টা ঠিক নাই এই সমস্যার সমাধান কয়েকভাবে করা যায় ।
-
-// 1। কলব্যাক ফাংশন ( callback )
-// 2। প্রমিস ( promise .then block )
-// 3। অ্যাসিঙ্ক-অ্যাওয়েট ( async await )
-
-
-// *** callback function **** 
 
 //  একটা ফাংশন কে যখন আমরা  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করি  তখন সেই আর্গুমেন্টে যাওয়া ফাংশন  টা কেই  callback function বলে । 
 
+// function print(callback) {  
+//   callback();
+// }
 
-// const takeOrder = (customer, callbakc) => {
-//   console.log(`Take order for ${customer}`);
-//   callbakc(customer);
-// };
+// print(() => { console.log(' This is callback function ') }); 
 
-// const processOrder = (customer, callback) => {
-//   console.log(`processing order for ${customer }`);
- 
+// আমরা জানি ফাংশনের প্যারামিটারে  অন্য একটা ফাংশনকে পাস করা যায় এবং বাইরের ফাংশনে ভিতরের ফাংশনকে বাঁ  প্যারামিটারে পাস করা ফাংশনকে  কল করা যায় । 
+
+// এখানে print( ) এ পাস করা অ্যারো ফাংশনকে প্রথম callback রিসিভ করবে এরপর বাইরের ফাংশনে কল করে দিবে । 
+
+// console.log('starting point ');
+
+// const  changeAction = (chanelname) => {
 //   setTimeout(() => {
-//     console.log(`Cooking complete for ${customer}`);
-//     console.log(`Order processed for${customer}`);
-//     callback(customer);
-//   }, 3000)
-// };
+//     return (`subscribe to ${chanelname}`);
+//   }, 1000);
+// }
 
-// const completeOrder = (customer) => {
-//   console.log(`complete order for ${customer}`)
-// };
+// console.log(changeAction(" Roadside Coder ")); 
 
-// takeOrder('customer-1', (customer) => {
-//   processOrder('customer-1', (customer) => {
-//      completeOrder(customer)
-//   })
+// console.log('Ending point ')
+
+// console.dir(changeAction);
+
+
+//  // Output :
+//  starting point
+//  undefined
+//  Ending point 
+
+
+// এখানে  changeAction() ফাংশনটা এর ভিতরে  যেহেতু  setTimeout() আছে তাই এটা  অ্যাসিঙ্কক্রনাস
+// কাজ, ফাংশন কল হওয়ার সাথে সাথে এটিকে কল স্ট্যাক এ পাঠিয়ে দেয়া হয়েছে ।  setTimeout এর ভিতর
+// থেকে value return করলেও  ফাংশনটা কোন কিছু রিটার্ন করছে না , আমরা  জানি একটা ফাংশন কোন
+// কিছু রিটার্ন না করেলে বাই ডিফলট undefined রিটার্ন করে   । কিন্তু এর আগেই function call করাতে
+// যেহেতু console এ undefined print করে ফেলেছে তাই আর setTimeout এর text console এ দেখাতে
+// পারছে না । 
+
+// **  Solve the problem with callback - ***
+
+
+// console.log('starting point');
+
+// const changeAction = (chanelname, callback) => {
+//   setTimeout(() => {
+//     callback(`subscribe to ${chanelname}`);
+//   }, 1000);
+// }
+
+//  changeAction("Learn with Sumit", (message) => {
+//   console.log(message);
 // });
 
-takeOrder() ফাংশনের কলে  প্রথম আর্গুমেন্টে   customer এবং দ্বিতীয়  আর্গুমেন্টে  ফাংশন নিবে , সেই ফাংশনটা দ্বিতীয় প্যারামিটারে callbakc ফাংশন হিসেবে  রিসিভ করবে । takeOrder() বডিতে callbakc ফাংশন কল করে দিতে হবে। 
-
-                                    // output 
-                                  //  Take order for customer-1
-                                  //  processing order for customer-1
-                                  //  Cooking complete for customer-1
-                                  //  Order processed forcustomer-1
-                                  //  complete order for customer-1      
+// console.log('Ending point');
 
 
-                               ***   callback hell ***
-                               Problem of callback
-এখন দেখুন উপরে তো যাস্ট ৩ টি স্টেপ এবং প্রতেকটি কলব্যাক এ তেমন কাজ নেই। কিছু রিয়েল লাইফে এর থেকে অনেক অনেক বড় অ্যাপ্লিকেশনে আরো অনেক callback চলে আসে এমনকি প্রত্যেক টি কলব্যাক এ অনেক কাজ থাকে তখন বোঝা যায় না কে কাকে কল কল করছে। যদি একটু দেখাইতে চাই,
-takeOrder('Jhon Dou', (customer) => {
-  processOrder(customer, (customer) => {
-    // do another stuff
-    completeOrder(customer, (customer) => {
-      completeOrder2(customer, (customer) => {
-        completeOrder3(customer, (customer) => {
-          // can anothe code
-          completeOrder4(customer, (customer) => {
-            completeOrder5(customer, (customer) => {
-              // can other function anything inside a arrow function
-              completeOrder6(customer, (customer) => {
-                completeOrder7(customer, (customer) => {
-                  completeOrder8(customer);
-                });
-              });
-            });
-          });
-        });
-      });
-    });
-  });
-});
+// Output 
+//  starting point
+//  subscribe to learn with sumit youtube chanel 
+//  Ending point 
 
 
-যেটাকে বলা হতো কলব্যাক হেল তাই শুরুর দিকে জাভাস্ক্রিপ্ট কে অনেকে আগলি ল্যাঙ্গুয়েজ বলা হতো। এখন জাভাস্ক্রিপ্ট অনেক ডেভোলপ হয়েছে অনেককিছু একটি সিন্টেকটিক্স ওয়েতে এসেছে। আর এই হেল থেকে বাঁচার জন্য এসেছে প্রমিস (Promise) । চলুন দেখে আসি এ প্রমিস কিভাবে কাজ করে আর কিভাবে ডেভোলপার লাইফ ইজি করেছে।
+
+// একটা ফাংশন কে যখন আমরা  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করি  তখন সেই 
+// আর্গুমেন্টে যাওয়া ফাংশন  টা কেই  callback function বলে এবং  বাইরের ফাংশনে ভিতরের ফাংশনকে
+//  বাঁ  প্যারামিটারে পাস করা ফাংশনকে  কল করতে হয়  । এখন কল করার সময় আমরা আর্গুমেন্ট হিসেবে 
+// পাস করেছি callback(`subscribe to ${chanelname}`) এইটাকে অ্যাঁরো ফাংশনের প্যারামিটারে এক্সেস 
+// করতে পারবে । এখানে প্যারামিটার হল message 
 
 
-  // ৯।  ***  promise  *** 
-  promise- 
-  প্রমিস তার কাজ অনেকটা তার নামের মতোই। যদি কোনো কাজে সাকসেস হয় তাহলেPromise.resolve() রান হবে আর যদি ফেইল হয় তাহলে Promise.rejected() রান হবে।
-  চলুন একটা প্রমিস তৈরি করা যাক,
+//  ## একটা callback function এর দুটি বৈশিষ্ট্য থাকবে - 
 
-  const promise = new Promise((resolve, reject) => {
-    // "Producing Code" (May take some time)
-  
-    resolve(); // when successful
-    reject(); // when error
-  });
+//  1- একটা ফাংশনকে  অন্য আরেকটা  ফাংশনের আর্গুমেন্ট হিসেবে পাস করতে হবে । 
+//  2- বাইরের ফাংশনে ভিতরের ফাংশনকে কল করতে হয় । 
 
-  এখানে new Promise() দিয়ে একটি প্রমিস বানানো হলো, এখানে প্যারামিটারে আমরা যেকোনো ফাংশন নিতে পারি। আমরা অ্যারো ফাংশন নিলাম এবং এই ফাংশনের প্যারামিটারে resolve, reject মানে দুটি ফাংশন থাকবে আপনি অন্য নাম দিতে পারেন এটা হলো কনভেনশন। তার পর কন্ডিশন অনুযায়ী সত্য হলে reslove() কে আর মিথ্যা হলে reject() কে কল করবে। চলুন এই সিন্টেক্স কাজে লাগিয়ে একটা রিয়েল উদাহরন বানাই।
 
-  const hasMeeting = false;
+// এখানে changeAction(arg-1, arg-2) দ্বিতীয় আর্গুমেন্টে একটা অ্যাঁরো ফাংশন পাস করা হয়েছে , সেই 
+// ফাংশনটা callback নামে  রিসিভ করবে এবং বাইরের ফাংশন  changeAction( ) বডিতে যে নামে অ্যাঁরো 
+// ফাংশন রিসিভ করবে সেই নামে  কল করে দিবে । 
 
- const meeting = new Promise((reslove, reject) => {
-  if (hasMeeting) {
-    const meetingDetails = {
-      name: 'Technical meeting',
-      location: 'Google meet',
-      time: '10:00PM',
-    };
-    reslove(meetingDetails);
-  } else {
-    const error = new Error('No meeting found');
-    reject(error);
-  }
-});
+// *** callback chain  *** 
 
-meeting
-.then((res) => {
-  console.log(JSON.stringify(res));
-})
-.catch((err) => {
-  console.log(err.message)
-})
 
-এবার আসি এই প্রমিসকে কিভাবে ব্যবহার করব? চলুন দেখা যাক
-promise
-  .then((res) => {
-    // if reslove
-    // get reslove data in res
-  })
-  .catch((err) => {
-    // if reject
-    // get reject error data in err
-  });
+// console.log(" starting point ");
 
-  দেখুন কোনো মিটিং নাই false তাই reject কল হচ্ছে।
-দেখুন এখানে যদি অনেক গুলো স্টেপ থাকত তাহলে আমরা .then দিয়ে ব্যবহার করতে পারতাম।
-meeting
-  .then((res) => {
-    console.log(JSON.stringify(res));
-  })
-  .then(() => {
-    console.log(`do any stuff`);
-  })
-  .then(() => {
-    console.log(`do any stuff`);
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
+// const  importantAction = (chanelName, callback) => {
+//   setTimeout(() => {
+//     callback(` Subscribe to ${chanelName} Youtube chanel .`);
+//   }, 500);
+// }
 
-  এখন এই .then & .catch ও কিন্তু অতটাও ফ্রেন্ডলি না। বড় অ্যাপ্লিকেশনে একটি .then ব্লকে অনেক অনেক কোড থাকতে পারে এর ফলে আমার ব্লক গুলো অর্ডার ফ্লো কন্ট্রোল করা একটু কঠিন হতে পারে। তাই আমারদের জন্য ভাল হয় যদি আমার অ্যাসিঙ্ক্রোনাস কাজ গুলো সিঙ্ক্রোনাস ভাবে লিখে হ্যান্ডেল করতে পারি। লাকিলি জাভাস্ক্রিপ্ট এখন তা করা যাচ্ছে আর এখানে আসে অ্যাসিঙ্ক-অ্যাওয়েট ( async await ) । চলুন জেনে আসি এর সমপর্কে।
-অ্যাসিঙ্ক-অ্যাওয়েট ( async await )
-চলুন একটা সিম্পল ফাংশন নিই
-function friendlyFunc() {
-  return `Hello`;
-}
-console.log(friendlyFunc()); // output - Hello
-এখন ফাংশনটিকে যদি Promise করতে চাই তাহলে আমরা return Promise.resolve('Hello'); করতে পারি কিন্তু যদি আমরা ফাংশন এর পূর্বে async কিওয়ার্ড টা ব্যবহার করি তাহলে এটা একটি প্রমিস রিটার্ন করবে।
-async function friendlyFunc() {
-  return `Hello`;
-}
-console.log(friendlyFunc()); // output - Promise - { 'Hello' }
-কিন্তু আমরা যেকোনো ফাংশন কেউ async কিওয়ার্ড দিবো না । সেই ফাংশন অ্যাসিঙ্ক্রোনাস ভাবে কাজ করে অথবা কোনো ডাটা কে ফেচ করে ডাটা আনার কাজ করে তার ফাংশন এর পূর্বে আমরা এই async কিওয়ার্ড টা দিব। এখন আমরা ত পূর্বে Promise পেলে তাকে .then দিয়ে হ্যান্ডেল করতাম এখন এখানে, যেখানে অ্যাসিঙ্ক্রোনাস কাজ টা হবে তার পূর্বে await কিওয়ার্ডটি ব্যবহার করতে হবে। তাহলে ডাটা টি আশার আগ পর্যন্ত অপেক্ষা করবে ডাটা আসলে তারপর কোডে যাবে। চলুন উপরের আমাদের তৈরি করা meeting অ্যান্ড addTocalender প্রমিস গুলো কে এবার async await দিয়ে হ্যান্ডেল করতে পারি কি না।
-const hasMeeting = true;
+// const  likeTheVidio = (vidio, callback) => {
+//   setTimeout(() => {
+//     callback(` please like and comment   ${vidio} playlist`);
+//   }, 1000);
+// }
 
-const meeting = new Promise((reslove, reject) => {
-  if (hasMeeting) {
-    const meetingDetails = {
-      name: 'Technical meeting',
-      location: 'Google meet',
-      time: '10:00PM',
-    };
-    reslove(meetingDetails);
-  } else {
-    const error = new Error('No meeting found');
-    reject(error);
-  }
-});
+// const  shareTheVidio = (vidio, callback) => {
+//   setTimeout(() => {
+//     callback(` if you are good at ${vidio} Then you will learn Advance  Topic `);
+//   }, 800);
+// }
 
-const addToCalender = (meetingDetails) => {
-  const calender = `${meetingDetails.name} has been scheduled on ${meetingDetails.location} at ${meetingDetails.time}`;
-  return Promise.resolve(calender);
-};
+// const message = importantAction(" Learn with sumit", (message) => {
+//   console.log(message);
+//   likeTheVidio(" Think in a javascript", (message) => {
+//     console.log(message);
+//     shareTheVidio("javascript" , (message) => {
+//       console.log(message)
+//     })
+//   })
+// })
 
-async function myMeeting() {
-  const meetingDetails = await meeting;
-  const calender = await addToCalender(meetingDetails);
-  console.log(calender);
-}
-myMeeting();
-// output - Technical meeting has been scheduled on Google meet at 10:00PM
-অর্থাৎ আমরা এবার একই কাজ সুন্দর ভাবে লাইন বাই লাইন করতে পারছি।
-এখানে দেখুন আমরা একটা ফাংশন নিলাম myMeeting() নামে এখানে আমাদের তৈরি করা প্রমিস গুলো কে লিখব কিন্তু আমাদের প্রমিস ফাংশন গুলো এখানে তেমন কিছু নাই যে একটু সময় নিবে। কিন্তু রিয়েল লাইফে অ্যাপিআই কল করলে তা একটু সময় নিবে তাই এটা অ্যাসিঙ্ক্রোনাস কাজ এখানে একটু ওয়েট করতে হবে তাই এখানে যে ফাংশন প্রমিস রিটার্ন করবে, যেটা অ্যাসিঙ্ক্রোনাস কাজ তার পূর্বে await লিখতে হবে এখন await লিখতে পুরা ফাংশন টা async হতে হবে তাই myMeeting() পূর্বে async দিতে হয়েছে।
-এখন awit meeting থেকে পাওয়া ডাটাকে আমরা meetingDetails এ রাখলাম। এখন addToCalender একটা ফাংশন যা প্রমিস রিটার্ন করে এবং প্যারামিটার আকারে meetingDetails নেয়। আমার addToCalender কে await রেখে কল করে পূর্বে পাওয়া meetingDetails কে পাস করে দিলাম। এখন আমাদের addToCalender ফাংশন তো লেখাই আছে সে meetingDetails নিয়ে একটা calender দিবে তারপর myMeeting() থেকে calender কে কন্সোল করে দিলাম। তারপর সবার শেষে myMeeting() টাকে কল করে দিলাম। আমাদের কোড ঠিক ঠাক ভাবে কাজ করছে।
-এখন এখানে আমরা এরর কন্ট্রোল করব। এর জন্য আমরা try catch ব্যবহার করতে পারি। যেখানে অ্যাসিঙ্ক্রোনাস কাজ গুলো থাকবে তাদের কে try {} ব্লকে রেখে দিবো। তার পর catch () {} ব্লকে আমরা এরর হলে কি হবে তা হ্যান্ডেল করতে পারি। চলুন কোডে দেখি নি।
-const hasMeeting = false;
+// console.log("Ending point");
 
-const meeting = new Promise((reslove, reject) => {
-  if (hasMeeting) {
-    const meetingDetails = {
-      name: 'Technical meeting',
-      location: 'Google meet',
-      time: '10:00PM',
-    };
-    reslove(meetingDetails);
-  } else {
-    const error = new Error('No meeting found');
-    reject(error);
-  }
-});
 
-const addToCalender = (meetingDetails) => {
-  const calender = `${meetingDetails.name} has been scheduled on ${meetingDetails.location} at ${meetingDetails.time}`;
-  return Promise.resolve(calender);
-};
+// *** callback hell *** 
 
-async function myMeeting() {
-  try {
-    const meetingDetails = await meeting;
-    const calender = await addToCalender(meetingDetails);
-    console.log(calender);
-  } catch (err) {
-    console.log(err.message);
-  }
-}
-myMeeting();
-// output - No meeting found
+// console.log(" starting point ");
+
+// const message = importantAction(" Learn with sumit", (message) => {
+//   console.log(message);
+//   likeTheVidio(" Think in a javascript", (message) => {
+//     console.log(message);
+//     shareTheVidio("javascript" , (message) => {
+//       console.log(message)
+//       shareTheVidio("javascript" , (message) => {
+//         console.log(message)
+//         shareTheVidio("javascript" , (message) => {
+//           console.log(message)
+//           shareTheVidio("javascript" , (message) => {
+//             console.log(message)
+//             shareTheVidio("javascript" , (message) => {
+//               console.log(message)
+//             })
+//           })
+//         })
+//       })
+//     })
+//   })
+// })
+
+// console.log("Ending point");
+
+// যেটাকে বলা হতো কলব্যাক হেল তাই শুরুর দিকে জাভাস্ক্রিপ্ট কে আগলি ল্যাঙ্গুয়েজ বলা হতো। এখন 
+// জাভাস্ক্রিপ্ট অনেক ডেভেলপ   হয়েছে অনেককিছু একটি সিন্টেকটিক্স ওয়েতে এসেছে। আর এই হেল থেকে 
+// বাঁচার জন্য এসেছে প্রমিস (Promise) । চলুন দেখে আসি এ প্রমিস কিভাবে কাজ করে আর কিভাবে 
+// ডেভোলপার লাইফ ইজি করেছে।
+
+
+// *** creating promise *** 
+
+// const promise = new Promise((resolve, reject) => {
+//   // "Producing Code" (May take some time)
+
+//   resolve(); // when successful
+//   reject(); // when error
+// });
+
+
+// *** promise calling  ***
+
+// console.log("starting point")
+
+// const promise  = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     const result = true ;
+//     if(result) resolve(" subscribed to learn with sumit ")
+//     else reject(new Error("why aren't subscribed to learn with sumit "))
+//   }, 2000);
+// })
+// console.log("Ennding point");
+// promise
+// .then((res) => {console.log(res)})
+// .catch((err) => {console.log(err)})
+
+
+
+// *** callback with promise   ***
+
+// const  importantAction = (chanelName) => {
+//  return new Promise((resolve, reject)=> {
+//    setTimeout(() => {
+//      resolve(` Subscribe to ${chanelName} Youtube chanel .`)
+//    }, 500)
+//  })
+
+// }
+
+// const  likeTheVidio = (vidio) => {
+//  return new Promise((resolve, reject)=> {
+//    setTimeout(() => {
+//      resolve( ` please like and comment  ${vidio} box .` )
+//    }, 300)
+//  })
+// }
+
+// const  shareTheVidio = (vidio) => {
+//  return new Promise((resolve, reject)=> {
+//    setTimeout(() => {
+//      resolve(` if you are good at ${vidio} then you will learn advance topics.`)
+//    },800)
+//  })
+// }
+
+// importantAction(" Learn with Sumit")
+//  .then((res)=> {
+//   console.log(res)
+//   likeTheVidio("description")
+//   .then((res)=> {
+//     console.log(res);
+//     shareTheVidio("javascript")
+//     .then((res)=> {
+//       console.log(res)
+//     })
+//   })
+// })
+//  .catch((err) => {console.log(err)})
+
+
+// *** promise chaining *** 
+// importantAction("Learn with sumit")
+// .then((res) => {
+//   console.log(res)
+//   return likeTheVidio("description")
+// })
+// .then((res)=> {
+//   console.log(res)
+//   return shareTheVidio("javascript")
+// })
+// .then((res) => {
+//   console.log(res)
+// })
+//  .catch((err) => {console.log(err)})
+
+
+// ********* promise combinators ******** 
+// *** promise.all() ***
+
+// Promise.all([
+//   importantAction("Learn with sumit"),
+//   likeTheVidio("read more  below the description"),
+//   shareTheVidio("javascript")
+// ]).then((res)=>{
+//   console.log(res)
+// }).catch((err) => {
+//   console.error("Error : Promise Failed ", err)
+// })
+
+// Promise.all()  আমরা তখনই ব্যবহার করব যখন সব গুলা Promise fullfiled  বাঁ resolve() হবে । কিন্তু একটা Promise Rejected হলে সব গুলার ভ্যালু Error আসবে । Promise.all() সবসময় আর্গুমেন্ট হিসেবে অ্যারে অফ কালেকশন গ্রহন করে যা সমান্তরাল ভাবে এক্সিকিউট করে । 
+
+
+// *** promise.race() ***
+// Promise.race([
+//   importantAction("Learn with sumit"),
+//   likeTheVidio("description"),
+//   shareTheVidio("javascript")
+// ]).then((res)=>{
+//   console.log(res)
+// }).catch((err) => {
+//   console.error("Error : Promise Failed ", err)
+// })
+
+// Promise.race() যখন কোন  Promise fullfiled অথবা  Rejected হবে   এটা শুধুমাত্র প্রথম Promise
+//  টা রিটার্ন করবে । যেই Promise টা আগে কল হবে সেটাই রিটার্ন করবে ।
+
+
+// *** promise.allSettled() ***
+// Promise.allSettled([
+//   importantAction("Learn with sumit"),
+//   likeTheVidio("description"),
+//   shareTheVidio("javascript")
+// ]).then((res)=>{
+//   console.log(res)
+// }).catch((err) => {
+//   console.log(err)
+// })
+// Promise.allSettled() যখন কোন  Promise fullfiled অথবা  Rejected হবে তখন এটা একটা অ্যারে 
+// রিটার্ন করে 
+
+// *** promise.any () ***
+// Promise.any([
+//   importantAction("Learn with sumit"),
+//   likeTheVidio("description"),
+//   shareTheVidio("javascript")
+// ]).then((res)=>{
+//   console.log(res)
+// }).catch((err) => {
+//   console.log(err)
+// })
+
+// Promise.any() যখন কোন  Promise fullfiled অথবা  Rejected হবে   এটা শুধুমাত্র প্রথম Promise
+//  টা রিটার্ন করবে । যেই Promise টা আগে কল হবে সেটাই রিটার্ন করবে ।
+
+// *** Async/Await  ***
+// const result = async () => {
+//   const message1 = await importantAction(" Learn with Sumit")
+//   const message2 = await likeTheVidio(" description")
+//   const message3 = await shareTheVidio(" javascript")
+
+//   console.log(message1, message2, message3);
+// }
+// result();
+
+// *** try / catch ****
+
+
+// const result = async () => {
+// try {
+//   const message1 = await importantAction(" Learn with Sumit")
+//   const message2 = await likeTheVidio(" description")
+//   const message3 = await shareTheVidio(" javascript")
+
+//   console.log(message1, message2, message3);
+// } catch (error) {
+//   console.error("Promises Failed " , error);
+// }
+// }
+// result();
+
+// এরর হ্যান্ডলিং এর জন্য try / catch ব্যবহার করা হয় এভাবে এরর হ্যান্ডলিং করা অনেক সহজ । 
+
+// Ex- 1  :  output 
+
+// console.log("start");
+// const promise1 = new Promise((resolve,reject) => {
+//   console.log(1);
+//   resolve(2);
+// })
+// promise1
+// .then((res) => {
+//   console.log(res);
+// })
+
+// console.log("End");
+
+// ## output : 
+// start
+// 1
+// End 
+// 2
+
+
+// জাভাস্ক্রিপ্ট সবসময় সিনক্রনাস কোড আগে এক্সিকিউট করে তারপর অ্যাঁসিঙ্কক্রনাস কোড । 
+// প্রথম start প্রিন্ট করবে এরপর যদিও  console.log(1);  promise এর ভিতরে কিন্তু এটা সিঙ্কক্রনাস 
+// হওয়াতে এটা প্রিন্ট করবে । এরপর resolve(2); অ্যাঁসিঙ্কক্রনাস এই জন্য এটা পরে প্রিন্ট করবে তার
+//  আগে console.log("End");
+
+// Ex- 2  :  output- 
+
+// console.log("start");
+// const promise1 = new Promise((resolve,reject) => {
+//   console.log(1);
+//   resolve(2);
+//   console.log(3);
+// })
+// promise1
+// .then((res) => {
+//   console.log(res);
+// })
+
+// console.log("End");
+
+//   or 
+
+
+// console.log("start");
+// const promise1 = new Promise((resolve,reject) => {
+//   console.log(1);
+//   console.log(3);
+// })
+// promise1
+// .then((res) => {
+//   console.log("Result" + res);
+// })
+
+// console.log("End");
+
+// output : 
+// start 
+// 1
+// 3
+// End
+
+// এখানে .then() ব্লকে ডুকবে না কারন হল promise1 ভিতরে কোন কিছু resolve() করা হয় নাই । 
+
+// Ex- 3  :  output
+
+// console.log("start");
+
+// const fn = () => 
+
+// new Promise((resolve,reject) => {
+//   console.log(1);
+//   resolve("success");
+// });
+// console.log("middle");
+
+// fn().then((res) => {
+//   console.log(res);
+// })
+
+// console.log("End ");
+
+
+// output :
+// start
+// middle
+// 1
+// End 
+// success
+
+// যেহেতু fn() এরপর  console.log("middle");আছে তাই এটা আগে প্রিন্ট করবে । 
+
+// Ex- 4  :  output
+// function job() {
+//   return new Promise(function (resolve, reject) {
+//     reject();
+//   });
+ 
+// }
+
+// let promise = job();
+
+// promise 
+// .then(function () {
+//   console.log("success1")
+// })
+// .then(function () {
+//   console.log("success2");
+// })
+// .then(function () {
+// console.log("success3");
+// })
+// .catch(function () {
+//   console.log("error1");
+// })
+// .then(function () {
+//   console.log("success4");
+// })
+
+// output 
+
+// error1
+// success4
+
+// .catch() ব্লকের পরে যদি চেইন আকারে যত গুলা .then() ব্লক থাকবে । .catch() ব্লকের সাথে সাথে 
+// পরের  .then()  ব্লক গুলা ও এক্সিকিউট হয় । 
+
+// Ex- 5  :  output
+
+// function job(state) {
+//  return new Promise(function (resolve, reject) {
+//    if(state){
+//      resolve("success")
+//    }
+//    else{
+//      reject("eror");
+//    }
+   
+//  });
+ 
+// }
+
+// let promise = job(true);
+
+// promise 
+// .then(function (data) {
+//  console.log(data)
+//  return job(false);
+// })
+// .catch(function (error) {
+//  console.log(error);
+//  return "Error Caught"
+// })
+// .then(function (data) {
+//  console.log(data);
+//  return job(true);
+// })
+// .catch(function (error) {
+//  console.log(error);
+// })
+
+// Ex- 6  :  output
+
+// function job(state) {
+//   return new Promise(function (resolve, reject) {
+//     if(state){
+//       resolve("success")
+//     }
+//     else{
+//       reject("eror");
+//     }
+   
+//   });
+ 
+// }
+
+// let promise = job(true);
+
+// promise 
+// .then(function (data) {
+//   console.log(data)
+//   return job(true);
+// })
+// .then(function (data) {
+//   if(data !== "victory"){
+//     throw "Defeat";
+//   }
+//   else{
+//     return job(true)
+//   }
+ 
+// })
+// .then(function (data) {
+//   console.log(data);
+// })
+// .catch(function (error) {
+//   console.log(error);
+//   return job(false)
+// })
+// .then(function (data) {
+//   console.log(data);
+//   return job(true);
+// })
+// .catch(function (error) {
+//   console.log(error);
+//   return "Error caught"
+// })
+// .then(function (data) {
+//   console.log(data);
+//   return new Error("test");
+// })
+// .then(function (data) {
+//   console.log("success", data.message);
+ 
+// })
+// .catch(function (data) {
+//   console.log("Error", data.message);
+// });
+
+
+// Ex- 7  :  implement logic -
+
+// const firstPromise = new Promise((resolve, reject) => {
+//   resolve("First! ");
+// });
+
+// const secondPromise = new Promise((resolve, reject) => {
+//   resolve(firstPromise);
+// })
+
+// secondPromise.then((res) => {
+//   return res ;
+// }).then((res) => {
+//   console.log(res);
+// })
+
+// Ex- 8  :  async/await
+
+// async function loadJson(url){
+//   let response = await fetch(url);
+//   if(response.status == 200){
+//     let json = await response.json();
+//     return json 
+//   }
+//   throw new Error(response.status)
+// }
+// loadJson(fetch('https://jsonplaceholder.typicode.com/todos/1')).catch((err) => {
+//   console.log(err);
+// })
+
+
+// Ex- 9  :  Solve promise Recursively
+
+
+// const  importantAction = (chanelName) => {
+//   return new Promise((resolve, reject)=> {
+//     setTimeout(() => {
+//       resolve(` Subscribe to ${chanelName} Youtube chanel .`)
+//     }, 500)
+//   })
+
+// }
+
+// const  likeTheVidio = (vidio) => {
+//   return new Promise((resolve, reject)=> {
+//     setTimeout(() => {
+//       resolve(` please like and comment the ${vidio} box .`)
+//     }, 500)
+//   })
+// }
+
+// const  shareTheVidio = (vidio) => {
+//   return new Promise((resolve, reject)=> {
+//     setTimeout(() => {
+//       resolve(` if you are good at ${vidio} then you will learn advance topics.`)
+//     }, 500)
+//   })
+// }
+
+// function promRecurse(funcPromises) {
+//   if(funcPromises.length === 0)
+//   return ;
+//   const currPromise = funcPromises.shift();
+
+//   currPromise.then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//     promRecurse(funcPromises);
+//   })
+//   }
+
+// promRecurse([
+//   importantAction("Learn with sumit"),
+//   likeTheVidio("description"),
+//   shareTheVidio("javascript")
+// ]);
+
+// Ex- 10 :  promise polyfill
+
+// function PromisePolyFill(executor) {
+//   let onResolve ;
+//   this.then = function (callback) {
+//    onResolve = callback ;
+//    return this;
+//   };
+//   this.catch = function (callback) {
+//     return this 
+//   }
+//   executor
+// }
+
+// const examplePromise = new PromisePolyFill((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve((2))
+//   },1000);
+// })
+
+// examplePromise.then((res) => {
+//   console.log(res);
+// }).catch((err) => {
+//   console.log(err);
+// })
+
+
+// Ex- 11 final project with free code camp
 
 
 // ১০। function closure - 
@@ -631,97 +1043,97 @@ myMeeting();
 
 
 
-১১। funtion curring - 
+// ১১। funtion curring - 
   
 
-Haskel Curry এর মতে মাল্টিপল প্যারামিটারের কোন ফাংশনকে ভেঙ্গে ভেঙ্গে একটা একটা প্যারামিটারের ফাংশনে কনভার্ট করা যায় সেটাকেই  curring বলে । 
+// Haskel Curry এর মতে মাল্টিপল প্যারামিটারের কোন ফাংশনকে ভেঙ্গে ভেঙ্গে একটা একটা প্যারামিটারের ফাংশনে কনভার্ট করা যায় সেটাকেই  curring বলে । 
 
 
-function multiply(a, b, c){
-  return a * b * c ;
-}
+// function multiply(a, b, c){
+//   return a * b * c ;
+// }
 
-console.log(multiply(5, 6, 7));
-
-
-multiply এই ফাংশনের curring ভার্সন দেখব । 
-
-function curriedMultiply(a){
-  return function(b){
-    return function(c){
-      return a * b *c ;
-    }
-  }
-}
-
-console.log(curriedMultiply(5)(6)(7))
-
-এই ভাবে কল না করে প্রতিটা স্টেপ কে আলাদা আলাদা করে লিখতে পারি । 
-
-let step1 = curriedMultiply(5);
-
-console.dir(step1)
-
-let step2 = step1(6);
-
-console.dir(step2)
-
-let step3 = step2(7);
-
-console.log(step3)
-
-এটা ব্যবহার করার কারন হচ্ছে , ধরেন একটা ই কমার্স সাইটে ডিসকাউন্ত কেম্পেইন চলতেছে । 
-
-function discount(price, disc){
-  return price - price * disc
-}
-
-let customer1Dis = discount(600, .1);
-let customer2Dis = discount(700, .1);
-let customer3Dis = discount(800, .1);
+// console.log(multiply(5, 6, 7));
 
 
-এই ফাংশনের curring ভার্সন দেখব  
+// multiply এই ফাংশনের curring ভার্সন দেখব । 
 
-function discount(disc){
-  return (price) => {
-    return price - price * disc 
-  }
-}
+// function curriedMultiply(a){
+//   return function(b){
+//     return function(c){
+//       return a * b *c ;
+//     }
+//   }
+// }
 
-let tenPercentDis = discount(0.1);   // partial functoin 
+// console.log(curriedMultiply(5)(6)(7))
 
- curring ফাংশনের যে অংশটা পুনঃরায় ব্যবহার করা হয় সেটাকেই partial functoin বলে । 
+// এই ভাবে কল না করে প্রতিটা স্টেপ কে আলাদা আলাদা করে লিখতে পারি । 
+
+// let step1 = curriedMultiply(5);
+
+// console.dir(step1)
+
+// let step2 = step1(6);
+
+// console.dir(step2)
+
+// let step3 = step2(7);
+
+// console.log(step3)
+
+// এটা ব্যবহার করার কারন হচ্ছে , ধরেন একটা ই কমার্স সাইটে ডিসকাউন্ত কেম্পেইন চলতেছে । 
+
+// function discount(price, disc){
+//   return price - price * disc
+// }
+
+// let customer1Dis = discount(600, .1);
+// let customer2Dis = discount(700, .1);
+// let customer3Dis = discount(800, .1);
 
 
+// এই ফাংশনের curring ভার্সন দেখব  
 
-let tweentyPercentDis = discount(0.2);
+// function discount(disc){
+//   return (price) => {
+//     return price - price * disc 
+//   }
+// }
 
-let customer1Disc = tenPercentDis(600);
+// let tenPercentDis = discount(0.1);   // partial functoin 
 
-
-let customer2Disc = tenPercentDis(700);
-
-let customer3Disc = tenPercentDis(800);
-
-
-let customer4Disc = tweentyPercentDis(1400);
+//  curring ফাংশনের যে অংশটা পুনঃরায় ব্যবহার করা হয় সেটাকেই partial functoin বলে । 
 
 
 
-** curry converter function create - ** 
+// let tweentyPercentDis = discount(0.2);
 
-function curry(func){
-  return function curried(...args){
+// let customer1Disc = tenPercentDis(600);
+
+
+// let customer2Disc = tenPercentDis(700);
+
+// let customer3Disc = tenPercentDis(800);
+
+
+// let customer4Disc = tweentyPercentDis(1400);
+
+
+
+// ** curry converter function create - ** 
+
+// function curry(func){
+//   return function curried(...args){
   
-  }
-}
+//   }
+// }
 
-function sum(a, b, c){
-  return a + b + c ;
-}
+// function sum(a, b, c){
+//   return a + b + c ;
+// }
 
-let curriedSum = curry(sum)
+// let curriedSum = curry(sum)
 
 
 
