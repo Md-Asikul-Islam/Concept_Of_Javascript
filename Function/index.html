@@ -9,12 +9,20 @@
     <p> This is paragraph tag </p>
 
 <script>
-for(let i = 0 ; i < 3; i++){
-  setTimeout(() => {
-    console.log(i);
-  }, 3000);
-  
+function a(x) {
+  x.one = 7 ;
+  return x.one * x.two ;
 }
+
+const m = {
+  one : 4,
+  two : 5,
+}
+
+console.log(a(m));
+console.log(m);
+
+
 </script>
  <!-- <script src="script.js"></script>    -->
 </body>

@@ -907,6 +907,40 @@
 
 // closure হচ্ছে এমন একটা ফাংশন যার বাইরের ফাংশনে কোন ভারিঅ্যাঁবল থাকে তার রেফারেন্স  এনক্লজিং করে নিজের কাছে  বাঁ ভিতরের ফাংশনে নিয়ে যেতে হয় । তখন ভিতরের ফাংশন টাই closure
 
+
+// ***  scope chain ***
+//  global scope
+// const e = 10;
+// function sum(a) {
+//   return function (b) {
+//     return function (c) {
+//       // outer functions scope
+//       return function (d) {
+//         // local scope
+//         return a + b + c + d + e;
+//       };
+//     };
+//   };
+// }
+
+// console.log(sum(1)(2)(3)(4)); // 20
+
+
+// Ex - 1 
+
+// let count = 0 ;
+// (function () {
+//   if(count === 0){
+//     let count = 1 ;     //shadowing
+//     console.log(count);
+//   }
+//   console.log(count);
+// })()
+
+// output : 
+// 1 
+// 0
+
 // ## Ex-1 ##
 
 // var num1 = 3;
@@ -1140,7 +1174,29 @@
 // 3
 // 3
 // 3
-// যেটা আনসস্পেটেড বিহেবিয়ার 
+// যেটা আনসস্পেটেড বিহেবিয়ার  । 
+
+// আগের বারের  মত  আউটপুট আনতে কি করতে হবে কিন্তু Let ব্যবহার করা যাবে না । ক্লোজার কনসেপট  ব্যবহার করে 
+// output 
+// 0
+// 1
+// 2
+
+
+// for(var i = 0; i < 3 ; i++ ){
+//   function inner(i) {
+//     setTimeout(function log() {
+//       console.log(i);                 // what is logged ?? 
+//     }, i * 1000);
+//   }
+// inner(i)
+// }
+
+// output 
+// 0
+// 1
+// 2
+
 
 // Ex- 10
 
@@ -1157,6 +1213,74 @@
 //   result()
 //   result()
 //   console.dir(result)
+
+
+// Ex -11  Time optimization 
+
+// function find(index) {
+//   let a = [];
+
+//   for (let i = 0; i < 100000; i++) {
+//    a[i] = i * i ;
+    
+//   }
+//  return function (index) {
+//   console.log(a[index]);
+//  }
+
+// }
+
+// const closure = find() ;
+// console.time("6");
+// closure(6)
+// console.timeEnd("6");
+
+// console.time("50");
+// closure(50)
+// console.timeEnd("50");
+
+
+
+
+
+// Ex -12 private counter
+
+// function counter() {
+//   var counter = 0 ;
+//   function add(increment) {
+//     counter += increment
+//   }
+//   function retrive() {
+//     return "counter = " + counter ;
+//   }
+//   return {
+//     add,
+//     retrive,
+//   };
+// }
+
+// const c = counter()
+// c.add(5)
+// console.log(c.retrive(15));
+
+// EX- 13  module patarn 
+
+
+// var module = (function () {
+//   function privateMethod() {
+//     // do something 
+//     console.log("private");
+//   }
+//   return {
+//     publicMethod: function () {
+//       console.log("public");
+//     }
+//   }
+// })()
+// module.publicMethod();
+// module.privateMethod();
+
+
 
  
 
@@ -1242,17 +1366,39 @@
 
 // ** curry converter function create - ** 
 
-// function curry(func){
-//   return function curried(...args){
-  
+function curry(func){
+  return function curried(...args){
+  if(args.length >= func.length){
+    return func.apply(this, args );
+  }
+  else{
+    return function (...args2) {
+      return curried.apply(this, args.concat(args2));
+    };
+  }
+  };
+}
+
+function sum(a, b, c){
+  return a + b + c ;
+}
+
+let curriedSum = curry(sum)
+console.log(curriedSum(1, 2, 3));
+console.log(curriedSum(1) (2, 3));
+console.log(curriedSum(1) (2)(3));
+
+
+//*** manipulate Dom  ***
+
+
+// function updateElementText(id) {
+//   return function (content) {
+//     documet.querySelector("#" + id ).textContent = content ;
 //   }
 // }
-
-// function sum(a, b, c){
-//   return a + b + c ;
-// }
-
-// let curriedSum = curry(sum)
+// const updateHeader = updateElementText("heading");
+// updateHeader(" Hello learn with sumit ")
 
 
 
@@ -1340,4 +1486,141 @@
 
 // console.log(sum())
 
-// এভয়েড করাই ভালো কেননা রিকারশন ফাংশন এক্সকিশন টাইম বেশি লাগে । 
+// এভয়েড করাই ভালো কেননা রিকারশন ফাংশন এক্সকিশন টাইম বেশি লাগে ।
+
+
+// Ex-1 : factorial number
+
+// function factorial(n) {
+//   if(n === 0) {
+//     return 1 
+//   }
+//   else{
+//     return n * (n - 1) ;
+//   }
+// }
+
+// console.log(factorial(5));
+
+// Ex -2 : create an array with range of numbers 
+// input : start = 1 , End = 5 ;
+
+// function rangeOfNumbers(startNum, endNum) {
+//   if (endNum < startNum) {
+//     return [];
+//   }
+//   else{
+//     const numbers = rangeOfNumbers(startNum, endNum - 1);
+//     numbers.push(endNum);
+//     return numbers
+//   }
+// }
+// console.log(rangeOfNumbers(0, 5));
+
+
+
+
+
+// ** Fucntion Hoisting **
+
+// Hoisting হচ্ছে সকল declaration  কে উপরে তুলে দেওয়া । কোন একটা ফাংশনকে declaration করার আগেই কল করলে তার ফাংশন declaration কে জাভাস্ক্রিপ্ট নিজেই উপরে তুলে দেয় । যেমন - 
+
+
+// myFunc(5) ;                          // call or invoke
+
+// function myFunc(x) {
+//   return x * x                          // declaration
+// };
+
+// ** Fucntion are object **
+জাভাস্ক্রিপ্ট এ function keyword কে console.log(typeof(function)) করলে funtion   রিটার্ন করে কিন্ত console.dir(typeof(function)) করলে object রিটার্ন করে । কারন হচ্ছে আমরা জানি object  এর property  এবং  method থাকে । 
+
+এখন argument.length এই property একটা ফাংশন অবজেক্ট এ কতটি আর্গুমেন্ট আছে সেটা রিটার্ন করে ।
+
+## কোন একটা object এর  property তে function থাকলে সেটাকে method বলে । যেমন - 
+
+const a = {
+  firstName : " Asikul ",
+  lastName  : " Islam ",
+  sleep : function () {
+    return "something "
+  }
+}
+
+// এখানে sleep ফাংশনকেই mehtod বলে । 
+
+// this হচ্ছে এমন একটা ফাংশন যেটা কোন অবজেক্ট আনডারে থাক । যে অবজেক্ট এর আনডারে থাকে সেটাকেই this বল। এখানে  this বলতে a অবজেক্ট টা কে বুজানো হয়েছে । 
+
+
+// ** Parameter rules ** 
+
+// জাভাস্ক্রিপ্ট এ ফাংশন ডেফিনেশনে প্যারামিটার গুলার ফিক্সড কোন ডাটা টাইপ নাই ।
+
+// প্যারামিটারে ভ্যালু ইনপুট না করলে জাভাস্ক্রিপ্ট নিজেই undefined দিয়ে দেয় । 
+
+// আর্গুমেন্ট হল প্যারামিটার এর অ্যাকচুয়াল ভ্যালু । 
+
+// ফাংশনের আর্গুমেন্ট গুলা অ্যাঁরে আকারে থাকে । 
+
+// আর্গুমেন্ট হল জাভাস্ক্রিপ্ট এ array of object , যেতাকে অনেকেই বলে অ্যাঁরে না কিন্তু অ্যারের মত দেখতে একটা অবজেক্ট । 
+
+// আর্গুমেন্ট সাধারনত প্যারামিটারে ভ্যালু পাস করে মেমোরির রেফারেন্স নয় । যেমন - 
+
+function a(x, y) {
+  return x * y 
+}
+
+let m = 6 ;
+m = 8 ;
+console.log(m);
+let n = 7 ;
+n = 9 ;
+console.log(n);
+
+console.log( a(m, n));
+
+// কিন্তু আর্গুমেন্ট যদি প্যারামিটারে ভ্যালু হিসেবে অবজেক্ট পাস করে সেক্ষেত্রে ভ্যালু এবং রেফারেন্স দুইটাই পরিবর্তন হয়ে যায় । 
+
+
+// function a(x) {
+//   x.one = 7 ;
+//   return x.one * x.two ;
+// }
+
+// const m = {
+//   one : 4,
+//   two : 5,
+// }
+
+// console.log(a(m));
+// console.log(m);
+
+// // output 
+
+// 35 
+
+// m = { one: 7 , two : 5 } ;
+
+// এখানে আমি শুধু ফাংশনে  one : 7 করেছিলাম কিন্তু এটা মুল অবজেক্ট এ  one  নামে property এর ভ্যালু সহ পরিবর্তন করে ফেলেছে । অবজেক্ট যেহেতু রেফারেন্স ভ্যালু তাই মুল অবজেক্ট সহ পরিবর্তন হচ্ছে । 
+
+
+// ** ফাংশন কোথায় ব্যবহার করা যাবে **
+
+// ফাংশনকে ভারিঅ্যাঁবলের এর মধ্যে অ্যাসাইন করা যাবে । 
+
+// অ্যাঁরের ইলিমেন্ত হিসেবে অ্যাসাইন করা যাবে । 
+
+// অবজেক্টর property হিসেবে ব্যবহার করা যাবে । 
+
+// একটা ফাংশনের মধ্যে রিটার্ন হিসেবে আরেকটা ফাংশন নেয়া যাবে । 
+
+// একটা ফাংশনকে অন্য ফাংশনের প্যারামিটার, আর্গুমেন্ট হিসেবে পাস করা যাবে । 
+
+// ফাংশনের প্যারামিটারে অবজেক্ট ও পাস করা যায় । 
+
+
+
+
+
+
+
