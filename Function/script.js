@@ -37,7 +37,7 @@
 
 // console.log((function(a, b){ return a + b })(5, 6) )        =                   11
 
-একটা অ্যানোনিমাস ফাংশনকে প্রথম বন্ধনীর ভিতরে লিখতে হবে বাইরে ফাংশনকে কল করে দিতে হবে ।  এই রকম ফাংশনকেই Self invoking function বলে । 
+// একটা অ্যানোনিমাস ফাংশনকে প্রথম বন্ধনীর ভিতরে লিখতে হবে বাইরে ফাংশনকে কল করে দিতে হবে ।  এই রকম ফাংশনকেই Self invoking function বলে । 
 
 
 
@@ -93,7 +93,7 @@
 
 // Higher Order function - 
 
- // একটা ফাংশন যখন এক বাঁ একাধিক ফাংশনকে আর্গুমেন্ট হিসেবে  নেয় ।   
+//  একটা ফাংশন যখন এক বাঁ একাধিক ফাংশনকে আর্গুমেন্ট হিসেবে  নেয় ।   
 //                             অথবা  
 //                রিটার্ন হিসেবে আরেকটা  ফাংশনকে  নেয়  । 
   
@@ -224,8 +224,8 @@
 
 // অ্যাসিনক্রোনাস = জাভাস্ক্রিপ্ট যেহেতু সিঙ্গেল থ্রেড প্রোগ্রামিং ল্যাঙ্গুয়েজ তাই সে যখন দেখবে কোন কোড এক্সকিশন করতে সময় লাগবে,  বড় লুপ, আজাক্স কল আছে, কোন সারভার থেকে ডাটা লোড করতে হবে কিনা ??   । এরকম হলে জাভাস্ক্রিপ্ট এ  কাজটি নিজে করে না ব্রাউজারে রান টাইমে ওয়েব অ্যাপিআই নামে একটা বস্তু থাকে তার কাছে দিয়ে দেয়। যখনই দেখে এখানে কিছু সময় লাগতেছে তখনই এটা ওয়েব অ্যাপিআই তে চলে যায় সেখানে কাজ শেষ করে প্রসেস করে তার পর এটা কে পাঠায় দে কলব্যাক কিউতে । এবার আসি কলব্যাক কিউতে যখন আমাদের সকল কোড রান করা শেষ কল স্টেক ফাঁকা হয়ে যায় তখন এ কলব্যাক কিউ থেকে ইভেন্ট লুপের চালু হবার মাধ্যমে সবার প্রথমে যেটা আছে সেটাকে কল স্টেক এ পাঠায় কল স্টেক সেখান থেকে তারপর অই কোডটি রান হয়।  এটাই জাভাস্ক্রিপ্ট এর অ্যাসিনক্রোনাস বিহেবিয়ার  আর   আমাদেরকে অ্যাসিঙ্ক্রোনাস ভাবে কোড লেখতে চেষ্টা করতে হবে ঠিক তেমনি তাকে প্রপার ভাবে হ্যান্ডেল করতে হবে। এখন এই অ্যাসিঙ্ক্রোনাস কোড গুলোকে তিন ভাবে মূলত দুই ভাবে হ্যান্ডেল করা যায়,
 
-  //  ## কলব্যাক ফাংশন ( callback )
-  //  ## প্রমিস ( promise .then block )
+//    ## কলব্যাক ফাংশন ( callback )
+//    ## প্রমিস ( promise .then block )
   
 
 
@@ -1366,30 +1366,30 @@
 
 // ** curry converter function create - ** 
 
-function curry(func){
-  return function curried(...args){
-  if(args.length >= func.length){
-    return func.apply(this, args );
-  }
-  else{
-    return function (...args2) {
-      return curried.apply(this, args.concat(args2));
-    };
-  }
-  };
-}
+// function curry(func){
+//   return function curried(...args){
+//   if(args.length >= func.length){
+//     return func.apply(this, args );
+//   }
+//   else{
+//     return function (...args2) {
+//       return curried.apply(this, args.concat(args2));
+//     };
+//   }
+//   };
+// }
 
-function sum(a, b, c){
-  return a + b + c ;
-}
+// function sum(a, b, c){
+//   return a + b + c ;
+// }
 
-let curriedSum = curry(sum)
-console.log(curriedSum(1, 2, 3));
-console.log(curriedSum(1) (2, 3));
-console.log(curriedSum(1) (2)(3));
+// let curriedSum = curry(sum)
+// console.log(curriedSum(1, 2, 3));
+// console.log(curriedSum(1) (2, 3));
+// console.log(curriedSum(1) (2)(3));
 
 
-//*** manipulate Dom  ***
+// *** manipulate Dom  ***
 
 
 // function updateElementText(id) {
@@ -1413,7 +1413,7 @@ console.log(curriedSum(1) (2)(3));
   
 // }
 
-// memoization ব্যবহার করা হয় কোন রিসোর্স হাংরি, সিপিও হাংরি , অনেক মেমোরি দরকার বাঁ অনেক এক্সপেনসিভ কাজ করে অথবা এপি আই থেকে ডাটা নিয়ে আসা । যেটা বার বার কল করা অনেক এক্সপেনসিভ । ধরে নিচ্চি সেই ফাংশন টা হল  add() । এখন এই ভারি কাজ   টা কোন জায়গায় সেভ করে রাখতে চাই সেটাকে বলে memoization এটা করার জন্য Higher Order function ব্যবহার করতে হবে । এখন add ফাংশনকে মনে রাখার মত বানাতে চাইলে কল করা যাবে না । আমরা আরেকটি ফাংশনে ঘুড়িয়ে আনব । 
+// memoization ব্যবহার করা হয় কোন রিসোর্স হাংরি, সিপিও হাংরি , অনেক মেমোরি দরকার বাঁ অনেক এক্সপেনসিভ কাজ করে অথবা এপি আই থেকে ডাটা নিয়ে আসা । যেটা বার বার কল করা অনেক এক্সপেনসিভ । ধরে নিচ্চি সেই ফাংশন টা হল  add() । এখন এই ভারি কাজ   টা কোন জায়গায় সেভ করে রাখতে চাই সেটাকে বলে memoization এটা করার জন্য Higher Order function ব্যবহার করতে হবে । এখন add ফাংশনকে মনে রাখার মত বানাতে চাইলে কল করা যাবে না । আমরা আরেকটি ফাংশনে ঘুড়িয়ে আনব । যেই ফাংশনে add() কে সেভ করে রাখব সেই ফাংশনটা মেমো ফাংশন
 
 
 
@@ -1439,12 +1439,7 @@ console.log(curriedSum(1) (2)(3));
 // console.log(calculate(10));
 // console.log(calculate(10));
 
-
-
-
-
-
-
+// memo ফাংশনটা মুলত একটা Higher Order function হবে ।  কারন এটি প্যারামিটার হিসেবে একটা ফাংশনকে নিবে সেটা হল সেই রিসোর্সে হাংরি ফাংশনকে এবং আরেকটা ফাংশনকে রিটার্ন করবে । memo ফাংশনটা রিটার্ন  হিসেবে একটা  ফাংশন দিচ্ছে যেটাকে calculate  স্টোর করা হয়েছে । এখন calculate কল করা মানে আলটিমেটলি সেই রিটার্ন  ফাংশনকে কল করা যেখানে আর্গুমেন্ট 10 কে ফাংশনের প্যারামিটার রিসিভ করবে । 
 
 
 
@@ -1533,19 +1528,20 @@ console.log(curriedSum(1) (2)(3));
 // };
 
 // ** Fucntion are object **
-জাভাস্ক্রিপ্ট এ function keyword কে console.log(typeof(function)) করলে funtion   রিটার্ন করে কিন্ত console.dir(typeof(function)) করলে object রিটার্ন করে । কারন হচ্ছে আমরা জানি object  এর property  এবং  method থাকে । 
 
-এখন argument.length এই property একটা ফাংশন অবজেক্ট এ কতটি আর্গুমেন্ট আছে সেটা রিটার্ন করে ।
+// জাভাস্ক্রিপ্ট এ function keyword কে console.log(typeof(function)) করলে funtion   রিটার্ন করে কিন্ত console.dir(typeof(function)) করলে object রিটার্ন করে । কারন হচ্ছে আমরা জানি object  এর property  এবং  method থাকে । 
 
-## কোন একটা object এর  property তে function থাকলে সেটাকে method বলে । যেমন - 
+// এখন argument.length এই property একটা ফাংশন অবজেক্ট এ কতটি আর্গুমেন্ট আছে সেটা রিটার্ন করে ।
 
-const a = {
-  firstName : " Asikul ",
-  lastName  : " Islam ",
-  sleep : function () {
-    return "something "
-  }
-}
+// ## কোন একটা object এর  property তে function থাকলে সেটাকে method বলে । যেমন - 
+
+// const a = {
+//   firstName : " Asikul ",
+//   lastName  : " Islam ",
+//   sleep : function () {
+//     return "something "
+//   }
+// }
 
 // এখানে sleep ফাংশনকেই mehtod বলে । 
 
@@ -1566,18 +1562,18 @@ const a = {
 
 // আর্গুমেন্ট সাধারনত প্যারামিটারে ভ্যালু পাস করে মেমোরির রেফারেন্স নয় । যেমন - 
 
-function a(x, y) {
-  return x * y 
-}
+// function a(x, y) {
+//   return x * y 
+// }
 
-let m = 6 ;
-m = 8 ;
-console.log(m);
-let n = 7 ;
-n = 9 ;
-console.log(n);
+// let m = 6 ;
+// m = 8 ;
+// console.log(m);
+// let n = 7 ;
+// n = 9 ;
+// console.log(n);
 
-console.log( a(m, n));
+// console.log( a(m, n));
 
 // কিন্তু আর্গুমেন্ট যদি প্যারামিটারে ভ্যালু হিসেবে অবজেক্ট পাস করে সেক্ষেত্রে ভ্যালু এবং রেফারেন্স দুইটাই পরিবর্তন হয়ে যায় । 
 

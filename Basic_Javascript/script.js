@@ -1,3 +1,164 @@
+জাভাস্ক্রিপ্ট ভ্যালু গুলোকে দুইভাগে ভাগ করেছে । যথা-
+
+## Fixed values
+Fixed values কে বলা হয় Literals 
+## Variable values 
+Variable values কে ভ্যারিয়েবল বলা হয় । 
+
+
+// **typeof operator **
+
+// জাভাস্ক্রিপ্ট এ ভ্যারিয়েবলের টাইপ জানতে typeof operator ব্যবহার করা হয় । যেমন-
+
+// let x = 5 + 5;
+// let y = "5" + 5;
+// let z = "Hello" + 5;
+
+// console.log(typeof(x));
+// console.log(typeof(y));
+// console.log(typeof(z));
+
+// output 
+// number    10
+// string    55
+// string   hello5
+
+// জাভাস্ক্রিপ্ট সবসময় বাম থেকে ডান দিকে কোড এক্সিকিউট করে । 
+
+let car;
+console.log(typeof(car));
+output
+undefined
+এখানে এই ভ্যারিয়েবলের ভ্যালু undefined এবং ডাটা টাইপ undefined
+
+** string **
+
+
+let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+console.log(text.length);
+
+output
+26
+
+এখানে length হল string এর built in একটা property যেটার সাহায্যে আমরা একটা string কত গুলা character আছে সেটা জানতে পারি inculding space মানে হল space  সহ কাউন্ত করে  । 
+
+**Escape Character**
+
+let text = "We are the so-called \"Vikings\" from the north.";
+console.log(text);
+
+স্পেশাল  Character শো করতে তার আগে একটা ব্যাক স্লাশ দিতে হয় । 
+
+ধরেন কোন ক্ষেত্রে যদি এমন হয় একটা স্ট্রিং নিতে হবে এবং তার ভিতরে কিছু ওয়ার্ডকে স্পেশাল করার জন্য ডাবল বাঁ সিঙ্গেল কোটেশন ব্যবহার করা লাগছে । এখন আমরা জানি জাভাস্ক্রিপ্ট ডাবল কোটেশন এর ভিতরে আবার কোটেশন দেওয়া যাবে না তাহলে এরর আসবে । এই সমস্যা সলভ করতে Escape Character বাঁ স্পেশাল  Character শো করতে তার আগে একটা ব্যাক স্লাশ দিতে হয় । 
+
+
+//***string as object **
+
+// Ex-1
+
+// let x = "John";
+
+// let y = new String("John");       // it's like a object 
+
+// console.log(x == y);
+// console.log(x === y);
+
+// output 
+// true 
+// false 
+
+// Ex-2
+// let x = new String("John");
+// let y = new String("John");
+
+// console.log(x == y);
+// console.log(x === y);
+
+// output 
+// false
+// false 
+
+// দুইটা অবজেক্ট কে আসলে তুলনা করা যায় না এই জন্য  false রিটার্ন করে ।
+
+//***string   Method  ***
+
+const a = { 
+  name : " Bangladesh ", 
+  dist : 64,
+};
+
+আমরা জানি অবজেক্ট এর মেথড এবং প্রপারটি  থাকে , যেহেতু অবজেক্ট রেফারেন্স ডাটা টাইপ তাই আমরা বাইরে থেকে অবজেক্ট এর প্রপারটি এক্সেস করতে পারি । যেমন -
+
+console.log(a.name);
+output 
+Bangladesh 
+
+const s = " Bangladesh "
+
+console.log(s.length);                // 12
+
+
+কিন্তু একটা স্ট্রিং এর ডাটা টাইপ প্রিমিটিভ হওয়ার পরেও এর মেথড এবং প্রপারটি  থাকে , এটার কারন হল 
+এখানে জাভাস্ক্রিপ্ট কোড এক্সিকিউট হওয়ার সময় দেখবে যে এর মধ্যে length প্রপারটি আছে কিনা সেখানে না পেলে তার প্যারেন্ট স্ট্রিং কন্সট্রাকটর এর কাছে যাবে সেখানে length প্রপারটি কাজ ডিফাইন করা আছে । 
+
+
+
+১। slice(start, end )
+
+এই মেথড টা মূলত  স্ট্রিং এর একটা পার্ট রিটার্ন করে । এই মেথড টা দুইটা প্যারামিটার নেয় , 
+প্রথম প্যারামিটার বলতে হবে কত নাম্বার ইনডেক্স  থেকে শুরু হবে । 
+দ্বিতীয় প্যারামিটার বলতে হবে কত নাম্বার ইনডেক্স এ শেষ  হবে । 
+
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7, 13);
+console.log(part);
+
+output : 
+Banana 
+
+২। subStrig(start, end )
+
+এই মেথড টা মূলত  স্ট্রিং এর একটা পার্ট রিটার্ন করে । এই মেথড টা দুইটা প্যারামিটার নেয় , 
+প্রথম প্যারামিটার বলতে হবে কত নাম্বার ইনডেক্স  থেকে শুরু হবে । 
+দ্বিতীয় প্যারামিটার বলতে হবে কত নাম্বার ইনডেক্স এ শেষ  হবে । 
+
+slice()  এবং  subString() এদের মধ্যে মুল পার্থক্য হল subStrig(start, end ) শুধু  নেগেটিভ ভ্যালু নেয় না । 
+
+
+৩। subStr()
+
+এই মেথড টা মূলত  স্ট্রিং এর একটা পার্ট রিটার্ন করে । এই মেথড টা দুইটা প্যারামিটার নেয় , 
+প্রথম প্যারামিটার বলতে হবে কত নাম্বার ইনডেক্স  থেকে শুরু হবে । 
+দ্বিতীয় প্যারামিটার বলতে হবে যেখান থেকে শুরু হয়েছে তারপর আর কত লেন্থ পর্যন্ত যাবে ।
+
+
+ইনডেক্স শুরু হবে সবসময় ০ থেকে 
+
+লেন্থ  শুরু হবে সবসময় ১ থেকে 
+
+৪। replace()
+
+ধরেন আমরা আগের একটা স্ট্রিং আছে সেটা পরিবর্তন করে নতুন স্ট্রিং দিতে চাচ্চি সেক্ষেত্রে এই মেথড ব্যবহার করব । যেমন - 
+
+let str = " I love sakina "
+
+let zarina = str.replace("sakina", " zarina ")
+console.log(zarina);
+
+প্রথম প্যারামিটার বলতে হবে কোন অংশ পরিবর্তন করব সেটুকু স্ট্রিং আকারে দিতে হবে  ।  চাইলে সম্পূর্ণ ও পরিবর্তন করা  যাবে । 
+দ্বিতীয় প্যারামিটার বলতে হবে পরিবর্তন করে নতুন কি দিব সেটা স্ট্রিং আকারে দিতে হবে  ।
+
+৫।  chartAt()
+৬।  concat()
+৭।  endsWith()
+৮।  includes()
+৯।  indexOf()
+১০। lastindexOf()
+১১।  spilt()
+১২।  toUpperCase()
+১৩।  toLowerCase()
+১৪।  trim()
+
 
 
 // *** variable concept *** 
