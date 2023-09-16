@@ -56,16 +56,18 @@ console.log(text);
 
 // Ex-1
 
-// let x = "John";
+// let x = "John";       
+এটা হচ্ছে স্ট্রিং এর লিটারেল সিনটেক্স  । 
 
 // let y = new String("John");       // it's like a object 
+আমরা জানি স্ট্রিং কে  অবজেক্ট কন্সট্রাকটর আকারে লিখা যায় । new String() এটা হচ্ছে স্ট্রিং এর অবজেক্ট কন্সট্রাকটর ফাংশন । 
 
-// console.log(x == y);
-// console.log(x === y);
+// console.log(x == y);            // true 
+// console.log(x === y);          // false 
 
-// output 
-// true 
-// false 
+
+
+
 
 // Ex-2
 // let x = new String("John");
@@ -138,7 +140,7 @@ slice()  এবং  subString() এদের মধ্যে মুল পার
 
 ৪। replace()
 
-ধরেন আমরা আগের একটা স্ট্রিং আছে সেটা পরিবর্তন করে নতুন স্ট্রিং দিতে চাচ্চি সেক্ষেত্রে এই মেথড ব্যবহার করব । যেমন - 
+ধরেন আপনার আগের একটা স্ট্রিং আছে সেটা পরিবর্তন করে নতুন স্ট্রিং দিতে চাচ্চি সেক্ষেত্রে এই মেথড ব্যবহার করব । যেমন - 
 
 let str = " I love sakina "
 
@@ -148,18 +150,417 @@ console.log(zarina);
 প্রথম প্যারামিটার বলতে হবে কোন অংশ পরিবর্তন করব সেটুকু স্ট্রিং আকারে দিতে হবে  ।  চাইলে সম্পূর্ণ ও পরিবর্তন করা  যাবে । 
 দ্বিতীয় প্যারামিটার বলতে হবে পরিবর্তন করে নতুন কি দিব সেটা স্ট্রিং আকারে দিতে হবে  ।
 
-৫।  chartAt()
+৫।  charAt()
+ধরেন একটা স্ট্রিং থেকে কোন একটা ক্যারেক্টার কে নিতে হবে এই ক্ষেত্রে এই মেথড ব্যবহার করতে হবে । 
+let str = "I love sakina"
+let result = str.charAt(4)
+এখানে প্যারামিটারে বলে দিতে হবে যে কত ইনডেক্স নাম্বার  ক্যারেক্টার  নিবে । 
+
+console.log(result);
 ৬।  concat()
+দুইটা স্ট্রিং কে জোড়া লাগাতে এই মেথড টা ব্যবহার করা হয় । 
+
+let text1 = " Why do you work with computer always ?? "
+let text2 = " Because I am learn to full stack web development "
+let result = text1.concat(text2)
+console.log(result);
+
+এখানে যেই টেক্সট কে জোড়া লাগাবেন তাকে প্যারামিটার হিসেবে পাঠাবেন । 
+
 ৭।  endsWith()
+
+এটা মূলত একটা স্ট্রিং এর মধ্যে শেষ ওয়ার্ড খুজতে সাহায্য করে । প্যারামিটারে  ওয়ার্ডটি  দিলে সে খুজবে তার স্ট্রিং এর শেষ ওয়ার্ড  কিনা থাকলে true রিটার্ন করবে না থাকলে  false রিটার্ন করবে ।  
+
 ৮।  includes()
+এটা মূলত একটা স্ট্রিং এর মধ্যে কোথাও কোন ওয়ার্ড খুজতে সাহায্য করে । প্যারামিটারে কোন ওয়ার্ড দিলে সে খুজবে তার স্ট্রিং এর মধ্যে  আছে কিনা থাকলে true রিটার্ন করবে না থাকলে  false রিটার্ন করবে ।  
+
 ৯।  indexOf()
+এটা মূলত একটা স্ট্রিং এর মধ্যে কোথাও কোন ওয়ার্ড বাঁ ক্যারেক্টার  খুজতে সাহায্য করে । প্যারামিটারে কোন ওয়ার্ড দিলে সে খুজবে তার প্রথম ম্যাচ করা ওয়ার্ড বাঁ ক্যারেক্টার এর যেখান থেকে শুরু তার  ইনডেক্স দিবে । যদি সে খুজে না পায় তাহলে সে -1 রিটার্ন করবে । 
+
+let fruits = " Apple, Orange, Banana, Grapes, Banana, Patatoo, Tomatoo"
+let result = fruits.indexOf("Banana")
+console.log(result);
+
 ১০। lastindexOf()
+
+এটা মূলত একটা স্ট্রিং এর মধ্যে কোথাও কোন ওয়ার্ড বাঁ ক্যারেক্টার  খুজতে সাহায্য করে । প্যারামিটারে কোন ওয়ার্ড দিলে সে খুজবে তার শেষ ম্যাচ করা ওয়ার্ড বাঁ ক্যারেক্টার এর যেখান থেকে শুরু তার  ইনডেক্স দিবে । যদি সে খুজে না পায় তাহলে সে -1 রিটার্ন করবে । 
+
 ১১।  spilt()
+আমরা যদি একটা স্ট্রিং কে অ্যাঁরে তে কনভার্ট করতে চাই তাহলে এই মেথড ব্যবহার করতে হবে । 
+let text = " Hello World "
+let result = text.split(", ");
+spilt মানে হল ছোট ছোট পিস করা এখন আমার এই টেক্সট কে অ্যাঁরে তে কনভার্ট করবে কি দিয়ে সেটা প্যারামিটারে বলে দিতে হবে । আমরা এখানে কমা দিয়ে আলাদা করেছি । 
 ১২।  toUpperCase()
+ধরেন আপনার আগের একটা স্ট্রিং আছে সেটা ক্যাপিটাল লেটারে আসবে । তাহলে এই মেথড ব্যবহার করতে হবে। 
+let text = "Apple, Banana, Kiwi";
+let result = text.toUpperCase()
+console.log(result);
+
 ১৩।  toLowerCase()
+
+ধরেন আপনার আগের একটা স্ট্রিং আছে সেটা স্মল  লেটারে আসবে । তাহলে এই মেথড ব্যবহার করতে হবে। 
+let text = "Apple, Banana, Kiwi";
+let result = text.toLowerCase()
+console.log(result);
+
 ১৪।  trim()
+এটা মূলত একটা স্ট্রিং এর মধ্যে কোথাও হোয়াইট স্পেস থাকলে সেটা কেটে ফেলে । 
+
+// *** Template litaral syntax **** 
+Template literals হল Es-6 খুবই গুরুত্বপূর্ণ একটি ফিচার যেটা  কি বোর্ডের ব্যাক টিক সাইন দিয়ে লিখি । এটা মুলত মাল্টি লাইন স্ট্রিং, স্ট্রিং এর মধ্যে ভ্যারিয়েবলের ব্যবহার, স্ট্রিং এর সাথে স্পেশাল ক্যারেক্টার ব্যবহার একসাথে করা যায় । যেমন - 
+
+let name = " Asikul "
+
+let templateSyntax = ` Hi I am ${name} works at Brain station software farm `
+
+// ** Number **
+জাভাস্ক্রিপ্ট এ নাম্বার হল প্রিমিটিভ ডাটা । জাভাস্ক্রিপ্ট একটা টাইপের নাম্বারই আছে । 
+
+let x = 3.14;    // A number with decimals
+let y = 3;       // A number without decimals 
+
+পাওয়ার আকারে বাঁ এক্সপনেন্ত করে লিখা যায় । 
+let x = 123e5;    // 12300000
+let y = 123e-5;   // 0.00123 
+
+জাভাস্ক্রিপ্ট নাম্বার সবসময় ৬৪ বিটে ফ্লোটিং আকারে আসে । 
+জাভাস্ক্রিপ্ট পূর্ণ সংখার ক্ষেত্রে সর্বচ্চো ১৫ ডিজিট দশমিক সংখার ক্ষেত্রে ১৭ ডিজিট পর্যন্ত হিসেব রাখতে পারে । 
+let x = 999999999999999;   // x will be 999999999999999
+let y = 9999999999999999;  // y will be 10000000000000000 
+
+জাভাস্ক্রিপ্ট ফ্লোটিং নাম্বার সবসময় সঠিক নাও আসতে পারে । 
+
+let x = 0.2 + 0.1;                  // x will be  0.30000000000000004
+
+// ** নিউমেরিক স্ট্রিং **
+নাম্বার এবং স্ট্রিং এর কনকেটিনেট 
+যোগের ক্ষেত্রে ঃ 
+let x = 10;
+let y = 20;
+let z = "The result is: " + x + y;
+
+output  
+The result is: 1020
+আমরা জানি স্ট্রিং আর নাম্বারের অপারেশন হলে স্ট্রিং প্রায়োরিটি পায় । কিন্তু সেটা শুধুমাত্র কনকেটিনেট  বাঁ যোগের ক্ষেত্রে অন্য সব ক্ষেত্রে আগে নাম্বারে কনভার্ট করে তারপর অপারেশন চালাবে । 
 
 
+ভাগের ক্ষেত্রে ঃ
+let x = "100";
+let y = "10";
+let z = x / y;                 //  z will be 10 
+
+গুনের ক্ষেত্রে ঃ 
+let x = "100";
+let y = "10";
+let z = x * y;              //  z will be 1000
+
+বিয়োগের ক্ষেত্রে ঃ 
+
+let x = "100";
+let y = "10";
+let z = x - y;                 //  z will be 90
+
+// ** NaN - Not a Number  ** 
+
+let x = 100 / "Apple";            // x  will be  NaN 
+
+isNaN() 
+এর মানে হল - এটা কি নাম্বার নয়  ??
+
+let x = 100 / "Apple";
+isNaN(x);               // true 
+
+let x = 100 / "Apple";
+isNaN(x);               // NaN 
+NaN  জাভাস্ক্রিপ্ট এ একটি নাম্বার । 
+console.log(typeof(NaN));                // number
+
+// ** Number as a object ** 
+
+
+// Ex-1
+
+// let x =  123 ;      
+এটা হচ্ছে নাম্বারের এর লিটারেল সিনটেক্স  । 
+
+// let y = new Number(123);       // it's like a object 
+আমরা জানি নাম্বার কে  অবজেক্ট কন্সট্রাকটর আকারে লিখা যায় । new Number() এটা হচ্ছে স্ট্রিং এর অবজেক্ট কন্সট্রাকটর ফাংশন । 
+
+// console.log(x == y);            // true 
+// console.log(x === y);          // false 
+
+
+
+
+
+// Ex-2
+let x = new Number(123);
+let y = new Number(123);
+
+console.log(x == y);
+console.log(x === y);
+
+// output 
+// false
+// false 
+
+// দুইটা অবজেক্ট কে আসলে তুলনা করা যায় না এই জন্য  false রিটার্ন করে ।
+
+// ** Number method  **
+
+১। toString()
+এটা একটা নাম্বার কে স্ট্রিং এ কনভার্ট করে ।
+
+let x = 123 ;
+let result = x.toString() ;
+console.log(typeof(result));             //   string 
+
+২। toExponential()
+এই মেথড টা  মূলত একটা সংখ্যাকে সূচকীয় আকারে কনভার্ট করতে ব্যবহার করা হয় কিন্তু এটা  সবসময় একটা স্ট্রিং রিটার্ন করবে । 
+
+let x = 9.656;
+console.log(x.toExponential(2));
+console.log(x.toExponential(4));
+console.log(x.toExponential(6));
+
+এখানে প্যারামিটারে যত সংখ্যা দিব দশমিকের পর ঠিক তত ঘর পর্যন্ত যাবে 
+
+৩। toFixed()
+এই মেথড টা  মূলত একটা সংখ্যাকে দশমিকের পর কত ঘর পর্যন্ত কাউন্ত করবে । 
+
+let x = 9.656;
+console.log(x.toFixed(0));
+console.log(x.toFixed(2));
+console.log(x.toFixed(4));
+
+এখন প্যারামিটারে কোন কিছু না দিলে এটা পূর্ণসংখ্যায় কনভার্ট করে ফেলবে । যদি প্যারামিটার পাস করি সেক্ষেত্রে যে নাম্বার দিব দশমিকের পর ঠিক তত ঘর পর্যন্ত রিটার্ন ভ্যালু হিসেবে একটা নাম্বার দিবে । 
+
+৪।  toPrecision()
+এই মেথড টা  মূলত একটা সংখ্যাকে টোটাল  কত ঘর পর্যন্ত কাউন্ত করবে । এখানে একটা জিনিস মনে রাখতে হবে যে এটা টোটাল বলতে একটা সংখ্যা লেন্থকে বুজানো হয়েছে । আমরা জানি একটা সংখ্যার দুইটা অংশ থাকে 
+ পূর্ণাংশ - দশমিকের বাম  দিকের অংশ 
+ ভগ্নাংশ - দশমিকের ডান দিকের অংশ 
+এই দুইটার যোগফল হল টোটাল । 
+
+let x = 9.656;
+console.log(x.toPrecision());
+console.log(x.toPrecision(2));
+console.log(x.toPrecision(4));
+console.log(x.toPrecision(6));
+
+এখানে প্যারামিটার পাস না করলে আগের ভ্যালু ঠিক রাখবে । 
+
+৫।  valueOf()
+
+এটা জাস্ট ভ্যালু টা নাম্বার হিসেবে রিটার্ন করবে । 
+
+৬।  Number()
+এই মেথড টা প্যারামিটারে যাই কিছু পাবে সেটাকে নাম্বারে কনভার্ট করার চেষ্টা করবে না পারলে NaN [নট এ নাম্বার ] দেখাবে । 
+
+Number(true);                    //   1
+
+Number(false);                   //   0
+
+Number("10");                    //  10
+
+Number("  10");                  //  10
+
+Number("10  ");                  //  10
+
+Number(" 10  ");                //  10
+
+Number("10.33");                //  10.33
+
+Number("10,33");                //  NaN
+
+Number("10 33");                //  NaN
+
+Number("John");                 // NaN
+
+৭।  parseInt()
+
+এই মেথড টা প্যারামিটারে যাই কিছু পাবে সেটাকে পূর্ণসংখ্যায় কনভার্ট করার চেষ্টা করবে না পারলে NaN [নট এ নাম্বার ] দেখাবে । 
+
+
+parseInt(" -10");                    //  -10
+
+parseInt("-10.33");                //  -10
+
+ parseInt(" 10");                  //  10
+
+ parseInt("10.33  ");                  //  10
+
+ parseInt(" 10  20 30 ");                //  10
+
+ parseInt("10 years");                //  10
+
+ parseInt(" years 10 ");                //  NaN
+ 
+ ৮।  parseFloat()
+
+ এই মেথড টা প্যারামিটারে যাই কিছু পাবে সেটাকে -
+ 
+ পূর্ণসংখ্যায় থাকলে রিটার্ন হিসেবে পূর্ণসংখ্যা দিবে । 
+ দশমিকে থাকলে রিটার্ন হিসেবে দশমিক সংখ্যা দিবে । 
+ জাভাস্ক্রিপ্ট রিড করতে না পারলে NaN  দিবে । 
+
+ parseFloat("10");                       // 10
+
+parseFloat("10.33");                    // 10.33
+
+parseFloat("10 20 30");                 // 10
+
+parseFloat("10 years");                 // 10
+
+parseFloat("years 10");                 // NaN 
+
+
+// ***  Dates in javscript ****
+
+creating a date with constructor -
+নয়ভাবে  Date অবজেক্ট  তৈরি করা যায় । 
+new Date()
+
+new Date(date string)
+
+new Date(year,month)
+new Date(year,month,day)
+new Date(year,month,day,hours)
+new Date(year,month,day,hours,minutes)
+new Date(year,month,day,hours,minutes,seconds)
+new Date(year,month,day,hours,minutes,seconds,ms)
+new Date(milliseconds)
+
+জাভাস্ক্রিপ্ট এ মাস কাউন্ত করে ০ থেকে ১১ পর্যন্ত ।
+
+// ** Date getmethod **
+// ** Date setmethod **
+
+//** Math Properties **
+let result = Math.PI
+console.log(result);
+
+Math.E        // returns Euler's number
+Math.PI       // returns PI
+Math.SQRT2    // returns the square root of 2
+Math.SQRT1_2  // returns the square root of 1/2
+Math.LN2      // returns the natural logarithm of 2
+Math.LN10     // returns the natural logarithm of 10
+Math.LOG2E    // returns base 2 logarithm of E
+Math.LOG10E   // returns base 10 logarithm of E 
+
+// *** Math Method ** 
+
+১। Math.round()
+এই মেথড টা মূলত সবচেয়ে কাছের পূর্ণসংখ্যায় নিয়ে যায় । 
+Math.round(4.9)                // returns 5
+Math.round(4.7)                // returns 5
+Math.round(4.4)                // returns 4
+Math.round(4.2)                // returns 4
+Math.round(-4.2)                // returns -4
+
+২। Math.ceil()
+এই মেথড টা মূলত কোন একটা সংখ্যার দশমিকের পর যাই থাকুক না কেন এটা সব সময় পরবর্তি পূর্ণসংখ্যায় নিয়ে যাবে  । 
+
+Math.ceil(4.9);                // returns 5
+Math.ceil(4.7);                // returns 5
+Math.ceil(4.4);                // returns 5
+Math.ceil(4.2);                // returns 5
+Math.ceil(-4.2);                // returns -4
+
+৩। Math.floor()
+এই মেথড টা মূলত কোন একটা সংখ্যার দশমিকের পর যাই থাকুক না কেন এটা সব সময় দশমিকের আগের  পূর্ণসংখ্যায় নিয়ে যাবে  । 
+Math.floor(4.9);               // returns 4 
+Math.floor(4.7);                // returns 4
+Math.floor(4.4);                // returns 4
+Math.floor(4.2);                // returns 4
+Math.floor(-4.2);                // returns -5
+
+৪। Math.trunc()
+এই মেথড টা মূলত কোন একটা সংখ্যার দশমিকের পর যাই থাকুক না কেন সেটাকে  কেটে ফেলবে এবং আগের পূর্ণসংখ্যায় নিয়ে যাবে  । 
+Math.trunc(4.9);               // returns 4 
+Math.trunc(4.7);               // returns 4 
+Math.trunc(4.4);               // returns 4 
+Math.trunc(4.2);               // returns 4 
+Math.trunc(-4.2);               // returns -4 
+
+৫। Math.sign()
+এখানে প্যারামিটারে পজিটিভ মান নিলে রিটার্ন করবে 1
+এখানে প্যারামিটারে  নেগেটিভ মান নিলে রিটার্ন করবে -1
+এখানে প্যারামিটারে  জিরো  মান নিলে রিটার্ন করবে  0
+
+Math.sign(-4);               // returns 1
+Math.sign(0);               // returns 0 
+Math.sign(4);               // returns -1
+
+৬। Math.pow()
+এখানে দুইটা প্যারামিটার নিবে -
+প্রথম প্যারামিটারে সংখ্যাটা পাবে 
+দ্বিতীয় প্যারামিটারে সূচক পাবে । 
+Math.pow(8, 2);                // returns 64
+৭। Math.sqrt()
+এটা বর্গমূল বের করে 
+Math.sqrt(64);                // returns 8
+
+৮। Math.abs()
+এখানে প্যারামিটারে যাই নেই না কেন  সব সময় পজিটিভ ভ্যালু  রিটার্ন করবে । 
+
+৯। Math.min()
+Math.min(0, 150, 30, 20, -8, -200);                   // returns -200
+১০। Math.max()
+Math.max(0, 150, 30, 20, -8, -200);                   // returns 150
+
+// **  Set ** 
+// create a set 
+সেট এর কন্সট্রাকটর ফাংশনে একটা অ্যাঁরে পাস করতে হবে । সেটের কোন লিটারেল সিনটেক্স নাই । 
+সেট হচ্ছে ইউনিক কালেকশন  অফ ভ্যালু । 
+const letters = new Set(["a", "b", "c"]);
+
+// property
+
+// method
+১ । add()
+সেটের ভ্যালু অ্যাড করতে এই মেথড ব্যবহার করা হয় । যেমন - 
+// Create a Set
+const letters = new Set();
+// Create Variables
+const a = "a";
+const b = "b";
+const c = "c";
+// Add Variables to the Set
+letters.add(a);
+letters.add(b);
+letters.add(c);
+
+২। forEach()
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+// List all Elements
+let text = "";
+letters.forEach (function(value) {
+  text += value;
+})
+
+৩। values()
+
+// ** Map ** 
+ম্যাপ  এর কন্সট্রাকটর ফাংশনে একটা অ্যাঁরে পাস করতে হবে এবং কি ভ্যালু পেয়ার করে পাস করতে হয় । 
+// Create a Map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+বাইরে থেকে ভ্যালু পুশ করতে হলে - 
+
+// Create a Map
+const fruits = new Map();
+
+// Set Map Values
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
 
 // *** variable concept *** 
 
@@ -569,25 +970,6 @@ language.founder = " Breandon Eich "
 
 console.log(language);
 console.log(language2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
