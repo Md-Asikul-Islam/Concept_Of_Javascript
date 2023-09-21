@@ -42,7 +42,7 @@ output
 
 এখানে length হল string এর built in  একটা property যেটার সাহায্যে আমরা একটা string কত গুলা character আছে সেটা জানতে পারি inculding space মানে হল space  সহ কাউন্ত করে  । 
 
-**Escape Character**
+// **Escape Character**
 
 let text = "We are the so-called \"Vikings\" from the north.";
 console.log(text);
@@ -64,9 +64,6 @@ console.log(text);
 
 // console.log(x == y);            // true 
 // console.log(x === y);          // false 
-
-
-
 
 
 // Ex-2
@@ -206,12 +203,14 @@ console.log(result);
 ১৪।  trim()
 এটা মূলত একটা স্ট্রিং এর মধ্যে কোথাও হোয়াইট স্পেস থাকলে সেটা কেটে ফেলে । 
 
+
 // *** Template litaral syntax **** 
+
 Template literals হল Es-6 খুবই গুরুত্বপূর্ণ একটি ফিচার যেটা  কি বোর্ডের ব্যাক টিক সাইন দিয়ে লিখি । এটা মুলত মাল্টি লাইন স্ট্রিং, স্ট্রিং এর মধ্যে ভ্যারিয়েবলের ব্যবহার, স্ট্রিং এর সাথে স্পেশাল ক্যারেক্টার ব্যবহার একসাথে করা যায় । যেমন - 
 
 let name = " Asikul "
 
-let templateSyntax = ` Hi I am ${name} works at Brain station software farm `
+let templateSyntax = ` Hi, I am ${name} works at Brain station software farm `
 
 // ** Number **
 জাভাস্ক্রিপ্ট এ নাম্বার হল প্রিমিটিভ ডাটা । জাভাস্ক্রিপ্ট শুধু  একটা টাইপের নাম্বারই আছে কিন্তু অন্যান্য প্রোগ্রামিং ল্যাঙ্গগুয়েজ এ একাদিক নাম্বার থাকে  । 
@@ -288,8 +287,6 @@ console.log(typeof(NaN));                // number
 
 // console.log(x == y);            // true 
 // console.log(x === y);          // false 
-
-
 
 
 
