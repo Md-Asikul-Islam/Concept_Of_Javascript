@@ -134,6 +134,7 @@ console.log(a && b);                               // false
 console.log((c > 2) && (c < 2));                   // false
 
 এই ক্ষেত্রে সবগুলা  শর্তই সত্য থাকলে রিটার্ন করবে  true অন্যথায় রিটার্ন করবে  false । 
+
 // ২।  Logical OR Operator
 
 const a = true, b = false, c = 4;
@@ -200,6 +201,44 @@ console.log( language ?? " javascript");                  // NaN
 console.log( language || " javascript");                  // javascript
 এখানে ডাবল কুশ্চেইয়েন মার্কের বাম পাশে যদি কোন ভ্যারিএবলের ভ্যালু null  অথবা undefined না থাকাতে সেক্ষেত্রে তার বাম পাশে যা থাকবে তাই রিটার্ন করবে । এই জন্য Nulish Coalescing operator রিটার্ন করেছে NaN  কিন্তু লজিকাল অর অপারেটর ক্ষেত্রে NaN যেহেতু falsy value তাই javascript রিটার্ন করেছে । 
 
+// **typeof operator **
+
+// জাভাস্ক্রিপ্ট এ ভ্যারিয়েবলের ডাটা টাইপ জানতে typeof operator ব্যবহার করা হয় । যেমন-
+
+EX-1
+
+// let x = 5 + 5;
+// let y = "5" + 5;
+// let z = "Hello" + 5;
+
+// console.log(typeof(x));
+// console.log(typeof(y));
+// console.log(typeof(z));
+
+// output 
+// number    10
+// string    55
+// string   hello5
+
+// জাভাস্ক্রিপ্ট সবসময় বাম থেকে ডান দিকে কোড এক্সিকিউট করে । 
+let car;
+console.log(typeof(car));
+output
+undefined
+এখানে এই ভ্যারিয়েবলের ভ্যালু undefined এবং ডাটা টাইপ undefined
+
+EX-2
+
+typeof "John"                           // string
+typeof 3.14                             //  number
+typeof NaN                              //  number
+typeof false                            //  boolean
+typeof [1,2,3,4]                        //  object
+typeof {name:'John', age:34}            //  object
+typeof new Date()                       //  object
+typeof function () {}                   //  function
+typeof myCar                            //  undefined
+typeof null                             //  object
 
 
 
@@ -207,6 +246,23 @@ console.log( language || " javascript");                  // javascript
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*** truthy or falsy value *** 
 
 
 

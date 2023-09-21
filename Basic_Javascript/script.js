@@ -6,30 +6,6 @@ Fixed values কে বলা হয় Literals
 Variable values কে ভ্যারিয়েবল বলা হয় । 
 
 
-// **typeof operator **
-
-// জাভাস্ক্রিপ্ট এ ভ্যারিয়েবলের টাইপ জানতে typeof operator ব্যবহার করা হয় । যেমন-
-
-// let x = 5 + 5;
-// let y = "5" + 5;
-// let z = "Hello" + 5;
-
-// console.log(typeof(x));
-// console.log(typeof(y));
-// console.log(typeof(z));
-
-// output 
-// number    10
-// string    55
-// string   hello5
-
-// জাভাস্ক্রিপ্ট সবসময় বাম থেকে ডান দিকে কোড এক্সিকিউট করে । 
-
-let car;
-console.log(typeof(car));
-output
-undefined
-এখানে এই ভ্যারিয়েবলের ভ্যালু undefined এবং ডাটা টাইপ undefined
 
 // ** string **
 
