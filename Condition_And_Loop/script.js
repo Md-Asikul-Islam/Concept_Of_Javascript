@@ -172,6 +172,26 @@ console.log(type);
 -কন্ডিশন চেকিং true  হলে প্রশ্নবোধক চিহ্নের পরের অংশ রিটার্ন করবে । 
 -কন্ডিশন চেকিং false  হলে কোলন চিহ্নের পরের অংশ রিটার্ন করবে । 
 
+// *** truthy or falsy value *** 
+
+কোন বুলিয়ান কনটেক্সটে বাঁ কন্ডিশন চেকিং এ যদি এমন হয় যে এর রেজাল্ট হয় true নয়তো false এদেরকে truthy ortruthy ভ্যালু  বলে । যেমন - 
+
+১। false,  0, -0, "",  blank, null , undefined, NaN , 0n, document.all  এদেরকে falsy value বলে । 
+
+২। true, "any text", শুন্য বাদে যেকোনো নাম্বার , infinity, -infinity , {}, [] এদেরকে truthy ভ্যালু বলে । 
+
+// Ex-1
+
+let myVar = " test "
+
+if (myVar) {
+  console.log(" i am truthy value ");
+}
+else{
+  console.log(" i am falsy value ");
+}
+
+এখানে কন্ডিশন চেকিং এ যদি truthy ভ্যালু  পায় তাহলে প্রথম ব্লকে যাবে ,আর falsy value পায় তাহলে দ্বিতীয় ব্লকে যাবে । 
 
 // *** Nulish Coalescing operator *** 
 জাভাস্ক্রিপ্ট এ  Null এবং undefined কে একত্র করেছে এই অপারেটর তাই একে Nulish Coalescing operator বলে । 
@@ -240,29 +260,54 @@ typeof function () {}                   //  function
 typeof myCar                            //  undefined
 typeof null                             //  object
 
+এখানে কনফিউসিং ডাটা টাইপ হচ্ছে একটা অ্যাঁরের ডাটা টাইপ । একটা অ্যাঁরেকে typeof [1,2,3,4] করলে এটা অবজেক্ট রিটার্ন করে । কিন্তু আমরা চাচ্চি একটা অ্যাঁরেকে চেক করে দেখতে যে এটা আসলে অ্যাঁরে কি না ?? 
+
+function isArray(myArray) {
+  return (myArray.constructor.toString().indexOf("Array") > -1) ;
+}
+
+console.log(isArray([1, 2, 3, 4]));                        // true 
+
+                  অথবা একটু সহজ করে 
+
+ function isArray(myArray) {
+ return (myArray.constructor === Array ) ;
+ }
+
+ console.log(isArray([1, 2, 3, 4]));                        // true 
+
+** ধরেন  ইন্টারভিউতে জিজ্ঞেস করল typeof এর ডাটা টাইপ কি ?? 
+
+আমরা জানি ডাটা টাইপ শুধুমাত্র কোন ভ্যারিএবলের ক্ষেত্রে হয় । typeof যেহেতু একটা অপারেটর তাই একে আবার typeof করলে স্ট্রিং রিটার্ন করবে । 
+
+console.log(typeof(typeof(5)));                              // string 
+
+এখানে প্রথমবার যখন typeof করলে রিটার্ন করছে number । number  লিখা পরের ক্ষেত্রে আবার typeof করলে স্ট্রিং রিটার্ন করছে । 
 
 
 
+// ** Differce between undefined and Null *** 
+
+typeof undefined                        // undefined
+typeof null                             // object
+
+null === undefined                      // false
+null == undefined                       // true 
+
+
+// ** instanceof operator ***
+
+const cars = ["Saab", "Volvo", "BMW"];
+
+const cars = ["Saab", "Volvo", "BMW"];
+
+console.log((cars instanceof Array));                                // true
+console.log((cars instanceof Object));                                // true
+console.log((cars instanceof String));                                // false
+console.log((cars instanceof Number));                                // false
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*** truthy or falsy value *** 
 
 
 

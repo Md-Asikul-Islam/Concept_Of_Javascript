@@ -362,6 +362,8 @@ parseInt("-10.33");                //  -10
 
  parseInt("10.33  ");                  //  10
 
+ parseInt("10.75  ");                  //  10
+
  parseInt(" 10  20 30 ");                //  10
 
  parseInt("10 years");                //  10
@@ -370,13 +372,13 @@ parseInt("-10.33");                //  -10
  
  ৮।  parseFloat()
 
- এই মেথড টা প্যারামিটারে যাই কিছু পাবে সেটাকে -
+এই মেথড টা প্যারামিটারে যাই কিছু পাবে সেটাকে -
  
- পূর্ণসংখ্যায় থাকলে রিটার্ন হিসেবে পূর্ণসংখ্যা দিবে । 
- দশমিকে থাকলে রিটার্ন হিসেবে দশমিক সংখ্যা দিবে । 
- জাভাস্ক্রিপ্ট রিড করতে না পারলে NaN  দিবে । 
+পূর্ণসংখ্যায় থাকলে রিটার্ন হিসেবে পূর্ণসংখ্যা দিবে । 
+দশমিকে থাকলে রিটার্ন হিসেবে দশমিক সংখ্যা দিবে । 
+জাভাস্ক্রিপ্ট রিড করতে না পারলে NaN  দিবে । 
 
- parseFloat("10");                       // 10
+parseFloat("10");                       // 10
 
 parseFloat("10.33");                    // 10.33
 
@@ -386,6 +388,24 @@ parseFloat("10 years");                 // 10
 
 parseFloat("years 10");                 // NaN 
 
+
+// *** BigInt *** 
+জাভাস্ক্রিপ্ট কোন নাম্বারের সর্বচ্চো নাম্বার কিভাবে বের করব ?? 
+
+let largestNumber = Number.MAX_SAFE_INTEGER;
+largestNumber += 1 ;
+largestNumber += 1 ;
+console.log(largestNumber);
+
+প্রথমবার 1 যোগ করলে ভ্যালু আসছে কিন্তু দ্বিতীয়বার 1 যোগ করলে ভ্যালু আসে না এই সমস্যা Es-11 একটা ফিচার দিয়ে সলভ করেছে । 
+let largestNumber = Number.MAX_SAFE_INTEGER;
+
+largestNumber  = BigInt(largestNumber) + 1n ;
+console.log(largestNumber);
+
+console.log(10n === BigInt(10));                         // true
+console.log(10n == 10);                                  // true
+console.log(10n === 10);                                 // false
 
 // ***  Dates in javscript ****
 জাভাস্ক্রিপ্ট এ Date এর লিটারেল সিনটেক্স নাই । একে সবসময় অবজেক্ট কন্সট্রাকটর ফাংশন আকারে লিখা হয় । 
@@ -532,6 +552,70 @@ Math.sqrt(64);                // returns 8
 Math.min(0, 150, 30, 20, -8, -200);                   // returns -200
 ১০। Math.max()
 Math.max(0, 150, 30, 20, -8, -200);                   // returns 150
+
+
+
+// *** type conversion ***
+
+// জাভাস্ক্রিপ্ট একটা ডাটা টাইপ থেকে অন্য কোন ডাটা টাইপে কনভার্ট করাকেই type conversion বলে । type conversion মূলত দুইভাবে করা যায় । 
+// ১। ফাংশন ব্যবহার -
+// ২। অটোমেটিক বাঁ জাভাস্ক্রিপ্ট নিজেই করে । 
+
+জাভাস্ক্রিপ্ট এর কিছু ফাংশন ব্যবহার করে আমরা কনভার্ট করব -
+
+// ১। Strings to Numbers
+
+console.log(Number("3.14"));                                 //  3.14
+console.log(Number(Math.PI));                                //  3.1416
+console.log(Number(" "));                                    //  0
+console.log(Number(""));                                     //  0
+console.log(Number("99 88"));                                // NaN
+console.log(Number("John"));                                 // NaN
+
+// ২। Numbers to Strings
+
+console.log(String(100));                               // 100
+console.log(String(100 + 23));                          // 123
+
+// ৩। Dates to Numbers
+
+let date = new Date();
+console.log(Number(date));                                // 1695359113945
+date.getTime()                                            // 1695359113945
+
+// ৪। Dates to Strings
+let date = new Date();
+console.log(date.toString());                          // Fri Sep 22 2023 11:08:40 GMT+0600 (Bangladesh Standard Time)
+
+
+// ৫। Booleans to Numbers
+console.log(Number(false));                             //  0
+console.log(Number(true));                              //  1 
+
+// ৬। Booleans to Strings
+String(false)      //                       "false"
+String(true)       //                       "true" 
+
+
+false.toString()   //                       "false"
+true.toString()    //                       "true"
+
+// ৭। Automatic Type Conversion
+
+5 + null    // returns 5                             because null is converted to 0
+"5" + null  // returns "5null"                       because null is converted to "null"
+"5" + 2     // returns "52"                          because 2 is converted to "2"
+"5" - 2     // returns 3                             because "5" is converted to 5
+"5" * "2"   // returns 10                            because "5" and "2" are converted to 5 and 2 
+
+// ৮। Automatic String Conversion
+
+// if myVar = {name:"Fjohn"}  // toString converts to "[object Object]"
+// if myVar = [1,2,3,4]       // toString converts to "1,2,3,4"
+// if myVar = new Date()      // toString converts to "Fri Jul 18 2014 09:08:55 GMT+0200"
+
+
+
 
 // **  Set ** 
 // create a set 
