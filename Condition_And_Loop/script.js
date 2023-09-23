@@ -307,15 +307,138 @@ console.log((cars instanceof String));                                // false
 console.log((cars instanceof Number));                                // false
 
 
+// **** Condition ***
+
+// ১। if statement
+এখানে ফাস্ট ব্রাকেটের ভিতরের অংশকে বলা হয় কন্ডিশন চেকিং পার্ট । আমরা জানি জাভাস্ক্রিপ্ট কন্ডিশন চেকিং এর রেজাল্ট হয় বুলিয়ান ডাটা টাইপে । 
+-এটা হয়  true 
+-এটা নাহয়  false 
+এখন কন্ডিশন চেকিং  true  হলেই কেবলমাত্র if ব্লকে ডুকবে । 
+
+
+ let age = 17 ;
+ if (age < 18) {
+  console.log(" You are young Boy ");
+ }
+
+যেহেতু age ভ্যারিএবলের ভ্যালু 17 যেটা 18 থেকে ছোট । এটা বুলিয়ান statement এ true রিটার্ন করে যে কারনে if ব্লকে ডুকবে এবং কনসল লগ করবে । 
+
+// ২। if...else statement
+
+এখানে ফাস্ট ব্রাকেটের ভিতরের অংশকে বলা হয় কন্ডিশন চেকিং পার্ট । আমরা জানি জাভাস্ক্রিপ্ট কন্ডিশন চেকিং এর রেজাল্ট হয় বুলিয়ান ডাটা টাইপে । 
+-এটা হয়  true 
+-এটা নাহয়  false 
+এখন কন্ডিশন চেকিং  true  হলেই কেবলমাত্র if ব্লকে ডুকবে । 
+আবার কন্ডিশন চেকিং false  হলে এটা else ব্লকে ডুকবে । 
+
+
+ let age = 19 ;
+ if (age < 18) {
+  console.log(" You are young Boy ");
+ }
+ else{
+  console.log(" You are Adult !");
+ }
+
+যেহেতু age ভ্যারিএবলের ভ্যালু 19 যেটা 18 থেকে বড় । এটা বুলিয়ান statement এ false রিটার্ন করে যে কারনে else ব্লকে ডুকবে এবং কনসল লগ করবে । 
+
+// ৩। if...else if...else statement
+এখন আমরা কন্ডিশনাল statement যদি দুইটার বেশি হয় সেক্ষেত্রে মাঝের সবগুলা else if ব্যবহার করব শুধুমাত্র লাস্টের কন্ডিশনাল statement টা else  দিয়ে শেষ করতে হবে । এটা জাভাস্ক্রিপ্টের কনভেনশন ।
+
+
+let age = 19 ;
+if (age < 18) {
+ console.log(" You are young Boy ");
+}
+else if(age == 18 ){
+ console.log( " Welcome Adult Zone ");
+}
+else if( age > 18 && age < 30){
+  console.log(" You are Matured ");
+}
+else {
+ console.log(" You are  old man !");
+}
+
+
+
+// ৪। switch
+
+এখানে ফাস্ট ব্রাকেটের ভিতরের অংশকে বলা হয় এক্সপ্রেশন পার্ট  । আগের বার আমরা if...else if ক্ষেত্রে ফাস্ট ব্রাকেটের ভিতরে কন্ডিশনাল statement লিখতাম কিন্তু সুইচ এর ফাস্ট ব্রাকেটে সরাসরি ভ্যারিএবল বাঁ এক্সপ্রেশন দিতে হবে । 
+এখন এক্সপ্রেশনের ভ্যালুর সাথে প্রত্যেকটা কেসের ভ্যালু চেক করে দেখবে, যেই কেসের সাথে ম্যাচ করবে তাকেই রিটার্ন করবে । 
+// Ex- 1
+
+
+let date = new Date().getDay();
+console.log(date);
+switch (date) {
+  case 0:
+  console.log("Sunday");
+    break;
+  case 1:
+  console.log(  "Monday");
+    break;
+  case 2:
+  console.log( "Tuesday");  
+    break;
+  case 3:
+  console.log("Wednesday");
+    break;
+  case 4:
+  console.log("Thursday");
+    break;
+  case 5:
+  console.log("Friday");
+    break;
+  case 6:
+  console.log("Saturday");
+    break;
+  default : console.log(" it's  Not a valid date ");  
+}
+
+আমরা জানি জাভাস্ক্রিপ্ট getDay(); মেথড সাধারনত একটা দিনকে রিটার্ন করে যার ভ্যালু সবসময় ০ থেকে ৬ হয় । 
+
+getDay(); মেথড এর ভ্যালু ০ হলে রবিবার
+getDay(); মেথড এর ভ্যালু ১ হলে সোমবার 
+getDay(); মেথড এর ভ্যালু ২ হলে মঙ্গলবার 
+getDay(); মেথড এর ভ্যালু ৩ হলে বুধবার
+getDay(); মেথড এর ভ্যালু ৪ হলে বৃহস্পতিবার
+getDay(); মেথড এর ভ্যালু ৫ হলে শুক্রবার 
+getDay(); মেথড এর ভ্যালু ৬ হলে শনিবার 
 
 
 
 
 
+// EX-2
+
+এখানে ফাস্ট ব্রাকেটের ভিতরের অংশকে বলা হয় এক্সপ্রেশন পার্ট  ।  আমরা জানি সুইচ এর ফাস্ট ব্রাকেটে সরাসরি ভ্যারিএবল বাঁ এক্সপ্রেশন দিতে হবে  কিন্তু সুইচের কেসের ভ্যালু গুলা ইম্প্রেসিভে ভ্যালু হওয়াতে । অর্থাৎ কেসের ভ্যালু গুলা true অথবাঁ  false রিটার্ন করেছে যে কারনে এক্সপ্রেশনের ভ্যালু true অথবা  false হবে । 
+# এখন এক্সপ্রেশন  যদি  true  হয় -
+তখন আমার ভ্যারিএবলের সাথে যেই কেসটা ম্যাচ করে প্রথমে যে  true রিটার্ন করবে সেই কেসের কনসল লগ প্রিন্ট হবে । 
+# এখন এক্সপ্রেশন  যদি   false হয় -
+তখন আমার ভ্যারিএবলের সাথে যেই কেসটা ম্যাচ করে প্রথমে যে   false  রিটার্ন করবে সেই কেসের কনসল লগ প্রিন্ট হবে । 
+
+এরপর যদি কোন কেসের সাথে ভ্যারিএবলে ম্যাচ না করে সেক্ষেত্রে default এর কনসল প্রিন্ট হবে । 
 
 
 
 
+let age = 17;
+
+switch (true) {
+  case age < 18:
+    console.log("You are a young Boy");
+    break;
+  case age === 18:
+    console.log("Welcome to the Adult Zone");
+    break;
+  case age > 18 && age < 30:
+    console.log("You are Matured");
+    break;
+  default:
+    console.log("You are an old man!");
+    break;
+}
 
 
 
