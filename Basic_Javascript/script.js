@@ -1135,5 +1135,57 @@ console.log(language);
 console.log(language2);
 
 
+// *** How to clone NoN Primitive data *** 
+
+জাভাস্ক্রিপ্ট সাধারনত দুই ধরনের ডাটা থাকে
+
+    প্রিমিটিভ ডাটা
+    নন প্রিমিটিভ ডাটা
+
+আজকে আমরা নন প্রিমিটিভ ডাটা নিয়ে কথা বলব। কিভাবে একটা নন প্রিমিটিভ ডাটাকে আমরা ক্লোন করতে পারি।
+জাভাস্ক্রিপ্ট এ ক্লোন ও দুই ধরনের
+
+    ডিপ ক্লোন
+    শ্যালো ক্লোন
+
+চলুন উদাহরণ দিয়ে দেখা যাকঃ-
+const phone = {
+  name: 'Samsung',
+  color: ['Lime', 'Silver', 'black'],
+};
+ধরুন আমাদের phone নামে একটা object আছে তার ভেতর আরো নেস্টেড প্রোপার্টি ভ্যালু আছে। এখন আমাদের প্লান হচ্ছে আমার এই object টি ব্যবহার করে আরো ফোনের জন্য object বানাবো। আমারা কি করতে পারি।
+const phone2 = phone;
+phone2.name = 'Redmi';
+আমরা এভাবে কপি করে name প্রোপার্টি চেঞ্জ করে দিতে পারি। কিন্তু এতে করে কি হবে আমাদের মেইন phone কিন্তু চেঞ্জ হয়ে যাবে কারন জাভাস্ক্রিপ্ট এ object and array হচ্ছে নন প্রিমিটিভ ডাটা তাই আমরা যেভাবে ক্লোন করেছি এভাবে ক্লোন হয়েছে দেখলে ও তাদের ২ জনের জন্য মেমোরিতে শুধু একটি রেফারেন্স আছে তাই যেকোনো একটা চেঞ্জ করলেই আরেকটিও চেঞ্জ হয়ে যাচ্ছে এর জন্য আমরা কি করতে পারি। আমরা স্প্রেড অপারেটর ব্যবহার করতে পারি। {...something} চলুন দেখা যাক।
+const phone = {
+  name: 'Samsung',
+  color: ['Lime', 'Silver', 'black'],
+};
+const phone2 = { ...phone };
+phone2.name = 'Redmi';
+console.log(phone2); // output - { name: 'Redmi', color: [ 'Lime', 'Silver', 'black' ] }
+console.log(phone); //output - { name: 'Samsung', color: [ 'Lime', 'Silver', 'black' ] }
+অকে কাজ শেষ। আচ্ছা ভাই রেডমি ফোন এর তো লাইম কালার নাই। অকে রিমোভ করে দিচ্ছি।
+const phone = {
+  name: 'Samsung',
+  color: ['Lime', 'Silver', 'black'],
+};
+const phone2 = { ...phone };
+phone2.name = 'Redmi';
+phone2.color[0] = 'White';
+console.log(phone2); // output - { name: 'Redmi', color: [ 'White', 'Silver', 'black' ] }
+console.log(phone); //output - { name: 'Samsung', color: [ 'White', 'Silver', 'black' ] }```
+এ কি ভাই এ তো Samsung কেও পরিবর্তন করে দিলো? তার মানে হলো এটা ক্লোন হয়েছে কিন্তু শ্যালো ক্লোন এটা কে ডিপ ক্লোন করতে হবে। চলুন ডিপ ক্লোন করা যাক।
+const phone = {
+  name: 'Samsung',
+  color: ['Lime', 'Silver', 'black'],
+};
+
+const phone2 = JSON.parse(JSON.stringify(phone));
+phone2.name = 'Redmi';
+phone2.color[0] = 'White';
+console.log(phone2); // output - { name: 'Redmi', color: [ 'White', 'Silver', 'black' ] }
+console.log(phone); //output - { name: 'Samsung', color: [ 'Lime', 'Silver', 'black' ] }```
+এখন ঠিকঠাক কাজ করেছে। অর্থাৎ আমাদের যদি কোনো নেস্টেড Array or Object থাকে তাহলে আমাদের ক্লোন করতে হলে প্রথমে মেইন Array or Object কে JSON.Stringify() করতে হবে তার পর তাকে আবার JSON.parse() করতে হবে তাহলে এটা ডিপ ক্লোন হয়ে যাবে। আমরা নিশ্চিত ভাবে যেকোনো জাগায় যেকোনো ভ্যালু চেঞ্জ করে ব্যবহার করতে পারব।
 
 

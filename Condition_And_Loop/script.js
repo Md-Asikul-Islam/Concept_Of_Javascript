@@ -559,6 +559,13 @@ for (const x of a) {
 নবমবার  loop  এ  X  হবে  a
 দশমবার  loop  এ  X  হবে  h
 
+// *** forEach() **** 
+
+
+
+
+
+
 
 // Ex-2 Arrray 
 
@@ -615,7 +622,7 @@ for (let i = 0; i < 10; i++) {
 আমরা যখন কোন কিছু সার্চ করি সেক্ষেত্রে মূলত  Regular Expression ব্যবহার করা হয় । 
 
 
-// *** Debuging *** 
+// ***  Debuging with chrome dev tools *** 
 
 
 
@@ -625,4 +632,12 @@ for (let i = 0; i < 10; i++) {
 // *** Event Loop ***
 
 
+
+
+
 // ***  Execution context  *** 
+
+
+
+
+
