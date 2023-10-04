@@ -1282,10 +1282,6 @@
 
 
 
- 
-
-
-
 // ১১। funtion curring - 
   
 
@@ -1613,6 +1609,52 @@
 // একটা ফাংশনকে অন্য ফাংশনের প্যারামিটার, আর্গুমেন্ট হিসেবে পাস করা যাবে । 
 
 // ফাংশনের প্যারামিটারে অবজেক্ট ও পাস করা যায় । 
+
+// ***  function default parametar ***
+
+function myFunc(x) {
+  return x
+}
+
+// case-1
+console.log(myFunc(3));                  // 3
+// case-2
+console.log(myFunc());                  //  undefind
+
+// case-3
+
+function myFunc(x = 10 ) {
+  return x
+}
+
+console.log(myFunc());                  //  10 
+
+console.log(myFunc(5))                   // 5
+
+console.log(myFunc(undefined))                 // 10
+
+console.log(myFunc(null))                  // null
+
+// *** Rest operator *** 
+
+function myFunc(a, b) {
+  console.log(a, b);
+}
+
+myFunc(5, 6)                    // 5,6
+
+কিন্তু যদি এমন হয় ইউজার পাঠানোর সময় ভুলে বেশি দিয়ে ফেলছে । সেক্ষেত্রে 
+
+function myFunc(...params) {
+  console.log(params);
+}
+
+myFunc(5,  6, 7, 8, 9, 10)
+output:  [5, 6, 7, 8, 9, 10]
+
+এখানে প্যারামিটার গুলার একটা অ্যারে দিয়ে দিছে । 
+
+
 
 
 
