@@ -17,14 +17,33 @@
 // *** Genarator ***
 
 
+// *** Optional chaining *** 
+
+const language = {
+  name : " javascript",
+  creator : " Brendan Eich",
+  library : {
+    react : {
+      company : "Facebook ",
+    }
+  }
+}
+
+আমরা যদি এই নেসটেড অবজেক্ট এর  company : "Facebook " প্রোপার্টি এক্সেস করতে চাই । তাহলে এভাবে করতে হবে । 
 
 
+let company = language.library.react.company;
+console.log(company);
 
+কিন্তু এইটা সঠিক পদ্দতি না এখন যদি এই অবজেক্ট টা কোন একটা  এপি আই থেকে আসত তখন আমাকে চেক করতে হত company প্রোপার্ট আছে কিনা ?? 
 
+let company = language && language .library && language.library.react && language.library.react.company;
+console.log(company);
 
+এভাবে ধরে  ধরে চেক করা অনেক প্যারা দায়ক । এই সমস্যা সমাধান এভাবে করতে হবে । প্রত্যেকবার একটা কুইয়শেন মার্ক দিলে জাভাস্ক্রিট নিজেই চেকিং এর কাজ করে নিবে । এতে ডেভেলপার লাইফ অনেক ইজি হবে । 
 
-
-
+let company = language?.library?.react?.company;
+console.log(company);
 
 
 

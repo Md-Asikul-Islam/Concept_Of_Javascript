@@ -633,7 +633,7 @@ const letters = new Set(["a", "b", "c"]);
 ১। এই প্রপারটি রিটার্ন করে একটা সেট  এ কত গুলা এলিমেন্ত আছে । 
 letters.size;
 // method
-১ । add()
+১। add()
 সেটের ভ্যালু অ্যাড করতে এই মেথড ব্যবহার করা হয় । যেমন - 
 // Create a Set
 const letters = new Set();
@@ -665,6 +665,23 @@ const letters = new Set(["a","b","c"]);
 console.log(letters.values());
 
 সে একটা সেট ইটারেটর অবজেক্ট দিচ্ছে । সে এমন একটা অবজেক্ট দিচ্ছে যে অবজেক্ট টা লুপ করা যায় । 
+
+৪। delete()
+
+let mySet = new Set();
+mySet.add("a")
+mySet.add("b")
+mySet.add("c")
+// ডিলিট করতে হলে 
+mySet.delete("b")
+console.log(mySet);                    //  set{'a', 'c'}
+
+
+৫। has()
+console.log(mySet.has("a"));                  // true 
+console.log(mySet.has("b"));                  // false
+
+
 
 // **** Map ***** 
 ম্যাপ  এর কন্সট্রাকটর ফাংশনে একটা অ্যাঁরে পাস করতে হবে এবং কি ভ্যালু পেয়ার করে পাস করতে হয় । 

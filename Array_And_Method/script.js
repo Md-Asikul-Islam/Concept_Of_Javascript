@@ -105,7 +105,7 @@ output : 'banana, orange, apple, mangoo, grapes'
 
 const fruits = [ 'banana', 'orange', 'apple', 'mangoo', 'grapes'];
 
-console.log(fruits.join(*));
+console.log(fruits.join("*"));
 
 output : 'banana * orange * apple * mangoo * grapes'
 
@@ -117,6 +117,7 @@ console.log(fruits.pop());                    // grapes
 console.log(fruits);
 
 output : [ 'banana', 'orange', 'apple', 'mangoo']
+এটা মেইন Array কে পরিবর্তন করে । 
 
 ৪।  push()
 এটা সাধারনত কোন একটা Array এর একদম শেষে  একটি ইলিমেন্তকে ঢুকাতে এই মেথড  ব্যবহার করা হয় । যেমন- 
@@ -124,7 +125,8 @@ output : [ 'banana', 'orange', 'apple', 'mangoo']
 const fruits = [ 'banana', 'orange', 'apple', 'mangoo', 'grapes'];
 fruits.push(' lemon ')
 console.log(fruits);
-output : ['lemom' 'banana', 'orange', 'apple', 'mangoo', 'grapes'];
+output : [ 'banana', 'orange', 'apple', 'mangoo', 'grapes','lemom'];
+এটা মেইন Array কে পরিবর্তন করে । 
 
 কিন্তু শেষের ইলিমেন্ত হিসেবে একাদিক ইলিমেন্ত দিলে Array এর একদম শেষে সবগুলা  ইলিমেন্ত ডুকে । এটা একটা ভ্যারিএবলে রেখে তারপর push() করলে সবার শেষে যে ইলিমেন্ত যাবে সেটা  রিটার্ন করবে । 
 
@@ -138,6 +140,7 @@ console.log(fruits.shift());
 output : 'banana'
 console.log(fruits);
 output : [ 'orange', 'apple', 'mangoo', 'grapes'];
+এটা মেইন Array কে পরিবর্তন করে । 
 
 ৬। unshift()
 এটা সাধারনত কোন একটা Array এর একদম শুরুতে একটি ইলিমেন্তকে ঢুকাতে এই মেথড  ব্যবহার করা হয় । যেমন- 
@@ -147,6 +150,7 @@ fruits.unshift(' lemon ')
 console.log(fruits);
 output : ['lemom' 'banana', 'orange', 'apple', 'mangoo', 'grapes'];
 
+এটা মেইন Array কে পরিবর্তন করে । 
 
 ৭। splice()
 এটা সাধারনত কোন একটা Array এর মাঝখানে একটি ইলিমেন্তকে ঢুকাতে এই মেথড  ব্যবহার করা হয় । আমরা এর আগে যেগুলা মেথড ব্যবহার করেছি সবগুলা ছিল একটা Array এর শুরু বাঁ শেষে কিন্তু এখন আমরা মাঝখানে কাজ করব । এই মেথড মুলত তিনটি প্যারামিটার নেয় । 
@@ -173,7 +177,12 @@ console.log(result);                             // ["Apple", "Mango"]
 console.log(fruits);
 output :  ['Banana', 'Orange', 'Lemon', 'Kiwi']
 
-এটা আসলে রিটার্ন করে যেটা সে রিমুভ করে । এটা মেইন Array  কে পরিবর্তন করে । 
+এটা আসলে রিটার্ন করে যেটা সে রিমুভ করে । এটা মেইন Array  কে পরিবর্তন করে ফেলে । কিন্তু আমরা যদি এমন কিছু চাই যে এটা Array এর মাঝখানে একটি ইলিমেন্তকে ঢুকাবে তবে মেইন Array কে পরিবর্তন করবে না তাহলে toSpliced() মেথড ব্যবহার করতে হবে । 
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const result = fruits.toSpliced(2, 0, "Lemon", "Kiwi");
+console.log(result);                          // ['Banana', 'Orange', 'Lemon', 'Kiwi', 'Apple', 'Mango']
+console.log(fruits);                          // ['Banana', 'Orange', 'Apple', 'Mango']
 
 ৮। slice()
 এই মেথড টা মুলত দুইটা প্যারামিটার নিবে - 
@@ -199,6 +208,11 @@ const myChildren = myGirls.concat(myBoys);
 
 console.log(myChildren);
 
+output : ['Cecilie', 'Lone', 'Emil', 'Tobias', 'Linus']
+
+console.log(myGirls);                  // ["Cecilie", "Lone"];
+console.log(myBoys);                   // ["Emil", "Tobias", "Linus"];
+
 আমরা চাইলে এই মেথডে স্ট্রিং ও দিতে পারি । কোন ক্ষেত্রে যদি তিনটি Array  কে একসাথে করতে হয় সেক্ষেত্রে Array গুলাকে প্যারামিটারে কমা দিয়ে একটার পর একটা দিতে হবে । 
 
 এটা মেইন Array  কে পরিবর্তন করে না জাস্ট একটা নতুন Array তৈরি করে । 
@@ -218,20 +232,14 @@ output : [ 'banana', ' ', 'apple', 'mangoo', 'grapes'];
 
 এটা একটা Array  এর ইলিমেন্ত গুলাকে অ্যালফাবেটিকালি অ্যাসেন্ডিং অর্ডারে  বাঁ  ইংরেজি বর্ণের ক্রমানুসারে সাজায় 
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.sort();
+
+console.log(fruits.sort());
+output : ['Apple', 'Banana', 'Mango', 'Orange']
+
 console.log(fruits);
+output :['Apple', 'Banana', 'Mango', 'Orange']
 
-output :  ['Apple', 'Banana', 'Mango', 'Orange']
-
-১২। reverse()
-
-প্রথমে একটা Array কে sort() করে  অর্থাৎ এটা একটা Array  এর ইলিমেন্ত গুলাকে অ্যালফাবেটিকালি অ্যাসেন্ডিং অর্ডারে  বাঁ  ইংরেজি বর্ণের ক্রমানুসারে সাজায় এরপর এটাকে জাস্ট ডিসেন্ডিং করে দিবে । 
-// Ex-1 sort method for string 
-
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.reverse();
-console.log(fruits);
-output :['Mango', 'Apple', 'Orange', 'Banana']
+এই মেথডটা মেইন Array কে পরিবর্তন করে ফেলে । 
 
 স্ট্রিং এর ক্ষেত্রে আমরা এভাবেই কাজ করব কিন্তু নাম্বারের ক্ষেত্রে এভাবে করলে সমস্যা হতে পারে তাই দ্বিতীয় এক্সাম্পলে দেখব ।
 
@@ -248,7 +256,7 @@ output :[1, 5, 10, 25, 40, 100]
 const points = [40, 100, 1, 5, 25, 10];
 points.sort(function(a, b){return b - a});
 console.log(points);
-output : [100, 40, 25, 10, 5, 1]
+output :[100, 40, 25, 10, 5, 1]
 
 
 // ** একটা Array  থেকে ইলিমেন্ত গুলার মধ্যে Max এবং Min  ভ্যালু  বের করতে - **
@@ -271,6 +279,38 @@ function myArrayMin(arr) {
 console.log(myArrayMin(points));
 
 output : 1
+
+১২। reverse()
+
+প্রথমে একটা Array কে sort() করে  অর্থাৎ এটা একটা Array  এর ইলিমেন্ত গুলাকে অ্যালফাবেটিকালি অ্যাসেন্ডিং অর্ডারে  বাঁ  ইংরেজি বর্ণের ক্রমানুসারে সাজায় এরপর এটাকে জাস্ট ডিসেন্ডিং করে দিবে । 
+// Ex-1 reverse method for string 
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+console.log(fruits);
+output : ['Banana', 'Orange', 'Apple', 'Mango']
+
+console.log(fruits.sort());
+output : ['Apple', 'Banana', 'Mango', 'Orange']
+
+console.log(fruits.reverse());
+output : ['Orange', 'Mango', 'Banana', 'Apple']
+
+// Ex-2 reverse method for number
+
+const number = [1, 2, 3, 4, 5, 6];
+
+console.log(number.reverse());                      // [6, 5, 4, 3, 2, 1]
+console.log(number);                                // [6, 5, 4, 3, 2, 1]
+
+এই মেথডটা মেইন Array কে পরিবর্তন করে ফেলে । তাই আমরা যদি এমন কিছু চাই যে আমার ইলিমেন্ত গুলাকে ডিসেন্ডিং অর্ডারে সাজাবে কিন্তু মেইন Array কে পরিবর্তন করবে না তাহলে toReversed() মেথডটা ব্যবহার করব । 
+
+const number = [1, 2, 3, 4, 5, 6];
+
+console.log(number.toReversed());
+output :[6, 5, 4, 3, 2, 1]
+console.log(number);
+output :[1, 2, 3, 4, 5, 6];
 
 ১৩। forEach()
 এই মেথড মুলত ব্যবহার করা হয় একটা Array এর প্রতিটা ইলিমেন্তকে ইটারেট করতে , এখন এই মেথডটা প্যারামিটার হিসেবে একটা ফাংশন নিবে এবং সেই ফাংশন আবার তিনটা প্যারামিটার নিবে । 
@@ -469,8 +509,55 @@ console.log(Array.from("ABCDEFG"));
 
 output :['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
+২৫। copyWithin()
 
-২৫। keys()
+এই মেথড মুলত ব্যবহার করা হয় একটা Array কে ওভার রাইট করতে ।  এখন এই মেথডটা  তিনটা প্যারামিটার নিবে ।
+
+প্রথম প্যারামিটার নিবে target
+দ্বিতীয় প্যারামিটার নিবে আগের ভ্যালু হিসেবে যাওয়া ইলিমেন্ত এর  start
+তৃতীয়  প্যারামিটার নিবে  end
+
+বৈশিষ্ট্য -
+* target অবশ্যই ভ্যালু হিসেবে কিছু না কিছু দিতে হবে । 
+* start ভ্যালু হিসেবে কিছু না দিলে ডিফলট ভ্যালু 0 পাবে ।
+* end  ভ্যালু হিসেবে কিছু না দিলে ডিফলট ভ্যালু 0 পাবে ।
+* কখনই Array এর লেন্থ পরিবর্তন করে না ।
+
+const language = ["javascript", "python","Ruby", "c++", "Rust", "C#" ];
+console.log(language.copyWithin(3, 1, 2));
+
+output : ['javascript', 'python', 'Ruby', 'python', 'Rust', 'C#']
+
+উপরের Array তে start এবং  end এর মাঝখানে যত ইলিমেন্ত আছে সবগুলা কপি করে target এ বসিয়ে দিবে কিন্তু Array এর লেন্থ মেইন Array এর সমান থাকবে । যদি ইলিমেন্ত বেশি হয় সেক্ষেত্রে লাস্টের ইলিমেন্ত গুলা বাদ পড়বে । 
+২৬। flat()
+নেসটেড Array কে একটা Array তে কনভার্ট করতে এই মেথড ব্যবহার করা হয় । 
+let numbers = [1, 2, 3, 4, [5, 6], 7];
+console.log(numbers.flat());
+
+output: [1, 2, 3, 4, 5, 6, 7]
+
+২৭।  fill()
+
+এই মেথড মুলত ব্যবহার করা হয় একটা Array কে ওভার রাইট করতে ।  এখন এই মেথডটা  তিনটা প্যারামিটার নিবে ।
+
+প্রথম প্যারামিটার নিবে value
+দ্বিতীয় প্যারামিটার নিবে আগের ভ্যালু হিসেবে যাওয়া ইলিমেন্ত এর  start
+তৃতীয়  প্যারামিটার নিবে  end
+const array = [1, 2, 3, 4];
+
+console.log(array.fill(0, 2, 4));
+
+output :[1, 2, 0, 0]
+
+console.log(array.fill(5, 1));
+
+output :[1, 5, 5, 5]
+console.log(array.fill(6));
+output :[6, 6, 6, 6]
+
+২৮। entries()
+
+২৯। keys()
 
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
 
@@ -480,27 +567,28 @@ console.log(keys);
 
 এটা একটা Array ইটারেটর রিটার্ন করে । 
 
-২৬। entries()
+৩০। values()
 
-২৭। copyWithIn
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
 
-২৮। 
+const values = fruits.values()
 
-২৯।
+console.log(values);
+
+এটা একটা Array ইটারেটর রিটার্ন করে । 
+
+৩১। with()
 
 
-৩০। 
+const number = [ 1, 2, 3, 4, 5, 6 ]
 
-৩১।
+const result = number.with(1, 400);
 
-৩২। 
+console.log(result);                         // [1, 400, 3, 4, 5, 6]
 
-৩৩।
+console.log(number);                         // [1, 2, 3, 4, 5, 6]
 
-৩৪।
-
-৩৫।
-
+এটা মেইন Array কে পরিবর্তন করে না । 
 // *** spread operator ***
 
 const numbers = [ 1, 2, 3, 4, 5, 6 ]
@@ -509,7 +597,7 @@ const newNumbers = [...numbers, 7, 8, 9, 10]
 
 // *** imutably copy *** 
 
-const numbers = [ 1, 2, 3, 4, 5, 6 ]
+const numbers = [ 1, 2, 3, 4, 5, 6 ] 
 
 const arrayNum = [...numbers]
 
@@ -574,5 +662,4 @@ console.log(a, b);                // 2, 1
 
 [b, a]  = [a, b]
 console.log(a, b);                // 2, 1 
-
 
