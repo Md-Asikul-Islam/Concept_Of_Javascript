@@ -186,7 +186,7 @@ Person.prototype = {
 
 
   function Person(name, age) {
-    // let this = Object.create(PersonWithNew.prototype);
+    // let this = Object.create(this.prototype);
     this.name = name ;
     this.age = age ;  
     // return this ;
@@ -208,9 +208,9 @@ Person.prototype = {
   let sakib = new Person("sakib", 35);
   let tamim = new Person("tamim", 35);
 
-  যখন new কি-ওয়ার্ড দিয়ে ফাংশন কল করব তখন উপরে কমেন্ট করা লাইন গুলা লিখতে হবে না । জাভাস্ক্রিট নিজেই বুঝে নিবে । 
+  যখন new কি-ওয়ার্ড দিয়ে ফাংশন কল করব তখন উপরে কমেন্ট করা লাইন গুলা লিখতে হবে না । জাভাস্ক্রিট নিজেই বুঝে নিবে । তখন অবজেক্ট নেইমটা this হিসেবে জাভাস্ক্রিট নিজেই ধরে নিবে । 
 
-  // create a class with Object 
+  //*** create a class with Object ***
 
   class Person { 
     constructor(name, age){
@@ -232,15 +232,15 @@ Person.prototype = {
   let tamim = new Person("tamim", 35);
 
 
-// *** Prototype inheritance ***
+// *** Prototype inheritance   ***
 
 function Person(name, age) {
   this.name = name ;
   this.age = age ;
 
   this.eat = function () {
-console.log(`${this.name} is eating`)
-  }
+  console.log(`${this.name} is eating`)
+}
 }
 
 const sakib = new Person("sakib", 35)
@@ -248,7 +248,8 @@ console.log(sakib);
 const tamim = new Person("tamim", 35)
 console.log(tamim);
 
-কিন্তু এখানেও একটা সমস্যা আছে রিয়েল লাইফ কোন লারজার এপ্লিকেশনে আমরা অসংখ্য অবজেক্ট তৈরি করব । এখানে এই অবজেক্ট এ কোন মেথড অ্যাড করতে গেলে সেটা ঐ কাঠামোতে অ্যাড করতে হবে সেটা আবার সব অবজেক্টকে কপি হয়ে আসবে । এখন একই জিনিস বার বার কপি হওয়াতে মেমোরিতে জায়গা বেশি লাগবে । এই সমস্যা সমাধান করতে আমরা - মেথড গুলা যে গুলা শেয়ার করা যায় সেগুলা একটা কমন অবজেক্টকে নিয়ে যেতে হবে । 
+
+এই ক্ষেত্রে ফাংশনটা কাজ করছে অবজেক্টের কাঠামো হিসেবে এই জন্য একে কন্সট্রাক্টর ফাংশনও বলা হয় । আমরা জানি কন্সট্রাক্টর ফাংশনগুলা কেমেল কেসে লিখা হয় । এখানেও একটা  সমস্যা  আছে আমরা নতুন কোন মেথড অ্যাড করতে চাইলে সেটাকে Person কাঠামোতে লিখতে  হবে । এটাও অবজেক্টের কাঠামোর সাইজ বড় করছে মেমোরিতে জায়গা বেশি নিচ্চে । এই  সমাধান করতে আমরা অবজেক্ট এর নিজস্ব বিলট ইন সিস্টেম prototype এর মধ্যে মেথড গুলাকে ডুকিয়ে দিয়েছিলাম  যেমন -
 
 function Person(name, age) {
   this.name = name ;
@@ -266,10 +267,175 @@ console.log(sakib);
 const tamim = new Person("tamim", 35)
 console.log(tamim);
 
+প্রোটোটাইপ ইনহেরিটেন্স কিভাবে হয় দেখা যাক , 
+জাভাস্ক্রিট এ সকল অবজেক্ট একটা মাস্টার অবজেক্ট থেকে তৈরি হয় । এর চেইনিং এমন হবে -
 
 
+মাস্টার  Object থেকে Constructor function থেকে sakib এখানে প্রত্যেকটা অবজেক্ট এর প্রোটোটাইপে প্রোপার্টি  এবং মেথড আছে । 
+
+আমরা যখনি একটা ক্লাসের  আন্ডারে আরেকটা  ক্লাস তৈরি করব তখন  ইনহেরিটেন্স এর ক্ষেত্রে তিনটি কাজ করতে হবে - 
+১। Object.create এর মাধ্যমে prototype গুলাকে ইনহেরিটেড করে নিয়ে আসব । 
+২। কল করে  this রেফারেন্স প্যারেন্ট থেকে চাইল্ডে পাঠিয়ে দিব । 
+৩। কন্সট্রাক্টর ওভার রাইট করার জন্য নতুন ক্লাসটা রেফার করতে হয় । 
+
+function Person(name, age) {           // parent class
+  this.name = name ;
+  this.age = age ;
+
+}
+
+function Cricketer(name, age, type, country) {            // sub class
+  Person.call(this);
+  this.name = name;
+  this.age = age ;
+  this.type = type ;
+  this.country = country ;
+
+}
+
+Person.prototype = {
+  eat : function () {
+    console.log(`${this.name} is eating`);
+  },
+  play : function () {
+    console.log(`${this.name} is playing`);
+  }
+}
+
+Cricketer.prototype = Object.create(Person.prototype);
+Cricketer.prototype.Constructor = Cricketer ;
+
+const sakib = new Cricketer("sakib", 35, "Al-Rounder", " Bangladesh");
 
 
+// *** convert to class ***
+
+class Person {                 // parent class
+  constructor(name, age){
+    this.name = name ;
+    this.age = age ;
+  }
+  eat() {
+    console.log(`${this.name} is eating`)
+    }
+}
+
+class Cricketer extends Person {                  // sub class 
+  constructor(name, age, type, country){
+    super(name, age);
+    this.name = name;
+    this.age = age ;
+    this.type = type ;
+    this.country = country ;
+  }
+  play() {
+    console.log(`${this.name} is playing`);
+  }
+}
+
+const sakib = new Cricketer("sakib", 35, "Al-Rounder", " Bangladesh");
+
+//***  create a getter ***
+getter  হচ্ছে এমন একটা প্রোপার্টি যেটা কল করলে ফাংশন বাঁ মেথডের মত মনে হবে কিন্তু এটা অবশ্যই প্রোপার্টি হিসেবে কল হবে । 
+
+class Person {
+  constructor(name, age){
+    this.name = name ;
+    this.age = age ;
+  }
+  eat() {
+    console.log(`${this.name} is eating`)
+    }
+    get setName(){
+      // getter 
+      return this.name ;
+    }
+    set setName (name){
+      // Setter
+      this.name = name ;
+    }
+}
+
+const sakib = new Person("sakib", 35)
+console.log(sakib.setName);
+
+sakib.setName = "Asikul"
+
+
+//*** create a setter  ****
+
+
+setter  হচ্ছে এমন একটা প্রোপার্টি যেটা বাইরে থেকে চাইলে সেট করা যায়  । 
+
+class Person {
+  constructor(name, age){
+    this.name = name ;
+    this.age = age ;
+  }
+  eat() {
+    console.log(`${this.name} is eating`)
+    }
+
+    set setName (name){
+      // Setter
+      this.name = name ;
+    }
+}
+
+const sakib = new Person("sakib", 35)
+console.log(sakib.setName);
+
+sakib.setName = "Asikul"
+
+// static method 
+
+class Person {
+  constructor(name, age){
+    this.name = name ;
+    this.age = age ;
+  }
+  eat() {
+    console.log(`${this.name} is eating`)
+    }
+  static isEqualAge(){
+    console.log(` i am sattic method `)
+  }  
+
+}
+
+const sakib = new Person("sakib", 35)
+Person.isEqualAge();
+
+
+// ***Polymorphism *** 
+
+class Person {                 // parent class
+  constructor(name, age){
+    this.name = name ;
+    this.age = age ;
+  }
+  play() {
+    console.log(`${this.name} is playing `);
+  }
+}
+
+class Cricketer extends Person {                  // sub class 
+  constructor(name, age, type, country){
+    super(name, age);
+    this.name = name;
+    this.age = age ;
+    this.type = type ;
+    this.country = country ;
+  }
+  play() {
+    console.log(`${this.name} is playing cricket`);
+  }
+}
+
+const sakib = new Cricketer("sakib", 35, "Al-Rounder", " Bangladesh");
+
+
+// *** Es-6 Symbol ***
 
 
 
