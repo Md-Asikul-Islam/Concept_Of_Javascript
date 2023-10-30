@@ -231,6 +231,8 @@ output : [ 'banana', ' ', 'apple', 'mangoo', 'grapes'];
 ১১। sort()
 
 এটা একটা Array  এর ইলিমেন্ত গুলাকে অ্যালফাবেটিকালি অ্যাসেন্ডিং অর্ডারে  বাঁ  ইংরেজি বর্ণের ক্রমানুসারে সাজায় 
+
+// Ex-1 sort method for string 
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
 
 console.log(fruits.sort());
@@ -241,9 +243,16 @@ output :['Apple', 'Banana', 'Mango', 'Orange']
 
 এই মেথডটা মেইন Array কে পরিবর্তন করে ফেলে । 
 
-স্ট্রিং এর ক্ষেত্রে আমরা এভাবেই কাজ করব কিন্তু নাম্বারের ক্ষেত্রে এভাবে করলে সমস্যা হতে পারে তাই দ্বিতীয় এক্সাম্পলে দেখব ।
+স্ট্রিং এর ক্ষেত্রে আমরা যেভাবে  কাজ করেছি কিন্তু নাম্বারের ক্ষেত্রে এভাবে করলে সমস্যা হতে পারে । কারন আমরা জানি এই মেথডটা Array  এর ইলিমেন্ত গুলাকে অ্যালফাবেটিকালি অ্যাসেন্ডিং অর্ডারে  বাঁ  ইংরেজি বর্ণের ক্রমানুসারে সাজায় । এখন আমরা যখন নাম্বার sort() করতে যাবো তখন জাভাস্ক্রিপ্ট নিজেই স্ট্রিং এ কনভার্ট করে তারপর অ্যাসেন্ডি করবে । যেমন - 
 
-// Ex-1 sort method for number 
+const number = [ 11, 20, 5, 7, 1, 2];
+
+console.log(number.sort());
+output : [1, 11, 2, 20, 5, 7]
+এই সমস্যার সমাধান করতে আমরা  দ্বিতীয় এক্সাম্পলে দেখব । 
+
+
+// Ex-2 sort method for number 
 // ** ছোট থেকে বড় এভাবে সাজাতে **
 const points = [40, 100, 1, 5, 25, 10];
 points.sort(function(a, b){return a - b});
@@ -279,6 +288,64 @@ function myArrayMin(arr) {
 console.log(myArrayMin(points));
 
 output : 1
+
+// EX-3 Arry of Object for sort()
+// with number 
+const cars = [
+  {
+    type :  " Volvo",
+    year :  2016,
+  },
+  {
+    type :  " Saab",
+    year :  2001,
+  },
+  {
+    type :  " BMW",
+    year :  2010,
+  },
+]
+
+const result = cars.sort((a, b) => {
+  return a.year - b.year ;
+})
+
+console.log(result);
+
+// with string 
+const cars = [
+  {
+    type :  " Volvo",
+    year :  2016,
+  },
+  {
+    type :  " Saab",
+    year :  2001,
+  },
+  {
+    type :  " BMW",
+    year :  2010,
+  },
+]
+
+const result = cars.sort((a, b) => {
+  const x = a.type.toLowerCase();
+  const y = b.type.toLowerCase();
+
+  if (x < y) {
+    return -1 ;
+  }
+  else if(x > y){
+    retunr 1 ;
+  }
+  else{
+    return 0 
+  }
+})
+
+console.log(result);
+
+এইটা মেইন Array কে পরিবর্তন করে ফেলে । কিন্তু আমরা যদি চাই যে মেইন Array পরিবর্তন না করে সর্ট করতে তাহলে toSorted()
 
 ১২। reverse()
 
@@ -578,7 +645,11 @@ console.log(values);
 এটা একটা Array ইটারেটর রিটার্ন করে । 
 
 ৩১। with()
+এই মেথড মুলত ব্যবহার করা হয় একটা Array এর কোন ইলিমেন্তকে  ওভার রাইট করতে ।  এখন এই মেথডটা দুইটা  প্যারামিটার নিবে ।
 
+
+প্রথম প্যারামিটার নিবে index
+দ্বিতীয় প্যারামিটার নিবে value
 
 const number = [ 1, 2, 3, 4, 5, 6 ]
 
@@ -589,6 +660,7 @@ console.log(result);                         // [1, 400, 3, 4, 5, 6]
 console.log(number);                         // [1, 2, 3, 4, 5, 6]
 
 এটা মেইন Array কে পরিবর্তন করে না । 
+
 // *** spread operator ***
 
 const numbers = [ 1, 2, 3, 4, 5, 6 ]

@@ -1,12 +1,274 @@
+জাভাস্ক্রিট এ সব ধরেনের ডাটা টাইপে অবজেক্ট রিপ্রেজেনটেশন থাকায় বলা হয় অবজেক্টকেই জাভাস্ক্রিট এর কিং । 
+
+আমরা জানি জাভাস্ক্রিট সব ধরেনের ডাটা টাইপকে অবজেক্ট আকারে চিন্তা করা যায় । 
 
 
+**  যখন new keyword দিয়ে  Booleans  লিখা হয় তখন এটাকে একটা অবজেক্ট আকারে চিন্তা করা যায়
+**  যখন new keyword দিয়ে  Number লিখা হয় তখন এটাকে  একটা অবজেক্ট আকারে চিন্তা করা যায়
+**  যখন new keyword দিয়ে  String লিখা হয় তখন এটাকে  একটা অবজেক্ট আকারে চিন্তা করা যায়
+** Dates  সবসময় এটা একটা অবজেক্ট
+** Maths সবসময় এটা একটা অবজেক্ট
+** Regular expressions সবসময় এটা একটা অবজেক্ট
+** Arrays সবসময় এটা একটা অবজেক্ট 
+** Functions সবসময় এটা একটা অবজেক্ট
+** Objects সবসময় এটা একটা অবজেক্ট 
 
+প্রিমিটিভ ভ্যালু গুলা বাদে জাভাস্ক্রিট এ যা কিছুই আছে সব অবজেক্ট । কারন হচ্ছে প্রিমিটিভ ডাটা গুলা ইমিউটেবল যেটা পরিবর্তন করা যায় না ।  
 
+১। প্রিমিটিভ - string, number, null, undefined, boolean, symbol
+প্রিমিটিভগুলো ইমিউট্যাবল, তার মানে হচ্ছে এগুলো আমরা তৈরি করার পরে আর চেইঞ্জ করতে পারি না । যখন আমরা এই গুলা লিটারেল সিনটেসক্স লিখি তখন এদের প্রোপার্টি এবং মেথড থাকে না । 
+
+আমরা যখন কোনো ভ্যারিয়েবল তৈরি করি তখন আসলে কি হয়? আসলে র‍্যাম বা মেমরি তে নির্দিষ্ট এড্রেস এ ডেটা টা সেভ হয় বা জায়গা দখল করে রাখে, ভ্যারিয়েবল নেইম টা আসলে জায়গাটার নাম । সকল প্রোগ্রামিং ল্যাঙ্গগুয়েজ এই ব্যাপারটা একই রকম। প্রোগ্রামিং এর ভাষায় একে  মেমরি এলোকেটেড করা বলে ।  প্রিমিটিভ ভ্যালু গুলো  সাধারণত stack এ এলোকেটেড করে । 
+
+// var a = 5 ;
+// var b = a ;
+
+// a = 6 ;
+// console.log(a);
+// console.log(b);
+
+// output            expected behaviour
+// 6
+// 5
+
+var a = 5 ; হল stack এ একটা a নামে জায়গা এলোকেটেড করে 5 কে রাখে । আবার যখন var b = a ; লিখি ঠিক তখন মেমরিতে  b  নামে নতুন  জায়গা এলোকেটেড করে  সেখানে 5 কে রাখে ।  এখানে var b = a মানে হল a এবং b মেমোরিতে আলাদা জায়গা এলোকেটেড হবে জাস্ট a থেকে b  ভ্যালু টা কপি করে তার জায়গায় রাখবে  । 
+
+// *** create a object ***
+
+// ১। Litaral Syntax
+## অবজেক্ট এর ভিতরে name- value পেয়ার আকারে থাকে যেখানে name কে প্রোপার্ট বা  কি বলে 
+## অবজেক্ট এর ভিতরে প্রোপার্টি হিসেবে কোন ফাংশন থাকলে তাকে মেথড বলে । 
+
+const person = {
+  name : " sakib ", 
+  age  : 35,
+  type : " Al-Rounder" 
+}
+
+// ২।  new Object() 
+
+const person = new Object()
+person.name = " sakib"
+person.age = 35
+person.type = " Al-Rounder " 
+
+// ৩। Emty Object
+
+const person = {}
+person.name = " sakib"
+person.age = 35
+person.type = " Al-Rounder " 
 
 // *** Difference between  Proto and Prototype ***
 
+জাভাস্ক্রিট এ আমরা অবজেক্টকে তিনভাবে লিখতে পারি । এখন আমরা একটা Emty Object নিয়ে তার মধ্যে বিভিন্ন প্রোপার্টি এবং মেথড অ্যাড করব । 
+
+let person = {};
+person.name = " jasim" ;
+person.age = 33 ;
+person.eat = function () {
+console.log('person is eating ');
+}
+person.sleep = function () {
+console.log('person is sleeping ');
+}
+এখন রিয়েল লাইফে কোন লারজার এপ্লিকেশনে আমরা অসংখ্য অবজেক্ট তৈরি করব । সেক্ষেত্রে আমরা এভাবে না করে একটা অবজেক্ট কাঠামো বানাতে পারি । যেই কাঠামো ব্যবহার করে বাঁ কপি করে আমরা অবজেক্ট গুলা তৈরি করব  যেমন - 
+
+function Person(name, age) {
+let person = {};
+person.name = name ;
+person.age = age ;
+person.eat = function () {
+  console.log('person is eating ');
+}
+person.sleep = function () {
+  console.log('person is sleeping ');
+}
+return person ;
+}
+
+let sakib = Person("sakib", 35);
+let tamim = Person("tamim", 35);
+
+কিন্তু এখানেও একটা সমস্যা আছে রিয়েল লাইফ কোন লারজার এপ্লিকেশনে আমরা অসংখ্য অবজেক্ট তৈরি করব । এখানে এই অবজেক্ট গুলাতে কোন মেথড অ্যাড করতে গেলে সেটা ঐ কাঠামোতে অ্যাড করতে হবে সেটা আবার সব অবজেক্টকে কপি হয়ে আসবে । এখন একই জিনিস বার বার কপি হওয়াতে মেমোরিতে জায়গা বেশি লাগবে । এই সমস্যা সমাধান করতে আমরা - মেথড গুলা যে গুলা শেয়ার করা যায় সেগুলা একটা কমন অবজেক্টকে নিয়ে যেতে হবে । 
+
+let personMethod = {
+  eat() {
+    console.log('person is eating ');
+  },
+  sleep() {
+    console.log('person is sleeping ');
+  },
+  play() {
+    console.log('person is playing ');
+  }
+}
+function Person(name, age) {
+  let person = {};
+  person.name = name ;
+  person.age = age ;
+  person.eat = personMethod.eat ;
+  person.sleep = personMethod.sleep ;
+  person.play = personMethod.play ;
+  return person ;
+  }
+  
+let sakib = Person("sakib", 35);
+let tamim = Person("tamim", 35);
+
+এখানেও একটা  সমস্যা  আছে আমরা নতুন কোন মেথড অ্যাড করতে চাইলে সেটা personMethod লিখতে হবে এবং সেটাকে Person কাঠামোতেও রেফার করতে হবে । এটাও অবজেক্টের কাঠামোর সাইজ বড় করছে যেটা ডেভেলপার জন্য প্যারাদায়ক । এই  সমাধান করতে আমরা অবজেক্ট এর নিজস্ব বিলট ইন সিস্টেম  Object.create  ব্যবহার করব যেমন -
+
+const captain = {
+  name : "Mashrafi",
+  age  : 37,
+  country : " Bangladesh"
+}
+
+const player = Object.create(captain) ;
+এভাবে আমরা একটা অব্জেক্টকে ইন্সটেন্স ধরে আরেকটা অবজেক্ট বানাতে পারি । এখানে captain হচ্ছে প্যারেন্ট অবজেক্ট আর player হচ্ছে চাইল্ড অবজেক্ট
+
+let personMethod = {
+  eat() {
+    console.log('person is eating ');
+  },
+  sleep() {
+    console.log('person is sleeping ');
+  },
+  play() {
+    console.log('person is playing ');
+  }
+}
+function Person(name, age) {
+  let person = Object.create(personMethod);
+  person.name = name ;
+  person.age = age ;  
+  return person ;
+  }
+  
+  let sakib = Person("sakib", 35);
+  let tamim = Person("tamim", 35);
+
+মেথড গুলাকে একটা জায়গায় রাখতে কোন অবজেক্ট এর ইন্সটেন্স ব্যবহার না করে মাস্টার অবজেক্টের বিলট ইন জিনিস  prototype এর মধ্যে রাখতে পারি - 
+
+
+function Person(name, age) {
+  let person = Object.create(Person.prototype);
+  person.name = name ;
+  person.age = age ;  
+  return person ;
+  }
+
+Person.prototype = { 
+    eat() {
+      console.log('person is eating ');
+    },
+    sleep() {
+      console.log('person is sleeping ');
+    },
+    play() {
+      console.log('person is playing ');
+    }
+}  
+  
+  
+  let sakib =  Person("sakib", 35);
+  let tamim =  Person("tamim", 35);
+
+ ***  prototype হচ্ছে একটা প্রোপার্টি অফ ফাংশন যেটা একটা অবজেক্টকে পয়েন্ট করে রাখে । 
+
+এখন পর্যন্ত আমরা তিনটি জিনিস শিখেছি -
+
+১। কন্সট্রাক্টর ফাংশন তৈরি করা - Person ফাংশন এখানে কন্সট্রাক্টর ফাংশন
+
+২। কন্সট্রাক্টর ফাংশনে কিভাবে মেথড অ্যাড করতে হয় । 
+
+৩। Object.create()  দিয়ে কিভাবে প্যারেন্ট এর সব প্রোপার্টি চাইল্ডে নিয়ে আসতে পারি । 
+
+
+  function Person(name, age) {
+    // let this = Object.create(PersonWithNew.prototype);
+    this.name = name ;
+    this.age = age ;  
+    // return this ;
+    }
+  
+  Person.prototype = { 
+      eat() {
+        console.log('person is eating ');
+      },
+      sleep() {
+        console.log('person is sleeping ');
+      },
+      play() {
+        console.log('person is playing ');
+      }
+  } 
+
+
+  let sakib = new Person("sakib", 35);
+  let tamim = new Person("tamim", 35);
+
+  যখন new কি-ওয়ার্ড দিয়ে ফাংশন কল করব তখন উপরে কমেন্ট করা লাইন গুলা লিখতে হবে না । জাভাস্ক্রিট নিজেই বুঝে নিবে । 
+
+  // create a class with Object 
+
+  class Person { 
+    constructor(name, age){
+      this.name = name;
+      this.age = age;
+    }
+    eat() {
+      console.log('person is eating ');
+    }
+    sleep() {
+      console.log('person is sleeping ');
+    }
+    play() {
+      console.log('person is playing ');
+    }
+  }
+
+  let sakib = new Person("sakib", 35);
+  let tamim = new Person("tamim", 35);
+
 
 // *** Prototype inheritance ***
+
+function Person(name, age) {
+  this.name = name ;
+  this.age = age ;
+
+  this.eat = function () {
+console.log(`${this.name} is eating`)
+  }
+}
+
+const sakib = new Person("sakib", 35)
+console.log(sakib);
+const tamim = new Person("tamim", 35)
+console.log(tamim);
+
+কিন্তু এখানেও একটা সমস্যা আছে রিয়েল লাইফ কোন লারজার এপ্লিকেশনে আমরা অসংখ্য অবজেক্ট তৈরি করব । এখানে এই অবজেক্ট এ কোন মেথড অ্যাড করতে গেলে সেটা ঐ কাঠামোতে অ্যাড করতে হবে সেটা আবার সব অবজেক্টকে কপি হয়ে আসবে । এখন একই জিনিস বার বার কপি হওয়াতে মেমোরিতে জায়গা বেশি লাগবে । এই সমস্যা সমাধান করতে আমরা - মেথড গুলা যে গুলা শেয়ার করা যায় সেগুলা একটা কমন অবজেক্টকে নিয়ে যেতে হবে । 
+
+function Person(name, age) {
+  this.name = name ;
+  this.age = age ;
+
+}
+
+Person.prototype = {
+eat : function () {
+console.log(`${this.name} is eating`)
+}
+}
+const sakib = new Person("sakib", 35)
+console.log(sakib);
+const tamim = new Person("tamim", 35)
+console.log(tamim);
+
+
+
+
 
 
 
