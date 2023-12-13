@@ -1635,24 +1635,6 @@ console.log(myFunc(undefined))                 // 10
 
 console.log(myFunc(null))                  // null
 
-// *** Rest operator *** 
-
-function myFunc(a, b) {
-  console.log(a, b);
-}
-
-myFunc(5, 6)                    // 5,6
-
-কিন্তু যদি এমন হয় ইউজার পাঠানোর সময় ভুলে বেশি দিয়ে ফেলছে । সেক্ষেত্রে 
-
-function myFunc(...params) {
-  console.log(params);
-}
-
-myFunc(5,  6, 7, 8, 9, 10)
-output:  [5, 6, 7, 8, 9, 10]
-
-এখানে প্যারামিটার গুলার একটা অ্যারে দিয়ে দিছে । 
 
 
 
