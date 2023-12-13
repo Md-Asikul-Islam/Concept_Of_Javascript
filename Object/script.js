@@ -271,7 +271,7 @@ console.log(tamim);
 জাভাস্ক্রিট এ সকল অবজেক্ট একটা মাস্টার অবজেক্ট থেকে তৈরি হয় । এর চেইনিং এমন হবে -
 
 
-মাস্টার  Object থেকে Constructor function থেকে sakib এখানে প্রত্যেকটা অবজেক্ট এর প্রোটোটাইপে প্রোপার্টি  এবং মেথড আছে । 
+মাস্টার  Object থেকে Constructor function থেকে sakib, এখানে প্রত্যেকটা অবজেক্ট এর প্রোটোটাইপে প্রোপার্টি  এবং মেথড আছে । 
 
 আমরা যখনি একটা ক্লাসের  আন্ডারে আরেকটা  ক্লাস তৈরি করব তখন  ইনহেরিটেন্স এর ক্ষেত্রে তিনটি কাজ করতে হবে - 
 ১। Object.create এর মাধ্যমে prototype গুলাকে ইনহেরিটেড করে নিয়ে আসব । 
@@ -285,7 +285,7 @@ function Person(name, age) {           // parent class
 }
 
 function Cricketer(name, age, type, country) {            // sub class
-  Person.call(this);
+  Person.call(this);               // conection with panrent and child
   this.name = name;
   this.age = age ;
   this.type = type ;
@@ -340,26 +340,20 @@ getter  হচ্ছে এমন একটা প্রোপার্টি �
 
 class Person {
   constructor(name, age){
-    this.name = name ;
+    this.name = name ;             // property
     this.age = age ;
   }
-  eat() {
+  eat() {                       // method
     console.log(`${this.name} is eating`)
     }
     get setName(){
       // getter 
       return this.name ;
     }
-    set setName (name){
-      // Setter
-      this.name = name ;
-    }
 }
 
 const sakib = new Person("sakib", 35)
 console.log(sakib.setName);
-
-sakib.setName = "Asikul"
 
 
 //*** create a setter  ****
@@ -388,6 +382,7 @@ console.log(sakib.setName);
 sakib.setName = "Asikul"
 
 // static method 
+এই static method টা নরমাল ফাংশনের মত কল করা যাবে । এই মেথডের ক্ষেত্রে this  হচ্ছে তার ক্লাস 
 
 class Person {
   constructor(name, age){
@@ -409,6 +404,8 @@ Person.isEqualAge();
 
 // ***Polymorphism *** 
 
+কোন  একটা ইনহেরিটেড   চাইল্ড ক্লাস যদি তার প্যারেন্ট ক্লাসের মেথডকে   ওভার রাইট করে  সেই ওভার রাইট করার প্রক্রিয়াকেই Polymorphism বলে ।
+
 class Person {                 // parent class
   constructor(name, age){
     this.name = name ;
@@ -427,6 +424,7 @@ class Cricketer extends Person {                  // sub class
     this.type = type ;
     this.country = country ;
   }
+  super.play()        ০ // যখন প্যারেন্ট এবং চাইল্ড দুইটা ক্লাসের মেথডকে ঠিক রাখতে চাইব তখন এভাবে করতে হবে
   play() {
     console.log(`${this.name} is playing cricket`);
   }
@@ -438,8 +436,142 @@ const sakib = new Cricketer("sakib", 35, "Al-Rounder", " Bangladesh");
 // *** Es-6 Symbol ***
 
 
+// create a symbol 
+
+var symbolOne = Symbol();
+var symbolTwo = Symbol();
+
+console.log(symbolOne == symbolTwo);                   // false
+console.log(symbolOne === symbolTwo);                   // false
+
+
+console.log(symbolOne);                      // Symbol()
+console.log(symbolTwo);                      // Symbol()
+
+Symbol সবসময় একটা ইউনিক আইডেনটি রাখে এখানে 
+
+
+var symbolOne = Symbol(" I am symbol One");
+var symbolTwo = Symbol(" I am symbol Two ");
+
+
+সিঙ্গেল টোন -
+
+var symbolOne = Symbol.for();
+var symbolTwo = Symbol.for();
+
+
+// symbol কে অবজেক্টের প্রোপার্টি হিসেবে ব্যবহার -
+
+var cricket = Symbol(" This is cricket symbol");
+
+var object = {
+  name : " sakib ", 
+  [cricket]  : " Bangladesh "
+}
+
+
+// symbol কে  কেন জাভাস্ক্রিপ্ট আনা হয়েছে -
+
+
+var object = {};
+
+object.name = " Javascript"
+object.estd = 1995
+
+object[Symbol("founder")] = " Brenden Eich "
+
+for(let key in object){
+console.log(key);
+}
+
+console.log(Object.keys(object));
+
+// Over write in prototype 
+
+var includes = Symbol("my own array includes method ");
+
+Array.prototype[includes] = () => {
+  console.log(" This is my array includes function ");
+}
+
+console.log(myArray.includes(2));
+console.log(myArray["includes"](2));
+myArray[includes](2)
+
+// symbols in Javascript 
+
+১। title কে  new String('javascript')
+২। convert parameter "javascript" into RegExp.
+৩। RegExp এর মধ্যে  Symbol.search() implementation আছে কি না ??  
+
+class Product {
+  constructor(title){
+    this.title = title ;
+  }
+  // search implement
+  [Symbol.search](string){
+    return string.indexOf(this.title) >= 0 ? "Found" : " Not Found"
+  }
+}
+
+var laptop = new Product('laptop')
+console.log("Hp laptop".search(laptop););
 
 // *** iterator ***
+
+
+
+let array = [1, 3, 5, 7, 10, 12];
+
+for(let i = 0; i < array.length; i++){
+  console.log(array[i]);
+}
+
+
+
+let array = [1, 3, 5, 7, 10, 12];
+for(let element of array){
+  console.log(element);
+}
+
+
+
+let details = {
+  name : "Asikul",
+  age :26,
+  prof : "student",
+  color : "white"
+}
+let entries = Object.entries(details);
+
+for ( i = 0; i < entries.length; i++) {
+
+  console.log(entries[i][1]);
+}
+
+
+
+let details = {
+  name : "Asikul",
+  age :26,
+  prof : "student",
+  color : "white"
+}
+
+for(let element in details){
+  console.log(element);
+}
+
+
+
+
+
+
+
+
+
+
 
 
 // *** Genarator ***
@@ -490,6 +622,7 @@ console.log(company);
 
 // *** implicit binding ***
 // Ex-1 : চলুন একটা সিম্পল অবজেক্ট লিখি।
+
 const player  = {
   name: 'Shakib',
   age: 35,
